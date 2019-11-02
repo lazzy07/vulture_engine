@@ -1,0 +1,7 @@
+# folders
+.vs/
+build/
+intermediate/
+
+#files
+*.user
