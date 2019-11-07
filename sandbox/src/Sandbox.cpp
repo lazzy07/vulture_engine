@@ -1,9 +1,25 @@
 #include "Vulture.h"
 
+class ExampleLayer : public Vulture::Layer {
+public:
+	ExampleLayer(): Layer("Example") {
+
+	}
+
+	void OnUpdate() override {
+		VUL_INFO("ExampleLayer::update");
+	}
+
+	void OnEvent(Vulture::Event& event) override {
+		VUL_TRACE("{0}", event);
+	}
+
+};
+
 class Sandbox : public Vulture::Application {
 public:
 	Sandbox() {
-
+		PushLayer(new ExampleLayer());
 	}
 
 	~Sandbox() {

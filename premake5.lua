@@ -18,8 +18,12 @@ outputdir = "%{cfg.system}/%{cfg.buildcfg}_%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "vulture_engine/vendor/GLFW/include"
+IncludeDir["Glad"] = "vulture_engine/vendor/Glad/include"
+IncludeDir["ImGui"] = "vulture_engine/vendor/ImGui"
 
 include "vulture_engine/vendor/GLFW"
+include "vulture_engine/vendor/Glad"
+include "vulture_engine/vendor/ImGui"
 
 project "vulture_engine"
 	location "vulture_engine"
@@ -42,12 +46,15 @@ project "vulture_engine"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -58,7 +65,8 @@ project "vulture_engine"
 		defines
 		{
 			"VUL_PLATFORM_WINDOWS",
-			"VUL_BUILD_DLL"
+			"VUL_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 		postbuildcommands
 		{
@@ -67,16 +75,19 @@ project "vulture_engine"
 
 	filter "configurations:Debug"
 		defines "VUL_DEBUG"
+		buildoptions "/MDd"
 		runtime "Debug"
 		symbols "on"
 
 	filter "configurations:Release"
 		defines "VUL_RELEASE"
+		buildoptions "/MD"
 		runtime "Release"
 		optimize "on"
 
 	filter "configurations:Dist"
 		defines "VUL_DIST"
+		buildoptions "/MD"
 		runtime "Release"
 		optimize "on"
 
@@ -116,15 +127,18 @@ project "sandbox"
 
 	filter "configurations:Debug"
 		defines "VUL_DEBUG"
+		buildoptions "/MDd"
 		runtime "Debug"
 		symbols "on"
 
 	filter "configurations:Release"
 		defines "VUL_RELEASE"
+		buildoptions "/MD"
 		runtime "Release"
 		optimize "on"
 
 	filter "configurations:Dist"
 		defines "VUL_DIST"
+		buildoptions "/MD"
 		runtime "Release"
 		optimize "on"

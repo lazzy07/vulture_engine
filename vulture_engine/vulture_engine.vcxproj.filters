@@ -28,6 +28,12 @@
     <ClInclude Include="src\Vulture\EntryPoint.h">
       <Filter>Vulture</Filter>
     </ClInclude>
+    <ClInclude Include="src\Vulture\Layer.h">
+      <Filter>Vulture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\LayerStack.h">
+      <Filter>Vulture</Filter>
+    </ClInclude>
     <ClInclude Include="src\Vulture\Log.h">
       <Filter>Vulture</Filter>
     </ClInclude>
@@ -53,6 +59,12 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Vulture\Application.cpp">
+      <Filter>Vulture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\Layer.cpp">
+      <Filter>Vulture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\LayerStack.cpp">
       <Filter>Vulture</Filter>
     </ClCompile>
     <ClCompile Include="src\Vulture\Log.cpp">
