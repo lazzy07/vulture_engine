@@ -25,6 +25,7 @@ include "vulture_engine/vendor/GLFW"
 include "vulture_engine/vendor/Glad"
 include "vulture_engine/vendor/ImGui"
 
+
 project "vulture_engine"
 	location "vulture_engine"
 	kind "SharedLib"
@@ -55,6 +56,7 @@ project "vulture_engine"
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 

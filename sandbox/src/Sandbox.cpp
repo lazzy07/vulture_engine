@@ -20,6 +20,7 @@ class Sandbox : public Vulture::Application {
 public:
 	Sandbox() {
 		PushLayer(new ExampleLayer());
+		PushOverlay(new Vulture::ImGuiLayer());
 	}
 
 	~Sandbox() {

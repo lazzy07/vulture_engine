@@ -9,6 +9,8 @@
 //For logging events
 #include "Vulture/Log.h"
 
+#include "ImGui/ImGuiLayer.h"
+
 //***************EntryPoint************************
 #include "Vulture/EntryPoint.h"
 //*************************************************
