@@ -1,7 +1,7 @@
 #include "vulpch.h"
 #include "Application.h"
 #include <glad/glad.h>
-
+#include "Vulture/Input.h"
 namespace Vulture {
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
@@ -32,7 +32,7 @@ namespace Vulture {
 	void Application::OnEvent(Event &e) {
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
-		VUL_CORE_TRACE("{0}", e);
+		//VUL_CORE_TRACE("{0}", e);
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); ) {
 			(*--it)->OnEvent(e);
@@ -44,11 +44,15 @@ namespace Vulture {
 
 	void Application::run() {
 		while (m_Running) {
-			m_Window->OnUpdate();
+			glClearColor(1, 1, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+
 
 			for (Layer* layer : m_LayerStack) {
 				layer->OnUpdate();
 			}
+			
+			m_Window->OnUpdate();
 		};
 	}
 

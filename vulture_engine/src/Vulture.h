@@ -9,7 +9,15 @@
 //For logging events
 #include "Vulture/Log.h"
 
+//For debugging
 #include "ImGui/ImGuiLayer.h"
+
+//Input polling
+#include "Vulture/Input.h"
+
+//KeyCodes
+#include "Vulture/KeyCodes.h"
+#include "Vulture/MouseButtonCodes.h"
 
 //***************EntryPoint************************
 #include "Vulture/EntryPoint.h"

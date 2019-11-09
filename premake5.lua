@@ -20,6 +20,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "vulture_engine/vendor/GLFW/include"
 IncludeDir["Glad"] = "vulture_engine/vendor/Glad/include"
 IncludeDir["ImGui"] = "vulture_engine/vendor/ImGui"
+IncludeDir["glm"] = "vulture_engine/vendor/glm/glm"
 
 include "vulture_engine/vendor/GLFW"
 include "vulture_engine/vendor/Glad"
@@ -30,6 +31,7 @@ project "vulture_engine"
 	location "vulture_engine"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-intermediate/" .. outputdir .. "/%{prj.name}")
@@ -49,7 +51,8 @@ project "vulture_engine"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -62,7 +65,6 @@ project "vulture_engine"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "on"
 		systemversion "10.0.17763.0"
 		defines
 		{
@@ -72,7 +74,7 @@ project "vulture_engine"
 		}
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" ..outputdir.. "/sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" ..outputdir.. "/sandbox/\"")
 		}
 
 	filter "configurations:Debug"
@@ -97,6 +99,7 @@ project "sandbox"
 	location "sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-intermediate/" .. outputdir .. "/%{prj.name}")
@@ -110,7 +113,8 @@ project "sandbox"
 	includedirs
 	{
 		"vulture_engine/vendor/spdlog/include",
-		"vulture_engine/src"
+		"vulture_engine/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -120,7 +124,6 @@ project "sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "on"
 		systemversion "10.0.17763.0"
 		defines
 		{
@@ -129,18 +132,15 @@ project "sandbox"
 
 	filter "configurations:Debug"
 		defines "VUL_DEBUG"
-		buildoptions "/MDd"
 		runtime "Debug"
 		symbols "on"
 
 	filter "configurations:Release"
 		defines "VUL_RELEASE"
-		buildoptions "/MD"
 		runtime "Release"
 		optimize "on"
 
 	filter "configurations:Dist"
 		defines "VUL_DIST"
-		buildoptions "/MD"
 		runtime "Release"
 		optimize "on"

@@ -65,6 +65,10 @@
       <Filter>Vulture\events</Filter>
     </ClInclude>
     <ClInclude Include="src\vulpch.h" />
+    <ClInclude Include="src\Vulture\Input.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Vulture\KeyCodes.h" />
+    <ClInclude Include="src\Vulture\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ImGui\ImGuiLayer.cpp">
@@ -89,5 +93,6 @@
       <Filter>Vulture</Filter>
     </ClCompile>
     <ClCompile Include="src\vulpch.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

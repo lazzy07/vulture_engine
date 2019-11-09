@@ -7,3 +7,6 @@
 [submodule "vulture_engine/vendor/ImGui"]
 	path = vulture_engine/vendor/ImGui
 	url = https://github.com/TheCherno/imgui.git
+[submodule "vulture_engine\\vendor\\glm"]
+	path = vulture_engine\\vendor\\glm
+	url = https://github.com/g-truc/glm.git

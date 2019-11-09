@@ -84,7 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -96,7 +96,7 @@
       <ImportLibrary>..\bin\windows\Debug_x86_64\vulture_engine\vulture_engine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\windows\Debug_x86_64\vulture_engine\vulture_engine.dll\ (xcopy /Q /E /Y /I ..\bin\windows\Debug_x86_64\vulture_engine\vulture_engine.dll ..\bin\windows\Debug_x86_64\sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\windows\Debug_x86_64\vulture_engine\vulture_engine.dll ..\bin\windows\Debug_x86_64\sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\windows\Debug_x86_64\vulture_engine\vulture_engine.dll\ (xcopy /Q /E /Y /I ..\bin\windows\Debug_x86_64\vulture_engine\vulture_engine.dll "..\bin\windows\Debug_x86_64\sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\windows\Debug_x86_64\vulture_engine\vulture_engine.dll "..\bin\windows\Debug_x86_64\sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -111,7 +111,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -124,7 +124,7 @@
       <ImportLibrary>..\bin\windows\Release_x86_64\vulture_engine\vulture_engine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\windows\Release_x86_64\vulture_engine\vulture_engine.dll\ (xcopy /Q /E /Y /I ..\bin\windows\Release_x86_64\vulture_engine\vulture_engine.dll ..\bin\windows\Release_x86_64\sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\windows\Release_x86_64\vulture_engine\vulture_engine.dll ..\bin\windows\Release_x86_64\sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\windows\Release_x86_64\vulture_engine\vulture_engine.dll\ (xcopy /Q /E /Y /I ..\bin\windows\Release_x86_64\vulture_engine\vulture_engine.dll "..\bin\windows\Release_x86_64\sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\windows\Release_x86_64\vulture_engine\vulture_engine.dll "..\bin\windows\Release_x86_64\sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -139,7 +139,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -152,20 +152,24 @@
       <ImportLibrary>..\bin\windows\Dist_x86_64\vulture_engine\vulture_engine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\windows\Dist_x86_64\vulture_engine\vulture_engine.dll\ (xcopy /Q /E /Y /I ..\bin\windows\Dist_x86_64\vulture_engine\vulture_engine.dll ..\bin\windows\Dist_x86_64\sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\windows\Dist_x86_64\vulture_engine\vulture_engine.dll ..\bin\windows\Dist_x86_64\sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\windows\Dist_x86_64\vulture_engine\vulture_engine.dll\ (xcopy /Q /E /Y /I ..\bin\windows\Dist_x86_64\vulture_engine\vulture_engine.dll "..\bin\windows\Dist_x86_64\sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\windows\Dist_x86_64\vulture_engine\vulture_engine.dll "..\bin\windows\Dist_x86_64\sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Vulture.h" />
     <ClInclude Include="src\Vulture\Application.h" />
     <ClInclude Include="src\Vulture\Core.h" />
     <ClInclude Include="src\Vulture\EntryPoint.h" />
+    <ClInclude Include="src\Vulture\Input.h" />
+    <ClInclude Include="src\Vulture\KeyCodes.h" />
     <ClInclude Include="src\Vulture\Layer.h" />
     <ClInclude Include="src\Vulture\LayerStack.h" />
     <ClInclude Include="src\Vulture\Log.h" />
+    <ClInclude Include="src\Vulture\MouseButtonCodes.h" />
     <ClInclude Include="src\Vulture\Window.h" />
     <ClInclude Include="src\Vulture\events\ApplicationEvent.h" />
     <ClInclude Include="src\Vulture\events\Event.h" />
@@ -176,6 +180,7 @@
   <ItemGroup>
     <ClCompile Include="src\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Vulture\Application.cpp" />
     <ClCompile Include="src\Vulture\Layer.cpp" />
