@@ -9,9 +9,6 @@
 //For logging events
 #include "Vulture/Log.h"
 
-//For debugging
-#include "ImGui/ImGuiLayer.h"
-
 //Input polling
 #include "Vulture/Input.h"
 

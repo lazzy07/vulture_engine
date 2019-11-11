@@ -1,6 +1,7 @@
 #pragma once
 #include "Vulture/Window.h"
-#include <glad/glad.h>
+#include "Vulture/Renderer/GraphicsContext.h"
+
 #include <GLFW/glfw3.h>
 
 namespace Vulture {
@@ -26,6 +27,7 @@ namespace Vulture {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{

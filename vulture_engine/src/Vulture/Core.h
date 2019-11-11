@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef VUL_PLATFORM_WINDOWS
+#if VUL_DYNAMIC_LINK
 	#ifdef VUL_BUILD_DLL
 		#define VULTURE_API __declspec(dllexport)
 	#else
 		#define VULTURE_API __declspec(dllimport)
 	#endif
+#else
+#define VULTURE_API
+#endif
 #else
 	#error Vulture only supports windows
 #endif

@@ -4,9 +4,6 @@
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\ImGui">
-      <UniqueIdentifier>{170E22B3-8378-D629-CCB6-87CF3860B47E}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
@@ -18,6 +15,12 @@
     </Filter>
     <Filter Include="src\Vulture">
       <UniqueIdentifier>{138BD901-7F40-52F7-0835-4CCE74E948FB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Vulture\ImGui">
+      <UniqueIdentifier>{7DC23049-E9D8-2EDF-3250-BA009EA5FF66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Vulture\Renderer">
+      <UniqueIdentifier>{19F419A6-0583-A36F-AEA1-B76A9A0FB415}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Vulture\events">
       <UniqueIdentifier>{B7B74CB1-A39B-0D07-0CFC-075AF8FEF788}</UniqueIdentifier>
@@ -45,10 +48,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\ImGui\ImGuiLayer.h">
-      <Filter>src\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
@@ -69,6 +69,9 @@
     <ClInclude Include="src\Vulture\EntryPoint.h">
       <Filter>src\Vulture</Filter>
     </ClInclude>
+    <ClInclude Include="src\Vulture\ImGui\ImGuiLayer.h">
+      <Filter>src\Vulture\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Vulture\Input.h">
       <Filter>src\Vulture</Filter>
     </ClInclude>
@@ -86,6 +89,9 @@
     </ClInclude>
     <ClInclude Include="src\Vulture\MouseButtonCodes.h">
       <Filter>src\Vulture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Renderer\GraphicsContext.h">
+      <Filter>src\Vulture\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Vulture\Window.h">
       <Filter>src\Vulture</Filter>
@@ -1211,10 +1217,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\ImGui\ImGuiLayer.cpp">
-      <Filter>src\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
@@ -1225,6 +1228,12 @@
     </ClCompile>
     <ClCompile Include="src\Vulture\Application.cpp">
       <Filter>src\Vulture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\ImGui\ImGuiBuild.cpp">
+      <Filter>src\Vulture\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\ImGui\ImGuiLayer.cpp">
+      <Filter>src\Vulture\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Vulture\Layer.cpp">
       <Filter>src\Vulture</Filter>

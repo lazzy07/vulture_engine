@@ -2,6 +2,11 @@ workspace "vulture_engine"
 	architecture "x64"
 	startproject "sandbox"
 
+	defines
+	{
+		"VUL_USE_GPU"
+	}
+
 	configurations
 	{
 		"Debug",
@@ -29,9 +34,10 @@ include "vulture_engine/vendor/ImGui"
 
 project "vulture_engine"
 	location "vulture_engine"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-intermediate/" .. outputdir .. "/%{prj.name}")
@@ -66,7 +72,6 @@ project "vulture_engine"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "10.0.17763.0"
 		defines
 		{
@@ -74,26 +79,19 @@ project "vulture_engine"
 			"VUL_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
 		}
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" ..outputdir.. "/sandbox/\"")
-		}
 
 	filter "configurations:Debug"
 		defines "VUL_DEBUG"
-		buildoptions "/MDd"
 		runtime "Debug"
 		symbols "on"
 
 	filter "configurations:Release"
 		defines "VUL_RELEASE"
-		buildoptions "/MD"
 		runtime "Release"
 		optimize "on"
 
 	filter "configurations:Dist"
 		defines "VUL_DIST"
-		buildoptions "/MD"
 		runtime "Release"
 		optimize "on"
 
@@ -101,7 +99,8 @@ project "sandbox"
 	location "sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-intermediate/" .. outputdir .. "/%{prj.name}")
@@ -125,7 +124,6 @@ project "sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "10.0.17763.0"
 		defines
 		{
