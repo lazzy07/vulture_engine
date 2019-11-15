@@ -14,11 +14,11 @@
 	#error Vulture only supports windows
 #endif
 
-/*
+
 #ifdef VUL_DEBUG
 	#define VUL_ENABLE_ASSERTS
 #endif
-*/
+
 #ifdef VUL_ENABLE_ASSERTS
 	#define VUL_ASSERT(x, ...) {if(!(x)) { VUL_ERROR("Assertion Failed {0}", __VA_ARGS__); __debugbreak(); } }
 	#define VUL_CORE_ASSERT(x, ...) {if(!(x)) { VUL_ERROR("Assertion Failed {0}", __VA_ARGS__); __debugbreak(); } }
@@ -30,3 +30,4 @@
 #define BIT(x) (1 << x)
 
 #define VUL_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+

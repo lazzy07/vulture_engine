@@ -48,7 +48,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
@@ -90,7 +96,19 @@
     <ClInclude Include="src\Vulture\MouseButtonCodes.h">
       <Filter>src\Vulture</Filter>
     </ClInclude>
+    <ClInclude Include="src\Vulture\Renderer\Buffer.h">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Vulture\Renderer\GraphicsContext.h">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Renderer\Renderer.h">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Renderer\Shader.h">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Renderer\VertexArray.h">
       <Filter>src\Vulture\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Vulture\Window.h">
@@ -1217,7 +1235,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
@@ -1243,6 +1267,18 @@
     </ClCompile>
     <ClCompile Include="src\Vulture\Log.cpp">
       <Filter>src\Vulture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\Renderer\Buffer.cpp">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\Renderer\Renderer.cpp">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\Renderer\Shader.cpp">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\Renderer\VertexArray.cpp">
+      <Filter>src\Vulture\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\vulpch.cpp">
       <Filter>src</Filter>

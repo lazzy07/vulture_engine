@@ -7,6 +7,9 @@
 #include"Vulture/LayerStack.h"
 
 #include "Vulture/ImGui/ImGuiLayer.h"
+#include "Vulture/Renderer/Shader.h"
+#include "Vulture/Renderer/VertexArray.h"
+#include "Vulture/Renderer/Buffer.h"
 
 namespace Vulture {
 	class VULTURE_API Application
@@ -32,7 +35,8 @@ namespace Vulture {
 		LayerStack m_LayerStack;
 		static Application* s_Instance;
 
-		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::shared_ptr<Shader> m_Shader;
+		std::shared_ptr<VertexArray> m_VertexArray;
 	};
 
 	//To be defined in Client application
