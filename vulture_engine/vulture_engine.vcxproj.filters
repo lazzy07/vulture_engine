@@ -1236,6 +1236,7 @@
     <ClInclude Include="src\Vulture\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Vulture\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Vulture\Renderer\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1289,5 +1290,6 @@
     <ClCompile Include="src\Vulture\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Vulture\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Vulture\Renderer\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>

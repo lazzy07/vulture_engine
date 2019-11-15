@@ -10,6 +10,7 @@
 #include "Vulture/Renderer/Shader.h"
 #include "Vulture/Renderer/VertexArray.h"
 #include "Vulture/Renderer/Buffer.h"
+#include "Vulture/Renderer/OrthographicCamera.h"
 
 namespace Vulture {
 	class VULTURE_API Application
@@ -34,9 +35,6 @@ namespace Vulture {
 		bool OnWindowClose(WindowCloseEvent& e);
 		LayerStack m_LayerStack;
 		static Application* s_Instance;
-
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
 	};
 
 	//To be defined in Client application
