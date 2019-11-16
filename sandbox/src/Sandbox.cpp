@@ -2,7 +2,7 @@
 
 class ExampleLayer : public Vulture::Layer {
 public:
-	ExampleLayer(): Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f) {
+	ExampleLayer(): Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f) {
 		m_VertexArray.reset(Vulture::VertexArray::Create());
 
 		float vertices[3 * 7] = {
@@ -10,7 +10,7 @@ public:
 			0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
 			0.0f, 0.5f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f
 		};
-		std::shared_ptr<Vulture::VertexBuffer> vertexBuff;
+		Vulture::Ref<Vulture::VertexBuffer> vertexBuff;
 		vertexBuff.reset(Vulture::VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		Vulture::BufferLayout layout = {
@@ -25,7 +25,7 @@ public:
 
 
 		uint32_t indecies[3] = { 0, 1, 2 };
-		std::shared_ptr<Vulture::IndexBuffer> indexBuff;
+		Vulture::Ref<Vulture::IndexBuffer> indexBuff;
 		indexBuff.reset(Vulture::IndexBuffer::Create(indecies, 3));
 		m_VertexArray->SetIndexBuffer(indexBuff);
 
@@ -36,13 +36,14 @@ public:
 			layout(location = 1) in vec4 a_Color;
 
 			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
 
 			out vec3 v_Position;
 			out vec4 v_Color;	
 
 			void main(){
 				v_Color = a_Color;
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 			}
 		)";
 
@@ -57,18 +58,29 @@ public:
 			}
 		)";
 
-		m_Shader.reset(new Vulture::Shader(vertexSrc, fragSrc));
+		m_Shader.reset(Vulture::Shader::Create(vertexSrc, fragSrc));
 	}
 
-	void OnUpdate() override {
+	void OnUpdate(Vulture::Timestep timestep) override {
+		
+		if (Vulture::Input::IsKeyPressed(VUL_KEY_LEFT))
+			m_CameraPosition.x -= m_CameraSpeed * timestep;
+		else if (Vulture::Input::IsKeyPressed(VUL_KEY_RIGHT))
+			m_CameraPosition.x += m_CameraSpeed * timestep;
+		
+		if (Vulture::Input::IsKeyPressed(VUL_KEY_UP))
+			m_CameraPosition.y += m_CameraSpeed * timestep;
+		else if (Vulture::Input::IsKeyPressed(VUL_KEY_DOWN))
+			m_CameraPosition.y -= m_CameraSpeed * timestep;
+
 		Vulture::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Vulture::RenderCommand::Clear();
 
-		m_Camera.SetPosition({ 0.5f, 0.5f, 0.5f });
-		m_Camera.SetRotation(45.0f);
+		m_Camera.SetPosition(m_CameraPosition);
+		m_Camera.SetRotation(0.0f);
 
 		Vulture::Renderer::BeginScene(m_Camera);
-		Vulture::Renderer::Submit(m_Shader, m_VertexArray);
+		Vulture::Renderer::Submit(m_Shader, m_VertexArray, { 0.3, 0.3, 0.0 }, {0.0f, 0.0f, 0.0f });
 		Vulture::Renderer::EndScene();
 	}
 
@@ -76,10 +88,12 @@ public:
 		
 	}
 private:
-	std::shared_ptr<Vulture::Shader> m_Shader;
-	std::shared_ptr<Vulture::VertexArray> m_VertexArray;
+	Vulture::Ref<Vulture::Shader> m_Shader;
+	Vulture::Ref<Vulture::VertexArray> m_VertexArray;
 
 	Vulture::OrthographicCamera m_Camera;
+	glm::vec3 m_CameraPosition;
+	float m_CameraSpeed = 1.0f;
 };
 
 class Sandbox : public Vulture::Application {

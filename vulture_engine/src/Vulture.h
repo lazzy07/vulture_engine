@@ -2,17 +2,12 @@
 
 //For used by the applications
 #include "Vulture/Application.h"
-
-//Layer API
 #include "Vulture/Layer.h"
-
-//For logging events
 #include "Vulture/Log.h"
 
-//Input polling
-#include "Vulture/Input.h"
+#include "Vulture/Core/Timestep.h"
 
-//KeyCodes
+#include "Vulture/Input.h"
 #include "Vulture/KeyCodes.h"
 #include "Vulture/MouseButtonCodes.h"
 

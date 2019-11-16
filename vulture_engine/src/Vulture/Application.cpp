@@ -3,6 +3,8 @@
 #include "Vulture/Input.h"
 #include "Vulture/Renderer/Renderer.h"
 
+#include <GLFW/glfw3.h>
+
 namespace Vulture {
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
@@ -47,8 +49,14 @@ namespace Vulture {
 
 	void Application::run() {
 		while (m_Running) {
+
+			//Getting Deltatime
+			float time = (float)glfwGetTime(); //TODO ::: Need to be platform specific
+			Timestep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
+
 			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 			
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)
@@ -58,7 +66,6 @@ namespace Vulture {
 			m_Window->OnUpdate();
 		};
 	}
-
 
 	bool Application::OnWindowClose(WindowCloseEvent& e) {
 		m_Running = false;

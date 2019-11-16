@@ -1,6 +1,7 @@
 #pragma once
 #include "Vulture/Core.h"
 #include "Vulture/events/Event.h"
+#include "Vulture/Core/Timestep.h"
 
 namespace Vulture{
 	class VULTURE_API Layer
@@ -11,7 +12,7 @@ namespace Vulture{
 
 		virtual void OnAttach() {}
 		virtual void OnDetach(){}
-		virtual void OnUpdate(){}
+		virtual void OnUpdate(Timestep ts){}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event){}
 
