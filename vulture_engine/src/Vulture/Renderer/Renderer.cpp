@@ -2,10 +2,15 @@
 #include "Renderer.h"
 #include "Platform/OpenGL/OpenGLShader.h"
 
-#include <gtc/matrix_transform.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 namespace Vulture {
 	Renderer::SceneData* Renderer::m_SceneData = new Renderer::SceneData;
+
+	void Renderer::Init()
+	{
+		RenderCommand::Init();
+	}
 
 	void Renderer::BeginScene(OrthographicCamera& camera)
 	{

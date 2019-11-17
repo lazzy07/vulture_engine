@@ -23,6 +23,7 @@
 //Renderer resources
 #include "Vulture/Renderer/Buffer.h"
 #include "Vulture/Renderer/Shader.h"
+#include "Vulture/Renderer/Texture.h"
 #include "Vulture/Renderer/VertexArray.h"
 
 //Cameras

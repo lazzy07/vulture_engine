@@ -25,7 +25,8 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "vulture_engine/vendor/GLFW/include"
 IncludeDir["Glad"] = "vulture_engine/vendor/Glad/include"
 IncludeDir["ImGui"] = "vulture_engine/vendor/ImGui"
-IncludeDir["glm"] = "vulture_engine/vendor/glm/glm"
+IncludeDir["glm"] = "vulture_engine/vendor/glm"
+IncludeDir["stb_image"] = "vulture_engine/vendor/stb_image"
 
 include "vulture_engine/vendor/GLFW"
 include "vulture_engine/vendor/Glad"
@@ -49,6 +50,8 @@ project "vulture_engine"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
@@ -60,7 +63,8 @@ project "vulture_engine"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links

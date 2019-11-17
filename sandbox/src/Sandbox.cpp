@@ -1,21 +1,23 @@
 #include "Vulture.h"
+#include "Platform/OpenGL/OpenGLShader.h"
 
 class ExampleLayer : public Vulture::Layer {
 public:
 	ExampleLayer(): Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f) {
 		m_VertexArray.reset(Vulture::VertexArray::Create());
 
-		float vertices[3 * 7] = {
-			-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f,
-			0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
-			0.0f, 0.5f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f
+		float vertices[4 * 5] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			0.5f, 0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f, 0.5f, 0.0f, 0.0f, 1.0f
 		};
 		Vulture::Ref<Vulture::VertexBuffer> vertexBuff;
 		vertexBuff.reset(Vulture::VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		Vulture::BufferLayout layout = {
 			{Vulture::ShaderDataType::Float3, "a_Position"},
-			{Vulture::ShaderDataType::Float4, "a_Color"}
+			{Vulture::ShaderDataType::Float2, "a_TexCoord"}
 		};
 
 
@@ -24,25 +26,24 @@ public:
 
 
 
-		uint32_t indecies[3] = { 0, 1, 2 };
+		uint32_t indecies[6] = { 0, 1, 2, 2, 3, 0 };
 		Vulture::Ref<Vulture::IndexBuffer> indexBuff;
-		indexBuff.reset(Vulture::IndexBuffer::Create(indecies, 3));
+		indexBuff.reset(Vulture::IndexBuffer::Create(indecies, sizeof(indecies)));
 		m_VertexArray->SetIndexBuffer(indexBuff);
 
 		std::string vertexSrc = R"(
 			#version 330 core
 
 			layout(location = 0) in vec3 a_Position;			
-			layout(location = 1) in vec4 a_Color;
+			layout(location = 1) in vec2 a_TexCoord;
 
 			uniform mat4 u_ViewProjection;
 			uniform mat4 u_Transform;
 
-			out vec3 v_Position;
-			out vec4 v_Color;	
+			out vec2 v_TexCoord;
 
 			void main(){
-				v_Color = a_Color;
+				v_TexCoord = a_TexCoord;
 				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 			}
 		)";
@@ -50,15 +51,19 @@ public:
 		std::string fragSrc = R"(
 			#version 330 core			
 			layout(location = 0) out vec4 color;
-			in vec3 v_Position;
-			in vec4 v_Color;
+			
+			in vec2 v_TexCoord;
+			uniform sampler2D u_Texture;
 
 			void main(){
-				color = v_Color;
+				color = texture(u_Texture, v_TexCoord);
 			}
 		)";
 
 		m_Shader.reset(Vulture::Shader::Create(vertexSrc, fragSrc));
+		m_Texture = Vulture::Texture2D::Create("./assets/textures/logo_only.png");
+
+		std::dynamic_pointer_cast<Vulture::OpenGLShader>(m_Shader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Vulture::Timestep timestep) override {
@@ -80,7 +85,8 @@ public:
 		m_Camera.SetRotation(0.0f);
 
 		Vulture::Renderer::BeginScene(m_Camera);
-		Vulture::Renderer::Submit(m_Shader, m_VertexArray, { 0.3, 0.3, 0.0 }, {0.0f, 0.0f, 0.0f });
+		m_Texture->Bind();
+		Vulture::Renderer::Submit(m_Shader, m_VertexArray, { 0.0f, 0.0f, 0.0f }, {0.0f, 0.0f, 0.0f });
 		Vulture::Renderer::EndScene();
 	}
 
@@ -90,6 +96,7 @@ public:
 private:
 	Vulture::Ref<Vulture::Shader> m_Shader;
 	Vulture::Ref<Vulture::VertexArray> m_VertexArray;
+	Vulture::Ref<Vulture::Texture2D> m_Texture;
 
 	Vulture::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
