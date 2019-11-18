@@ -171,6 +171,7 @@
     <ClInclude Include="src\Vulture\Renderer\Renderer.h" />
     <ClInclude Include="src\Vulture\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Vulture\Renderer\Shader.h" />
+    <ClInclude Include="src\Vulture\Renderer\ShaderLibrary.h" />
     <ClInclude Include="src\Vulture\Renderer\Texture.h" />
     <ClInclude Include="src\Vulture\Renderer\VertexArray.h" />
     <ClInclude Include="src\Vulture\Window.h" />
@@ -570,6 +571,7 @@
     <ClCompile Include="src\Vulture\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Vulture\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Vulture\Renderer\ShaderLibrary.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Texture.cpp" />
     <ClCompile Include="src\Vulture\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\vulpch.cpp">

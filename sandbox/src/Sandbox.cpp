@@ -1,5 +1,6 @@
 #include "Vulture.h"
 #include "Platform/OpenGL/OpenGLShader.h"
+#include "Vulture/Renderer/ShaderLibrary.h"
 
 class ExampleLayer : public Vulture::Layer {
 public:
@@ -31,39 +32,10 @@ public:
 		indexBuff.reset(Vulture::IndexBuffer::Create(indecies, sizeof(indecies)));
 		m_VertexArray->SetIndexBuffer(indexBuff);
 
-		std::string vertexSrc = R"(
-			#version 330 core
-
-			layout(location = 0) in vec3 a_Position;			
-			layout(location = 1) in vec2 a_TexCoord;
-
-			uniform mat4 u_ViewProjection;
-			uniform mat4 u_Transform;
-
-			out vec2 v_TexCoord;
-
-			void main(){
-				v_TexCoord = a_TexCoord;
-				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
-			}
-		)";
-
-		std::string fragSrc = R"(
-			#version 330 core			
-			layout(location = 0) out vec4 color;
-			
-			in vec2 v_TexCoord;
-			uniform sampler2D u_Texture;
-
-			void main(){
-				color = texture(u_Texture, v_TexCoord);
-			}
-		)";
-
-		m_Shader.reset(Vulture::Shader::Create(vertexSrc, fragSrc));
+		auto exampleShader = m_ShaderLibrary.Load("./assets/shaders/texture.glsl");
 		m_Texture = Vulture::Texture2D::Create("./assets/textures/logo_only.png");
 
-		std::dynamic_pointer_cast<Vulture::OpenGLShader>(m_Shader)->UploadUniformInt("u_Texture", 0);
+		std::dynamic_pointer_cast<Vulture::OpenGLShader>(exampleShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Vulture::Timestep timestep) override {
@@ -86,7 +58,7 @@ public:
 
 		Vulture::Renderer::BeginScene(m_Camera);
 		m_Texture->Bind();
-		Vulture::Renderer::Submit(m_Shader, m_VertexArray, { 0.0f, 0.0f, 0.0f }, {0.0f, 0.0f, 0.0f });
+		Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 0.0f, 0.0f, 0.0f }, {0.0f, 0.0f, 0.0f });
 		Vulture::Renderer::EndScene();
 	}
 
@@ -94,7 +66,8 @@ public:
 		
 	}
 private:
-	Vulture::Ref<Vulture::Shader> m_Shader;
+	Vulture::ShaderLibrary m_ShaderLibrary;
+	//Vulture::Ref<Vulture::Shader> m_Shader;
 	Vulture::Ref<Vulture::VertexArray> m_VertexArray;
 	Vulture::Ref<Vulture::Texture2D> m_Texture;
 
