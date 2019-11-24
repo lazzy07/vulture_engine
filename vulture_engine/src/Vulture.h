@@ -28,6 +28,8 @@
 
 //Cameras
 #include "Vulture/Renderer/OrthographicCamera.h"
+#include "Vulture/Renderer/PerspectiveCamera.h"
+#include "Vulture/CameraController.h"
 
 //*************************************************
 

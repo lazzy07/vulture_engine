@@ -144,6 +144,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Vulture\CameraController.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
@@ -165,8 +166,10 @@
     <ClInclude Include="src\Vulture\Log.h" />
     <ClInclude Include="src\Vulture\MouseButtonCodes.h" />
     <ClInclude Include="src\Vulture\Renderer\Buffer.h" />
+    <ClInclude Include="src\Vulture\Renderer\Camera.h" />
     <ClInclude Include="src\Vulture\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Vulture\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Vulture\Renderer\PerspectiveCamera.h" />
     <ClInclude Include="src\Vulture\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Vulture\Renderer\Renderer.h" />
     <ClInclude Include="src\Vulture\Renderer\RendererAPI.h" />
@@ -560,6 +563,7 @@
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Vulture\Application.cpp" />
+    <ClCompile Include="src\Vulture\CameraController.cpp" />
     <ClCompile Include="src\Vulture\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Vulture\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Vulture\Layer.cpp" />
@@ -567,6 +571,7 @@
     <ClCompile Include="src\Vulture\Log.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Vulture\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Vulture\Renderer\PerspectiveCamera.cpp" />
     <ClCompile Include="src\Vulture\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Vulture\Renderer\RendererAPI.cpp" />

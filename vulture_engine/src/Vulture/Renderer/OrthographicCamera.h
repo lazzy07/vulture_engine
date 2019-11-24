@@ -1,11 +1,11 @@
 #pragma once
-
-#include "glm/glm.hpp"
+#include <glm/glm.hpp>
+#include "Camera.h"
 
 namespace Vulture {
-	class OrthographicCamera {
+	class OrthographicCamera: public Camera {
 	public:
-		OrthographicCamera(float left, float right, float bottom, float top);
+		OrthographicCamera(float left = -1.6f, float right = 1.6f, float bottom = -0.9f, float top = 0.9f);
 
 		const glm::vec3& GetPosition() const { return m_Position; };
 		const float GetRotation() const { return m_Rotation; };
@@ -13,9 +13,9 @@ namespace Vulture {
 		void SetPosition(const glm::vec3& position) { m_Position = position; RecalculateViewMatrix(); };
 		void SetRotation(float rotation) { m_Rotation = rotation; RecalculateViewMatrix(); };
 
-		const glm::mat4& GetProjectionMatrix() const { return m_ProjectionMatrix; };
-		const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; };
-		const glm::mat4& GetViewProjectionMatrix() const { return m_ViewProjectionMatrix; };
+		virtual const glm::mat4& GetProjectionMatrix() const { return m_ProjectionMatrix; };
+		virtual const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; };
+		virtual const glm::mat4& GetViewProjectionMatrix() const { return m_ViewProjectionMatrix; } ;
 
 	private:
 		void RecalculateViewMatrix();

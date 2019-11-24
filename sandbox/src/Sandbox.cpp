@@ -4,9 +4,9 @@
 
 class ExampleLayer : public Vulture::Layer {
 public:
-	ExampleLayer(): Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f) {
+	ExampleLayer() : Layer("Example") {
 		m_VertexArray.reset(Vulture::VertexArray::Create());
-
+		m_Controller.reset(new Vulture::FirstPersonController());
 		float vertices[4 * 5] = {
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
 			0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
@@ -39,26 +39,23 @@ public:
 	}
 
 	void OnUpdate(Vulture::Timestep timestep) override {
-		
-		if (Vulture::Input::IsKeyPressed(VUL_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraSpeed * timestep;
-		else if (Vulture::Input::IsKeyPressed(VUL_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraSpeed * timestep;
-		
-		if (Vulture::Input::IsKeyPressed(VUL_KEY_UP))
-			m_CameraPosition.y += m_CameraSpeed * timestep;
-		else if (Vulture::Input::IsKeyPressed(VUL_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraSpeed * timestep;
+
+		m_Controller->RunController();
 
 		Vulture::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Vulture::RenderCommand::Clear();
 
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(0.0f);
-
-		Vulture::Renderer::BeginScene(m_Camera);
+		Vulture::Renderer::BeginScene(m_Controller->GetCamera());
 		m_Texture->Bind();
-		Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 0.0f, 0.0f, 0.0f }, {0.0f, 0.0f, 0.0f });
+		Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f });
+		Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 1.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f });
+		Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 0.0f, 1.0f, 0.0f }, { 0.0f, 0.0f, 0.0f });
+		Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 0.0f, 0.0f, 1.0f }, { 0.0f, 0.0f, 0.0f });
+		Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 0.5f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f });
+		Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 0.0f, 0.5f, 0.0f }, { 0.0f, 0.0f, 0.0f });
+		Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 0.0f, 0.0f, 0.5f }, { 0.0f, 0.0f, 0.0f });
+		Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 0.3f, 0.3f, 0.3f }, { 0.0f, 0.0f, 0.0f });
+		Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 1.0f, 1.0f, 1.0f }, {0.0f, 0.0f, 0.0f });
 		Vulture::Renderer::EndScene();
 	}
 
@@ -67,11 +64,10 @@ public:
 	}
 private:
 	Vulture::ShaderLibrary m_ShaderLibrary;
-	//Vulture::Ref<Vulture::Shader> m_Shader;
 	Vulture::Ref<Vulture::VertexArray> m_VertexArray;
 	Vulture::Ref<Vulture::Texture2D> m_Texture;
 
-	Vulture::OrthographicCamera m_Camera;
+	Vulture::Ref<Vulture::FirstPersonController> m_Controller;
 	glm::vec3 m_CameraPosition;
 	float m_CameraSpeed = 1.0f;
 };

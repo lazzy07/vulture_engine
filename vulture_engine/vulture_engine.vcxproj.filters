@@ -1267,6 +1267,9 @@
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
     <ClInclude Include="src\Vulture\Renderer\ShaderLibrary.h" />
+    <ClInclude Include="src\Vulture\Renderer\PerspectiveCamera.h" />
+    <ClInclude Include="src\Vulture\Renderer\Camera.h" />
+    <ClInclude Include="src\Vulture\CameraController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1342,5 +1345,7 @@
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
     <ClCompile Include="src\Vulture\Renderer\ShaderLibrary.cpp" />
+    <ClCompile Include="src\Vulture\Renderer\PerspectiveCamera.cpp" />
+    <ClCompile Include="src\Vulture\CameraController.cpp" />
   </ItemGroup>
 </Project>

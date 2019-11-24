@@ -12,9 +12,9 @@ namespace Vulture {
 		RenderCommand::Init();
 	}
 
-	void Renderer::BeginScene(OrthographicCamera& camera)
+	void Renderer::BeginScene(Ref<Camera> camera)
 	{
-		m_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
+		m_SceneData->ViewProjectionMatrix = camera->GetViewProjectionMatrix();
 	}
 	void Renderer::EndScene()
 	{
