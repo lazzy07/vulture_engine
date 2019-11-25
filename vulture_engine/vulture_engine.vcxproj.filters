@@ -81,38 +81,11 @@
     <ClInclude Include="src\Vulture.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Vulture\Application.h">
-      <Filter>src\Vulture</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Vulture\Core.h">
-      <Filter>src\Vulture</Filter>
-    </ClInclude>
     <ClInclude Include="src\Vulture\Core\Timestep.h">
       <Filter>src\Vulture\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Vulture\EntryPoint.h">
-      <Filter>src\Vulture</Filter>
-    </ClInclude>
     <ClInclude Include="src\Vulture\ImGui\ImGuiLayer.h">
       <Filter>src\Vulture\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Vulture\Input.h">
-      <Filter>src\Vulture</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Vulture\KeyCodes.h">
-      <Filter>src\Vulture</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Vulture\Layer.h">
-      <Filter>src\Vulture</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Vulture\LayerStack.h">
-      <Filter>src\Vulture</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Vulture\Log.h">
-      <Filter>src\Vulture</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Vulture\MouseButtonCodes.h">
-      <Filter>src\Vulture</Filter>
     </ClInclude>
     <ClInclude Include="src\Vulture\Renderer\Buffer.h">
       <Filter>src\Vulture\Renderer</Filter>
@@ -140,9 +113,6 @@
     </ClInclude>
     <ClInclude Include="src\Vulture\Renderer\VertexArray.h">
       <Filter>src\Vulture\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Vulture\Window.h">
-      <Filter>src\Vulture</Filter>
     </ClInclude>
     <ClInclude Include="src\Vulture\events\ApplicationEvent.h">
       <Filter>src\Vulture\events</Filter>
@@ -1269,7 +1239,37 @@
     <ClInclude Include="src\Vulture\Renderer\ShaderLibrary.h" />
     <ClInclude Include="src\Vulture\Renderer\PerspectiveCamera.h" />
     <ClInclude Include="src\Vulture\Renderer\Camera.h" />
-    <ClInclude Include="src\Vulture\CameraController.h" />
+    <ClInclude Include="src\Vulture\Core\Application.h">
+      <Filter>src\Vulture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\CameraController.h" />
+    <ClInclude Include="src\Vulture\Core\Core.h">
+      <Filter>src\Vulture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\EntryPoint.h">
+      <Filter>src\Vulture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\Input.h">
+      <Filter>src\Vulture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\KeyCodes.h">
+      <Filter>src\Vulture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\Layer.h">
+      <Filter>src\Vulture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\LayerStack.h">
+      <Filter>src\Vulture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\Log.h">
+      <Filter>src\Vulture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\MouseButtonCodes.h">
+      <Filter>src\Vulture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\Window.h">
+      <Filter>src\Vulture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1296,23 +1296,11 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Vulture\Application.cpp">
-      <Filter>src\Vulture</Filter>
-    </ClCompile>
     <ClCompile Include="src\Vulture\ImGui\ImGuiBuild.cpp">
       <Filter>src\Vulture\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Vulture\ImGui\ImGuiLayer.cpp">
       <Filter>src\Vulture\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Vulture\Layer.cpp">
-      <Filter>src\Vulture</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Vulture\LayerStack.cpp">
-      <Filter>src\Vulture</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Vulture\Log.cpp">
-      <Filter>src\Vulture</Filter>
     </ClCompile>
     <ClCompile Include="src\Vulture\Renderer\Buffer.cpp">
       <Filter>src\Vulture\Renderer</Filter>
@@ -1346,6 +1334,18 @@
     </ClCompile>
     <ClCompile Include="src\Vulture\Renderer\ShaderLibrary.cpp" />
     <ClCompile Include="src\Vulture\Renderer\PerspectiveCamera.cpp" />
-    <ClCompile Include="src\Vulture\CameraController.cpp" />
+    <ClCompile Include="src\Vulture\Core\Application.cpp">
+      <Filter>src\Vulture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\Core\CameraController.cpp" />
+    <ClCompile Include="src\Vulture\Core\Layer.cpp">
+      <Filter>src\Vulture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\Core\LayerStack.cpp">
+      <Filter>src\Vulture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\Core\Log.cpp">
+      <Filter>src\Vulture</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

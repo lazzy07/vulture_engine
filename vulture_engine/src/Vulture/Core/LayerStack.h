@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Vulture/Core.h"
+#include "Vulture/Core/Core.h"
 #include "Layer.h"
 
 namespace Vulture {

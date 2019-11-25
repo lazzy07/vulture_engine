@@ -1,6 +1,6 @@
 #include "vulpch.h"
 #include "WindowsWindow.h"
-#include "Vulture/Log.h"
+#include "Vulture/Core/Log.h"
 #include "Vulture/events/ApplicationEvent.h"
 #include "Vulture/events/MouseEvent.h"
 #include "Vulture/events/KeyEvent.h"

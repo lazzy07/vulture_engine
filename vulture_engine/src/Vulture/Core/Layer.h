@@ -1,6 +1,6 @@
 #pragma once
-#include "Vulture/Core.h"
-#include "Vulture/events/Event.h"
+#include "Vulture/Core/Core.h"
+#include "Vulture/Events/Event.h"
 #include "Vulture/Core/Timestep.h"
 
 namespace Vulture{

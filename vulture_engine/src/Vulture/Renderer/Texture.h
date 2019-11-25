@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "Vulture/Core.h"
+#include "Vulture/Core/Core.h"
 
 namespace Vulture {
 	class Texture {

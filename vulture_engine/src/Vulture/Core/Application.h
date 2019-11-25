@@ -2,9 +2,9 @@
 #include "Core.h"
 #include "Window.h"
 
-#include "events/Event.h"
-#include "events/ApplicationEvent.h"
-#include"Vulture/LayerStack.h"
+#include "Vulture/Events/Event.h"
+#include "Vulture/Events/ApplicationEvent.h"
+#include"Vulture/Core/LayerStack.h"
 
 #include "Vulture/Core/Timestep.h"
 

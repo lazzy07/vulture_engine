@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Vulture/Core.h"
+#include "Vulture/Core/Core.h"
 
 namespace Vulture {
 	class VULTURE_API Input {

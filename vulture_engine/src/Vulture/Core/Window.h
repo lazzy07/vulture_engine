@@ -3,7 +3,7 @@
 #include "vulpch.h"
 
 #include "Core.h"
-#include "Events/Event.h"
+#include "Vulture/Events/Event.h"
 
 namespace Vulture {
 

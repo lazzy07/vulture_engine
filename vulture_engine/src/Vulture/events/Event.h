@@ -1,7 +1,7 @@
 #pragma once
 
 #include "vulpch.h"
-#include "../Core.h"
+#include "Vulture/Events/Event.h"
 
 namespace Vulture {
 

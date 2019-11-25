@@ -1,15 +1,15 @@
 #pragma once
 
 //For used by the applications
-#include "Vulture/Application.h"
-#include "Vulture/Layer.h"
-#include "Vulture/Log.h"
+#include "Vulture/Core/Application.h"
+#include "Vulture/Core/Layer.h"
+#include "Vulture/Core/Log.h"
 
 #include "Vulture/Core/Timestep.h"
 
-#include "Vulture/Input.h"
-#include "Vulture/KeyCodes.h"
-#include "Vulture/MouseButtonCodes.h"
+#include "Vulture/Core/Input.h"
+#include "Vulture/Core/KeyCodes.h"
+#include "Vulture/Core/MouseButtonCodes.h"
 
 //Debugging GUI layer
 #include "Vulture/ImGui/ImGuiLayer.h"
@@ -29,11 +29,10 @@
 //Cameras
 #include "Vulture/Renderer/OrthographicCamera.h"
 #include "Vulture/Renderer/PerspectiveCamera.h"
-#include "Vulture/CameraController.h"
-
+#include "Vulture/Core/CameraController.h"
 //*************************************************
 
 
 //***************EntryPoint************************
-#include "Vulture/EntryPoint.h"
+#include "Vulture/Core/EntryPoint.h"
 //*************************************************

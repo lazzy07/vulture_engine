@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "Vulture/Layer.h"
+#include "Vulture/Core/Layer.h"
 
 #include "Vulture/Events/ApplicationEvent.h"
 #include "Vulture/Events/KeyEvent.h"

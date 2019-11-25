@@ -144,7 +144,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Vulture\CameraController.h" />
+    <ClInclude Include="src\Vulture\Core\CameraController.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
@@ -154,17 +154,17 @@
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Vulture.h" />
-    <ClInclude Include="src\Vulture\Application.h" />
-    <ClInclude Include="src\Vulture\Core.h" />
+    <ClInclude Include="src\Vulture\Core\Application.h" />
+    <ClInclude Include="src\Vulture\Core\Core.h" />
     <ClInclude Include="src\Vulture\Core\Timestep.h" />
-    <ClInclude Include="src\Vulture\EntryPoint.h" />
+    <ClInclude Include="src\Vulture\Core\EntryPoint.h" />
     <ClInclude Include="src\Vulture\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Vulture\Input.h" />
-    <ClInclude Include="src\Vulture\KeyCodes.h" />
-    <ClInclude Include="src\Vulture\Layer.h" />
-    <ClInclude Include="src\Vulture\LayerStack.h" />
-    <ClInclude Include="src\Vulture\Log.h" />
-    <ClInclude Include="src\Vulture\MouseButtonCodes.h" />
+    <ClInclude Include="src\Vulture\Core\Input.h" />
+    <ClInclude Include="src\Vulture\Core\KeyCodes.h" />
+    <ClInclude Include="src\Vulture\Core\Layer.h" />
+    <ClInclude Include="src\Vulture\Core\LayerStack.h" />
+    <ClInclude Include="src\Vulture\Core\Log.h" />
+    <ClInclude Include="src\Vulture\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Vulture\Renderer\Buffer.h" />
     <ClInclude Include="src\Vulture\Renderer\Camera.h" />
     <ClInclude Include="src\Vulture\Renderer\GraphicsContext.h" />
@@ -177,7 +177,7 @@
     <ClInclude Include="src\Vulture\Renderer\ShaderLibrary.h" />
     <ClInclude Include="src\Vulture\Renderer\Texture.h" />
     <ClInclude Include="src\Vulture\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Vulture\Window.h" />
+    <ClInclude Include="src\Vulture\Core\Window.h" />
     <ClInclude Include="src\Vulture\events\ApplicationEvent.h" />
     <ClInclude Include="src\Vulture\events\Event.h" />
     <ClInclude Include="src\Vulture\events\KeyEvent.h" />
@@ -562,13 +562,13 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
-    <ClCompile Include="src\Vulture\Application.cpp" />
-    <ClCompile Include="src\Vulture\CameraController.cpp" />
+    <ClCompile Include="src\Vulture\Core\Application.cpp" />
+    <ClCompile Include="src\Vulture\Core\CameraController.cpp" />
     <ClCompile Include="src\Vulture\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Vulture\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Vulture\Layer.cpp" />
-    <ClCompile Include="src\Vulture\LayerStack.cpp" />
-    <ClCompile Include="src\Vulture\Log.cpp" />
+    <ClCompile Include="src\Vulture\Core\Layer.cpp" />
+    <ClCompile Include="src\Vulture\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Vulture\Core\Log.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Vulture\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Vulture\Renderer\PerspectiveCamera.cpp" />

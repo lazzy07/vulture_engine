@@ -1,6 +1,6 @@
 #include "vulpch.h"
 #include "CameraController.h"
-#include "Vulture/Input.h"
+#include "Vulture/Core/Input.h"
 
 namespace Vulture {
 	FirstPersonController::FirstPersonController(): m_Camera(new PerspectiveCamera())

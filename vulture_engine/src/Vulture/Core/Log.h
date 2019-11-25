@@ -1,4 +1,6 @@
 #pragma once
+#define FMT_HEADER_ONLY
+#define FMT_DEPRECATED
 #include "Core.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"

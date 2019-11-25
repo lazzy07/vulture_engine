@@ -5,7 +5,7 @@
 namespace Vulture {
 	PerspectiveCamera::PerspectiveCamera(glm::vec3 position, const float yaw , const float pitch) :
 		m_ViewMatrix(1.0f),
-		m_ProjectionMatrix(glm::perspective(m_Zoom, (float)1280 / (float)720, 0.1f, 100.0f)), 
+		m_ProjectionMatrix(glm::perspective(m_Zoom, (float)1280 / (float)720, 0.01f, 100.0f)), 
 		m_Position(position)
 	{
 		m_WorldUp = glm::vec3(0.0f, 1.0f, 0.0f);

@@ -3,7 +3,7 @@
 #include <string>
 #include <unordered_map>
 
-#include "Vulture/Core.h"
+#include "Vulture/Core/Core.h"
 #include "Shader.h"
 
 namespace Vulture {

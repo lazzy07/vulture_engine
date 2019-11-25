@@ -1,5 +1,5 @@
 #pragma once
-#include "Vulture/Core.h"
+#include "Vulture/Core/Core.h"
 #include "Vulture/Renderer/PerspectiveCamera.h"
 #include "Vulture/Renderer/OrthographicCamera.h"
 

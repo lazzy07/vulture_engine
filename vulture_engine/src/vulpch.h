@@ -14,7 +14,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Vulture/Log.h"
+#include "Vulture/Core/Log.h"
 
 #ifdef VUL_PLATFORM_WINDOWS
 	#include <Windows.h>

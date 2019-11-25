@@ -1,5 +1,5 @@
 #pragma once
-#include "Vulture/Window.h"
+#include "Vulture/Core/Window.h"
 #include "Vulture/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>

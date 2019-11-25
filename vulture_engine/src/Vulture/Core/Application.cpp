@@ -1,6 +1,6 @@
 #include "vulpch.h"
 #include "Application.h"
-#include "Vulture/Input.h"
+#include "Vulture/Core/Input.h"
 #include "Vulture/Renderer/Renderer.h"
 
 #include <GLFW/glfw3.h>

@@ -1,7 +1,7 @@
 #include "vulpch.h"
 #include "WindowsInput.h"
 #include <GLFW/glfw3.h>
-#include "Vulture/Application.h"
+#include "Vulture/Core/Application.h"
 
 namespace Vulture {
 

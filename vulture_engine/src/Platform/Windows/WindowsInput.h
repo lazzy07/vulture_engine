@@ -1,5 +1,5 @@
 #pragma once
-#include "Vulture/Input.h"
+#include "Vulture/Core/Input.h"
 
 namespace Vulture {
 	class WindowsInput : public Input {
