@@ -2,6 +2,7 @@
 #include "RenderCommand.h"
 #include "OrthographicCamera.h"
 #include "Shader.h"
+#include "Vulture/Core/DispatchQueue.h"
 
 namespace Vulture {
 	class Renderer {
@@ -20,5 +21,6 @@ namespace Vulture {
 		};
 
 		static SceneData* m_SceneData;
+		static DispatchQueue* m_RendererQueue;
 	};
 }

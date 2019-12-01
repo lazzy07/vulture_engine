@@ -156,6 +156,8 @@
     <ClInclude Include="src\Vulture.h" />
     <ClInclude Include="src\Vulture\Core\Application.h" />
     <ClInclude Include="src\Vulture\Core\Core.h" />
+    <ClInclude Include="src\Vulture\Core\DispatchQueue.h" />
+    <ClInclude Include="src\Vulture\Core\TaskManager.h" />
     <ClInclude Include="src\Vulture\Core\Timestep.h" />
     <ClInclude Include="src\Vulture\Core\EntryPoint.h" />
     <ClInclude Include="src\Vulture\ImGui\ImGuiLayer.h" />
@@ -564,6 +566,8 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Vulture\Core\Application.cpp" />
     <ClCompile Include="src\Vulture\Core\CameraController.cpp" />
+    <ClCompile Include="src\Vulture\Core\DispatchQueue.cpp" />
+    <ClCompile Include="src\Vulture\Core\TaskManager.cpp" />
     <ClCompile Include="src\Vulture\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Vulture\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Vulture\Core\Layer.cpp" />

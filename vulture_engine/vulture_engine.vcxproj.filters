@@ -1270,6 +1270,8 @@
     <ClInclude Include="src\Vulture\Core\Window.h">
       <Filter>src\Vulture</Filter>
     </ClInclude>
+    <ClInclude Include="src\Vulture\Core\DispatchQueue.h" />
+    <ClInclude Include="src\Vulture\Core\TaskManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1347,5 +1349,7 @@
     <ClCompile Include="src\Vulture\Core\Log.cpp">
       <Filter>src\Vulture</Filter>
     </ClCompile>
+    <ClCompile Include="src\Vulture\Core\DispatchQueue.cpp" />
+    <ClCompile Include="src\Vulture\Core\TaskManager.cpp" />
   </ItemGroup>
 </Project>
