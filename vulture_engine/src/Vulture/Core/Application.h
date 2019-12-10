@@ -30,7 +30,7 @@ namespace Vulture {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		float m_LastFrameTime = 0.0f;
-		std::unique_ptr<Window> m_Window;
+		Ref<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;

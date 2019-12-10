@@ -14,10 +14,10 @@ namespace Vulture {
 	{
 		VUL_ASSERT(!s_Instance, "Application aready has a instance");
 		s_Instance = this;
-		m_Window = std::unique_ptr<Window>(Window::Create());
+		m_Window = Ref<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 
-		Renderer::Init();
+		Renderer::Init(m_Window);
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
@@ -51,7 +51,6 @@ namespace Vulture {
 
 	void Application::run() {
 		while (m_Running) {
-
 			//Getting Deltatime
 			float time = (float)glfwGetTime(); //TODO ::: Need to be platform specific
 			Timestep timestep = time - m_LastFrameTime;

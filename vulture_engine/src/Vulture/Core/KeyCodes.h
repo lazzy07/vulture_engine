@@ -1,5 +1,7 @@
 #pragma once
 
+#define VULTURE_KEY int
+
 // From glfw3.h
 #define VUL_KEY_SPACE              32
 #define VUL_KEY_APOSTROPHE         39  /* ' */

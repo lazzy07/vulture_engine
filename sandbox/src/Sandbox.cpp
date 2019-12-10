@@ -21,7 +21,6 @@ public:
 			{Vulture::ShaderDataType::Float2, "a_TexCoord"}
 		};
 
-
 		vertexBuff->SetLayout(layout);
 		m_VertexArray->AddVertexBuffer(vertexBuff);
 
@@ -40,7 +39,7 @@ public:
 
 	void OnUpdate(Vulture::Timestep timestep) override {
 
-		m_Controller->RunController();
+		m_Controller->RunController(VUL_KEY_W, VUL_KEY_S, VUL_KEY_A, VUL_KEY_D);
 
 		Vulture::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Vulture::RenderCommand::Clear();

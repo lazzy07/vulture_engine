@@ -3,11 +3,12 @@
 #include "OrthographicCamera.h"
 #include "Shader.h"
 #include "Vulture/Core/DispatchQueue.h"
+#include "Vulture/Core/Window.h"
 
 namespace Vulture {
 	class Renderer {
 	public:
-		static void Init();
+		static void Init(Ref<Window> window);
 
 		static void BeginScene(Ref<Camera> camera);
 		static void EndScene();
@@ -20,6 +21,7 @@ namespace Vulture {
 			glm::mat4 ViewProjectionMatrix;
 		};
 
+		static Ref<Window> m_Window;
 		static SceneData* m_SceneData;
 		static DispatchQueue* m_RendererQueue;
 	};

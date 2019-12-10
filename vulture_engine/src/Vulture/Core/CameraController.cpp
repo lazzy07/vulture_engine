@@ -8,9 +8,35 @@ namespace Vulture {
 
 	}
 
-	void FirstPersonController::RunController()
+	void FirstPersonController::RunController(const VULTURE_KEY keyUp, const VULTURE_KEY keyDown, 
+		const VULTURE_KEY keyLeft, const VULTURE_KEY keyRight, const float cameraSpeed)
 	{
 		OnChangeMouse();
+		OnChangeKeyboard(keyUp, keyDown, keyLeft, keyRight, cameraSpeed);
+	}
+
+	void FirstPersonController::OnChangeKeyboard(const VULTURE_KEY keyUp, const VULTURE_KEY keyDown, 
+		const VULTURE_KEY keyLeft, const VULTURE_KEY keyRight, const float cameraSpeed)
+	{
+		glm::vec3 cameraPos = m_Camera->GetPosition();
+
+		if (Input::IsKeyPressed(keyUp)) {
+			cameraPos += cameraSpeed * m_Camera->GetFront();
+		}
+		
+		if(Input::IsKeyPressed(keyDown)){
+			cameraPos -= cameraSpeed * m_Camera->GetFront();
+		};
+
+		if (Input::IsKeyPressed(keyLeft)) {
+			cameraPos -= glm::normalize(glm::cross(m_Camera->GetFront(), m_Camera->GetUp())) * cameraSpeed;
+		}
+
+		if (Input::IsKeyPressed(keyRight)) {
+			cameraPos += glm::normalize(glm::cross(m_Camera->GetFront(), m_Camera->GetUp())) * cameraSpeed;
+		}
+
+		m_Camera->SetPosition(cameraPos);
 	}
 
 	void FirstPersonController::OnChangeMouse()
@@ -40,17 +66,25 @@ namespace Vulture {
 		yaw += xoffset;
 		pitch += yoffset;
 
+		m_Camera->SetPitch(pitch);
+		m_Camera->SetYaw(yaw);
+
 		// Make sure that when pitch is out of bounds, screen doesn't get flipped
 		if (pitch > 89.0f)
 			pitch = 89.0f;
 		if (pitch < -89.0f)
 			pitch = -89.0f;
 
-		m_Camera->SetPitch(pitch);
-		m_Camera->SetYaw(yaw);
+		glm::vec3 front;
+		front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+		front.y = sin(glm::radians(pitch));
+		front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+
+		m_Camera->SetFront(glm::normalize(front));
 	}
 
-	void Ortho2d::RunController()
+	void Ortho2d::RunController(const VULTURE_KEY keyUp, const VULTURE_KEY keyDown, 
+		const VULTURE_KEY keyLeft, const VULTURE_KEY keyRight, const float cameraSpeed)
 	{
 
 	}
