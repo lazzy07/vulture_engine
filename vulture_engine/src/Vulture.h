@@ -37,7 +37,9 @@
 #include "Vulture/Core/DispatchQueue.h"
 //*************************************************
 
-
+//**************ModelLoader**********************
+#include "Vulture/Renderer/ModelLoader.h"
+//*************************************************
 
 //***************EntryPoint************************
 #include "Vulture/Core/EntryPoint.h"

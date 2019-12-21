@@ -9,6 +9,7 @@ namespace Vulture {
 	void ModelLibrary::AddModel(const std::string & name, Ref<Model>& model)
 	{
 		VUL_CORE_ASSERT(!Exists(name), "Shader Already exists");
+		VUL_CORE_TRACE("Model added");
 		m_ModelCollection[name] = model;
 	}
 
@@ -18,7 +19,7 @@ namespace Vulture {
 
 	Ref<Model> ModelLibrary::GetModel(const std::string & name)
 	{
-		VUL_CORE_ASSERT(Exists(name), "Shader couln't be found");
+		VUL_CORE_ASSERT(Exists(name), "Model couln't be found");
 		return m_ModelCollection[name];
 	}
 

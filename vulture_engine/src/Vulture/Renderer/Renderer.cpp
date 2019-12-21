@@ -25,7 +25,7 @@ namespace Vulture {
 	{
 	}
 
-	void Renderer::Submit(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::vec3& position, const glm::vec3& rotation)
+	void Renderer::Submit(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::vec3& position, const glm::vec3& rotation, const glm::vec3& scaling)
 	{
 		GLFWwindow* window = (GLFWwindow*)m_Window->GetNativeWindow();
 		glfwMakeContextCurrent(window);
@@ -37,9 +37,10 @@ namespace Vulture {
 		glm::mat4 rotate = glm::rotate(translate, glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
 		rotate = glm::rotate(rotate, glm::radians(rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
 		rotate = glm::rotate(rotate, glm::radians(rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+		glm::mat4 scale = glm::scale(rotate, scaling);
 
 		//TODO:: Temparory
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_Transform", rotate);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_Transform", scale);
 
 		vertexArray->Bind();
 		RenderCommand::DrawIndexed(vertexArray);

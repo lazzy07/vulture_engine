@@ -4,17 +4,21 @@
 #include "Mesh.h"
 #include "Model.h"
 
-
 namespace Vulture {
+	struct Vertex {
+		glm::vec3 Position;
+		glm::vec3 Normal;
+		glm::vec2 TexCoords;
+	};
+
+	struct Texture {
+		unsigned int id;
+		std::string type;
+	};
+
 	void ModelLoader::AddNewModel(std::string path, bool flipUVs, bool triangulate)
 	{
 		// Extract name from filepath
-		auto lastSlash = path.find_last_of("/\\");
-		lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
-		auto lastDot = path.rfind('.');
-		auto count = lastDot == std::string::npos ? path.size() - lastSlash : lastDot - lastSlash;
-		std::string name = path.substr(lastSlash, count);
-
 		Assimp::Importer importer;
 
 		const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
@@ -23,7 +27,7 @@ namespace Vulture {
 			VUL_CORE_ASSERT(false, "Model loader cannot load the file");
 			return;
 		}
-
+		std::string name = getFileName(path);
 		std::string filepath = "./assets/models/" + name + ".vulmodel";
 
 		struct zip_t *zip = zip_open(filepath.c_str(), ZIP_DEFAULT_COMPRESSION_LEVEL, 'w');
@@ -31,14 +35,70 @@ namespace Vulture {
 		zip_close(zip);
 	}
 
-	void ModelLoader::LoadVulModel(std::string path, Ref<ModelLibrary> modelLibrary)
+	void ModelLoader::LoadVulModel(std::string path, ModelLibrary* modelLibrary)
 	{
-		Ref<Model> model; 
-		model.reset(new Model());
+		VUL_CORE_TRACE("Openning vul_model : {0}", path);
 
 		struct zip_t *zip = zip_open(path.c_str(), 0, 'r');
+		VUL_CORE_ASSERT(zip, "Cannot find the specified model file");
+		
+		int n = zip_total_entries(zip);
+		std::unordered_map<std::string, std::unordered_map<std::string, Ref<MeshData>>> files;
+
+		Ref<Model> model;
+		model.reset(new Model());
+
+		for (unsigned int i = 0; i < n; i++) {
+			zip_entry_openbyindex(zip, i);
+			{
+				const char* name = zip_entry_name(zip);
+				VUL_CORE_TRACE("loading vul_mesh data: {0}", name);
+				std::string fileName = name;
+				auto lastDot = fileName.rfind('.');
+				auto count = lastDot == std::string::npos ? path.size() : lastDot;
+				std::string meshName = fileName.substr(0, count);
+				std::string type = fileName.substr(count + 1, path.size());
+				
+				size_t bufsize = zip_entry_size(zip);
+
+				files[meshName][type].reset(new MeshData(bufsize, malloc(bufsize)));
+				zip_entry_noallocread(zip, (void *)files[meshName][type]->m_Data, bufsize);
+			}
+			zip_entry_close(zip);
+		}
 		zip_close(zip);
-		//modelLibrary->AddModel("smt", model);
+
+		for (std::pair<std::string, std::unordered_map<std::string, Ref<MeshData>>> file : files) {
+			Ref<Mesh> mRef;
+			mRef.reset(new Mesh());
+			for (std::pair<std::string, Ref<MeshData>> elem : file.second) {
+				if (elem.first == "vertices") {
+					mRef->m_Vertices = (Vertex*)elem.second->m_Data;
+					mRef->m_VerticesSize = elem.second->m_Size;
+				}
+				else if (elem.first == "indices") {
+					mRef->m_Indices = (unsigned int *)elem.second->m_Data;
+					mRef->m_IndicesSize = elem.second->m_Size;
+				}
+				else {
+					VUL_CORE_ASSERT(false, "Unknown file type in mesh loader");
+				}
+			}
+			mRef->SetupMesh();
+			model->AddMesh(mRef);
+		}
+
+		modelLibrary->AddModel(getFileName(path), model);
+	}
+
+	std::string ModelLoader::getFileName(std::string path)
+	{
+		auto lastSlash = path.find_last_of("/\\");
+		lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
+		auto lastDot = path.rfind('.');
+		auto count = lastDot == std::string::npos ? path.size() - lastSlash : lastDot - lastSlash;
+		std::string name = path.substr(lastSlash, count);
+		return name;
 	}
 
 	void ModelLoader::processNode(aiNode * node, const aiScene * scene, zip_t* zip)
@@ -58,7 +118,7 @@ namespace Vulture {
 		std::string meshName = (std::string)mesh->mName.C_Str();
 		
 		std::string verticesFileName = meshName + ".vertices";
-		std::string indeciesFileName = meshName + ".indecies";
+		std::string indicesFileName = meshName + ".indices";
 
 		std::vector<Vertex> vertices;
 		std::vector<unsigned int> indices;
@@ -109,9 +169,9 @@ namespace Vulture {
 		}
 		zip_entry_close(zip);
 
-		zip_entry_open(zip, indeciesFileName.c_str());
+		zip_entry_open(zip, indicesFileName.c_str());
 		{
-			zip_entry_write(zip, &indices[0], sizeof(unsigned int)*vertices.size());
+			zip_entry_write(zip, &indices[0], sizeof(unsigned int)*indices.size());
 		}
 		zip_entry_close(zip);
 	}

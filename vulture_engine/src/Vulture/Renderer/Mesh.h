@@ -7,37 +7,35 @@
 #include "Vulture/Renderer/Shader.h"
 
 namespace Vulture {
-	struct Vertex {
-		glm::vec3 Position;
-		glm::vec3 Normal;
-		glm::vec2 TexCoords;
-	};
+	struct Vertex;
 
-	struct Texture {
-		unsigned int id;
-		std::string type;
-	};
+	struct Texture;
 
 	class Mesh {
 	public:
-		void Draw(Ref<Shader> shader, glm::vec3 position, glm::vec3 rotation);
+		Mesh(void* vertices, size_t vSize, void* indices, size_t iSize);
+		Mesh();
+		~Mesh();
+
+		inline const BufferLayout getLayout() const { return m_Layout; };
+		
+		void Draw(Ref<Shader> shader, glm::vec3 position = { 0.0f, 0.0f, 0.0f }, glm::vec3 rotation = { 0.0f, 0.0f, 0.0f }, glm::vec3 scale = { 1.0f, 1.0f, 1.0f });
+		void SetupMesh();
+
 	public:
-		Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures);
-		~Mesh() = default;
-		std::vector<Vertex> m_Vertices;
-		std::vector<unsigned int> m_Indices;
-		std::vector<Texture> m_Textures;
+		Vertex* m_Vertices;
+		uint32_t m_VerticesSize;
+		unsigned int* m_Indices;
+		uint32_t m_IndicesSize;
 	private:
 		Ref<VertexBuffer> m_VBO;
 		Ref<VertexArray> m_VAO;
-		Ref<IndexBuffer> m_EBO;
-	private:
-		void SetupMesh();
+		Ref<IndexBuffer> m_IBO;
 
 		BufferLayout m_Layout = {
-		{Vulture::ShaderDataType::Float3, "a_Position"},
-		{Vulture::ShaderDataType::Float3, "a_Normal"},
-		{Vulture::ShaderDataType::Float2, "a_TexCoord"}
+			{Vulture::ShaderDataType::Float3, "a_Position"},
+			{Vulture::ShaderDataType::Float3, "a_Normal"},
+			{Vulture::ShaderDataType::Float2, "a_TexCoord"}
 		};
 	};
 }

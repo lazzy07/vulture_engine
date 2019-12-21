@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>VUL_USE_GPU;VUL_PLATFORM_WINDOWS;VUL_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\vulture_engine\vendor\spdlog\include;..\vulture_engine\src;..\vulture_engine\vendor\glm;..\vulture_engine\vendor\assimp\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\vulture_engine\vendor\spdlog\include;..\vulture_engine\src;..\vulture_engine\vendor\glm;..\vulture_engine\vendor\assimp\assimp\include;..\vulture_engine\vendor\zip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
@@ -97,7 +97,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>VUL_USE_GPU;VUL_PLATFORM_WINDOWS;VUL_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\vulture_engine\vendor\spdlog\include;..\vulture_engine\src;..\vulture_engine\vendor\glm;..\vulture_engine\vendor\assimp\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\vulture_engine\vendor\spdlog\include;..\vulture_engine\src;..\vulture_engine\vendor\glm;..\vulture_engine\vendor\assimp\assimp\include;..\vulture_engine\vendor\zip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -118,7 +118,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>VUL_USE_GPU;VUL_PLATFORM_WINDOWS;VUL_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\vulture_engine\vendor\spdlog\include;..\vulture_engine\src;..\vulture_engine\vendor\glm;..\vulture_engine\vendor\assimp\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\vulture_engine\vendor\spdlog\include;..\vulture_engine\src;..\vulture_engine\vendor\glm;..\vulture_engine\vendor\assimp\assimp\include;..\vulture_engine\vendor\zip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>

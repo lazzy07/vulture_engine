@@ -9,6 +9,7 @@
 #include "Vulture/Core/Timestep.h"
 
 #include "Vulture/ImGui/ImGuiLayer.h"
+#include "Vulture/Renderer/ModelLibrary.h"
 
 namespace Vulture {
 	class VULTURE_API Application

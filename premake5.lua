@@ -128,7 +128,8 @@ project "sandbox"
 		"vulture_engine/vendor/spdlog/include",
 		"vulture_engine/src",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.assimp}"
+		"%{IncludeDir.assimp}",
+		"%{IncludeDir.zip}"
 	}
 
 	links

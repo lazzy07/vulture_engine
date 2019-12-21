@@ -10,7 +10,6 @@ namespace Vulture {
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
 	Application* Application::s_Instance = nullptr;
-
 	Application::Application()
 	{
 		VUL_ASSERT(!s_Instance, "Application aready has a instance");
@@ -22,9 +21,6 @@ namespace Vulture {
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
-
-		Vulture::ModelLoader::AddNewModel("./assets/fbx/door_01.fbx");
-		Vulture::ModelLoader::LoadVulModel("./assets/model/door_01.vulmodel");
 	}
 
 	Application::~Application()
