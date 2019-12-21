@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "Vulture/Core/Input.h"
 #include "Vulture/Renderer/Renderer.h"
+#include "Vulture/Renderer/ModelLoader.h"
 
 #include <GLFW/glfw3.h>
 
@@ -21,6 +22,9 @@ namespace Vulture {
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
+
+		Vulture::ModelLoader::AddNewModel("./assets/fbx/door_01.fbx");
+		Vulture::ModelLoader::LoadVulModel("./assets/model/door_01.vulmodel");
 	}
 
 	Application::~Application()

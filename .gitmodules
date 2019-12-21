@@ -10,3 +10,6 @@
 [submodule "vulture_engine\\vendor\\glm"]
 	path = vulture_engine\\vendor\\glm
 	url = https://github.com/g-truc/glm.git
+[submodule "vulture_engine\\vendor\\assimp"]
+	path = vulture_engine\\vendor\\assimp
+	url = https://github.com/lazzy07/assimp.git

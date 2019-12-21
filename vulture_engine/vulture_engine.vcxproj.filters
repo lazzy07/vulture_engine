@@ -52,6 +52,12 @@
     <Filter Include="vendor\stb_image">
       <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\zip">
+      <UniqueIdentifier>{F5EFC5A8-E1A7-07F6-4AAF-E0513686A2E6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\zip\zip">
+      <UniqueIdentifier>{37BD9279-238B-867F-0C1F-F7A5F88B62E4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
@@ -81,7 +87,46 @@
     <ClInclude Include="src\Vulture.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Vulture\Core\Application.h">
+      <Filter>src\Vulture\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\CameraController.h">
+      <Filter>src\Vulture\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\Core.h">
+      <Filter>src\Vulture\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\DispatchQueue.h">
+      <Filter>src\Vulture\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\EntryPoint.h">
+      <Filter>src\Vulture\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\Input.h">
+      <Filter>src\Vulture\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\KeyCodes.h">
+      <Filter>src\Vulture\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\Layer.h">
+      <Filter>src\Vulture\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\LayerStack.h">
+      <Filter>src\Vulture\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\Log.h">
+      <Filter>src\Vulture\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\MouseButtonCodes.h">
+      <Filter>src\Vulture\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\TaskManager.h">
+      <Filter>src\Vulture\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Vulture\Core\Timestep.h">
+      <Filter>src\Vulture\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Core\Window.h">
       <Filter>src\Vulture\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Vulture\ImGui\ImGuiLayer.h">
@@ -90,10 +135,28 @@
     <ClInclude Include="src\Vulture\Renderer\Buffer.h">
       <Filter>src\Vulture\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Vulture\Renderer\Camera.h">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Vulture\Renderer\GraphicsContext.h">
       <Filter>src\Vulture\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Vulture\Renderer\Mesh.h">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Renderer\Model.h">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Renderer\ModelLibrary.h">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Renderer\ModelLoader.h">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Vulture\Renderer\OrthographicCamera.h">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Renderer\PerspectiveCamera.h">
       <Filter>src\Vulture\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Vulture\Renderer\RenderCommand.h">
@@ -106,6 +169,9 @@
       <Filter>src\Vulture\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Vulture\Renderer\Shader.h">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vulture\Renderer\ShaderLibrary.h">
       <Filter>src\Vulture\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Vulture\Renderer\Texture.h">
@@ -1236,42 +1302,12 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Vulture\Renderer\ShaderLibrary.h" />
-    <ClInclude Include="src\Vulture\Renderer\PerspectiveCamera.h" />
-    <ClInclude Include="src\Vulture\Renderer\Camera.h" />
-    <ClInclude Include="src\Vulture\Core\Application.h">
-      <Filter>src\Vulture</Filter>
+    <ClInclude Include="vendor\zip\zip\miniz.h">
+      <Filter>vendor\zip\zip</Filter>
     </ClInclude>
-    <ClInclude Include="src\Vulture\Core\CameraController.h" />
-    <ClInclude Include="src\Vulture\Core\Core.h">
-      <Filter>src\Vulture</Filter>
+    <ClInclude Include="vendor\zip\zip\zip.h">
+      <Filter>vendor\zip\zip</Filter>
     </ClInclude>
-    <ClInclude Include="src\Vulture\Core\EntryPoint.h">
-      <Filter>src\Vulture</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Vulture\Core\Input.h">
-      <Filter>src\Vulture</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Vulture\Core\KeyCodes.h">
-      <Filter>src\Vulture</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Vulture\Core\Layer.h">
-      <Filter>src\Vulture</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Vulture\Core\LayerStack.h">
-      <Filter>src\Vulture</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Vulture\Core\Log.h">
-      <Filter>src\Vulture</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Vulture\Core\MouseButtonCodes.h">
-      <Filter>src\Vulture</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Vulture\Core\Window.h">
-      <Filter>src\Vulture</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Vulture\Core\DispatchQueue.h" />
-    <ClInclude Include="src\Vulture\Core\TaskManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1298,6 +1334,27 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\Vulture\Core\Application.cpp">
+      <Filter>src\Vulture\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\Core\CameraController.cpp">
+      <Filter>src\Vulture\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\Core\DispatchQueue.cpp">
+      <Filter>src\Vulture\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\Core\Layer.cpp">
+      <Filter>src\Vulture\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\Core\LayerStack.cpp">
+      <Filter>src\Vulture\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\Core\Log.cpp">
+      <Filter>src\Vulture\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\Core\TaskManager.cpp">
+      <Filter>src\Vulture\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\Vulture\ImGui\ImGuiBuild.cpp">
       <Filter>src\Vulture\ImGui</Filter>
     </ClCompile>
@@ -1307,7 +1364,22 @@
     <ClCompile Include="src\Vulture\Renderer\Buffer.cpp">
       <Filter>src\Vulture\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Vulture\Renderer\Mesh.cpp">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\Renderer\Model.cpp">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\Renderer\ModelLibrary.cpp">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\Renderer\ModelLoader.cpp">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Vulture\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vulture\Renderer\PerspectiveCamera.cpp">
       <Filter>src\Vulture\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Vulture\Renderer\RenderCommand.cpp">
@@ -1322,6 +1394,9 @@
     <ClCompile Include="src\Vulture\Renderer\Shader.cpp">
       <Filter>src\Vulture\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Vulture\Renderer\ShaderLibrary.cpp">
+      <Filter>src\Vulture\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Vulture\Renderer\Texture.cpp">
       <Filter>src\Vulture\Renderer</Filter>
     </ClCompile>
@@ -1334,22 +1409,8 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Vulture\Renderer\ShaderLibrary.cpp" />
-    <ClCompile Include="src\Vulture\Renderer\PerspectiveCamera.cpp" />
-    <ClCompile Include="src\Vulture\Core\Application.cpp">
-      <Filter>src\Vulture</Filter>
+    <ClCompile Include="vendor\zip\zip\zip.cpp">
+      <Filter>vendor\zip\zip</Filter>
     </ClCompile>
-    <ClCompile Include="src\Vulture\Core\CameraController.cpp" />
-    <ClCompile Include="src\Vulture\Core\Layer.cpp">
-      <Filter>src\Vulture</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Vulture\Core\LayerStack.cpp">
-      <Filter>src\Vulture</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Vulture\Core\Log.cpp">
-      <Filter>src\Vulture</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Vulture\Core\DispatchQueue.cpp" />
-    <ClCompile Include="src\Vulture\Core\TaskManager.cpp" />
   </ItemGroup>
 </Project>

@@ -13,6 +13,7 @@ public:
 			0.5f, 0.5f, 0.0f, 1.0f, 1.0f,
 			-0.5f, 0.5f, 0.0f, 0.0f, 1.0f
 		};
+
 		Vulture::Ref<Vulture::VertexBuffer> vertexBuff;
 		vertexBuff.reset(Vulture::VertexBuffer::Create(vertices, sizeof(vertices)));
 

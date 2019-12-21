@@ -34,13 +34,13 @@ namespace Vulture {
 	float WindowsInput::GetMouseYImpl()
 	{
 		auto[x, y] = GetMousePositionImpl();
-		return x;
+		return y;
 	}
 
 	float WindowsInput::GetMouseXImpl()
 	{
 		auto[x, y] = GetMousePositionImpl();
-		return y;
+		return x;
 	}
 
 

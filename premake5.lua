@@ -27,10 +27,13 @@ IncludeDir["Glad"] = "vulture_engine/vendor/Glad/include"
 IncludeDir["ImGui"] = "vulture_engine/vendor/ImGui"
 IncludeDir["glm"] = "vulture_engine/vendor/glm"
 IncludeDir["stb_image"] = "vulture_engine/vendor/stb_image"
+IncludeDir["assimp"] = "vulture_engine/vendor/assimp/assimp/include"
+IncludeDir["zip"] = "vulture_engine/vendor/zip"
 
 include "vulture_engine/vendor/GLFW"
 include "vulture_engine/vendor/Glad"
 include "vulture_engine/vendor/ImGui"
+include "vulture_engine/vendor/assimp"
 
 
 project "vulture_engine"
@@ -53,7 +56,9 @@ project "vulture_engine"
 		"%{prj.name}/vendor/stb_image/**.h",
 		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
-		"%{prj.name}/vendor/glm/glm/**.inl"
+		"%{prj.name}/vendor/glm/glm/**.inl",
+		"%{prj.name}/vendor/zip/zip/**.cpp",
+		"%{prj.name}/vendor/zip/zip/**.h"
 	}
 
 	includedirs
@@ -64,7 +69,9 @@ project "vulture_engine"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.zip}",
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.assimp}"
 	}
 
 	links
@@ -72,6 +79,7 @@ project "vulture_engine"
 		"GLFW",
 		"Glad",
 		"ImGui",
+		"assimp",
 		"opengl32.lib"
 	}
 
@@ -119,7 +127,8 @@ project "sandbox"
 	{
 		"vulture_engine/vendor/spdlog/include",
 		"vulture_engine/src",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.assimp}"
 	}
 
 	links

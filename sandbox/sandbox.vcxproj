@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>VUL_USE_GPU;VUL_PLATFORM_WINDOWS;VUL_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\vulture_engine\vendor\spdlog\include;..\vulture_engine\src;..\vulture_engine\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\vulture_engine\vendor\spdlog\include;..\vulture_engine\src;..\vulture_engine\vendor\glm;..\vulture_engine\vendor\assimp\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
@@ -97,7 +97,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>VUL_USE_GPU;VUL_PLATFORM_WINDOWS;VUL_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\vulture_engine\vendor\spdlog\include;..\vulture_engine\src;..\vulture_engine\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\vulture_engine\vendor\spdlog\include;..\vulture_engine\src;..\vulture_engine\vendor\glm;..\vulture_engine\vendor\assimp\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -118,7 +118,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>VUL_USE_GPU;VUL_PLATFORM_WINDOWS;VUL_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\vulture_engine\vendor\spdlog\include;..\vulture_engine\src;..\vulture_engine\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\vulture_engine\vendor\spdlog\include;..\vulture_engine\src;..\vulture_engine\vendor\glm;..\vulture_engine\vendor\assimp\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -141,9 +141,6 @@
     <ProjectReference Include="..\vulture_engine\vulture_engine.vcxproj">
       <Project>{716ECB29-5D3C-BF2F-46D0-2F56323D9B94}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="assets\shaders\texture.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
