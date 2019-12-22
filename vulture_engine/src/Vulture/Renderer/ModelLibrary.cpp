@@ -9,7 +9,6 @@ namespace Vulture {
 	void ModelLibrary::AddModel(const std::string & name, Ref<Model>& model)
 	{
 		VUL_CORE_ASSERT(!Exists(name), "Shader Already exists");
-		VUL_CORE_TRACE("Model added");
 		m_ModelCollection[name] = model;
 	}
 

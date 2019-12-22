@@ -10,14 +10,15 @@ namespace Vulture {
 
 	}
 
-	void Model::AddMesh(Ref<Mesh> mesh)
+	void Model::AddMesh(Ref<VulMesh> mesh)
 	{
 		m_Meshes.push_back(mesh);
 	}
+
 	void Model::Draw(Ref<Shader> s, glm::vec3 position, glm::vec3 rotation, glm::vec3 scale)
 	{
-		for (Ref<Mesh> mesh : m_Meshes) {
-			mesh->Draw(s);
+		for (Ref<VulMesh> mesh : m_Meshes) {
+			mesh->Draw(s, position, rotation, scale);
 		}
 	}
 }

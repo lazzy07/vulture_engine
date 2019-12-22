@@ -11,11 +11,11 @@ namespace Vulture {
 
 	struct Texture;
 
-	class Mesh {
+	class VulMesh {
 	public:
-		Mesh(void* vertices, size_t vSize, void* indices, size_t iSize);
-		Mesh();
-		~Mesh();
+		VulMesh(void* vertices, size_t vSize, void* indices, size_t iSize);
+		VulMesh();
+		~VulMesh();
 
 		inline const BufferLayout getLayout() const { return m_Layout; };
 		

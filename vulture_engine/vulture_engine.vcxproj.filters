@@ -1308,6 +1308,7 @@
     <ClInclude Include="vendor\zip\zip\zip.h">
       <Filter>vendor\zip\zip</Filter>
     </ClInclude>
+    <ClInclude Include="src\Vulture\Core\Configurations.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1412,5 +1413,6 @@
     <ClCompile Include="vendor\zip\zip\zip.cpp">
       <Filter>vendor\zip\zip</Filter>
     </ClCompile>
+    <ClCompile Include="src\Vulture\Core\Configurations.cpp" />
   </ItemGroup>
 </Project>

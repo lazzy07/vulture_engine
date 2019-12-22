@@ -155,6 +155,7 @@
     <ClInclude Include="src\Vulture.h" />
     <ClInclude Include="src\Vulture\Core\Application.h" />
     <ClInclude Include="src\Vulture\Core\CameraController.h" />
+    <ClInclude Include="src\Vulture\Core\Configurations.h" />
     <ClInclude Include="src\Vulture\Core\Core.h" />
     <ClInclude Include="src\Vulture\Core\DispatchQueue.h" />
     <ClInclude Include="src\Vulture\Core\EntryPoint.h" />
@@ -572,6 +573,7 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Vulture\Core\Application.cpp" />
     <ClCompile Include="src\Vulture\Core\CameraController.cpp" />
+    <ClCompile Include="src\Vulture\Core\Configurations.cpp" />
     <ClCompile Include="src\Vulture\Core\DispatchQueue.cpp" />
     <ClCompile Include="src\Vulture\Core\Layer.cpp" />
     <ClCompile Include="src\Vulture\Core\LayerStack.cpp" />
