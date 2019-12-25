@@ -30,7 +30,7 @@ public:
 
 		std::dynamic_pointer_cast<Vulture::OpenGLShader>(m_exampleShader)->UploadUniformInt("u_Texture", 0);
 
-		//Vulture::ModelLoader::AddNewModel("./assets/fbx/door_01.fbx");
+		Vulture::ModelLoader::AddNewModel("./assets/fbx/door_01.fbx");
 		Vulture::ModelLoader::LoadVulModel("./assets/models/door_01.vulmodel", &m_ModelLibrary);
 		m_Model = m_ModelLibrary.GetModel("door_01");
 
@@ -53,7 +53,7 @@ public:
 		Vulture::RenderCommand::Clear();
 
 		Vulture::Renderer::BeginScene(m_Controller->GetCamera());
-		m_Model->Draw(m_ShaderLibrary.Get("white"), { 1.0f, 1.0f, 1.0f }, {-90.0f, 0.0f, 0.0f}, glm::vec3(0.8f));
+		m_Model->Draw(m_ShaderLibrary.Get("white"));
 		m_Texture->Bind();
 		Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, glm::vec3(1.0f));
 		//Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 1.0f, 0.0f, 5.0f }, { 0.0f, 0.0f, 0.0f });

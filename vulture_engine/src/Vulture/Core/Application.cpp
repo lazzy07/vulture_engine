@@ -23,17 +23,6 @@ namespace Vulture {
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
-
-		//Test
-		Configurations c;
-		c.setInt("section01", "key01", 1);
-		c.setFloat("section01", "key02", 3.14);
-		c.setString("section02", "key01", "hello");
-		c.setFloat("section02", "key03", 3.14);
-
-		VUL_CORE_TRACE(c.getConfigBuffer());
-		c.loadConfigBuffer(c.getConfigBuffer().c_str());
-		VUL_CORE_TRACE(c.getConfigBuffer());
 	}
 
 	Application::~Application()

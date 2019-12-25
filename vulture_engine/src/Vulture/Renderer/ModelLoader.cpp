@@ -11,7 +11,7 @@ namespace Vulture {
 		glm::vec2 TexCoords;
 	};
 
-	struct Texture {
+	struct MeshTexture {
 		unsigned int id;
 		std::string type;
 	};
@@ -30,8 +30,29 @@ namespace Vulture {
 		std::string name = getFileName(path);
 		std::string filepath = "./assets/models/" + name + ".vulmodel";
 
+		Configurations conf;
+
+		conf.SetFloat(name, "posX", 0.0f);
+		conf.SetFloat(name, "posY", 0.0f);
+		conf.SetFloat(name, "posZ", 0.0f);
+			
+		conf.SetFloat(name, "rotX", 0.0f);
+		conf.SetFloat(name, "rotY", 0.0f);
+		conf.SetFloat(name, "rotZ", 0.0f);
+			
+		conf.SetFloat(name, "scaleX", 1.0f);
+		conf.SetFloat(name, "scaleY", 1.0f);
+		conf.SetFloat(name, "scaleZ", 1.0f);
+
 		struct zip_t *zip = zip_open(filepath.c_str(), ZIP_DEFAULT_COMPRESSION_LEVEL, 'w');
-			if(zip) processNode(scene->mRootNode, scene, zip);
+			if(zip) processNode(scene->mRootNode, scene, zip, &conf);
+
+			zip_entry_open(zip, "ConfigFile.vulconf");
+			{
+				std::string confStr = conf.GetConfigBuffer();
+				zip_entry_write(zip, confStr.c_str(), strlen(confStr.c_str()));
+			}
+			zip_entry_close(zip);
 		zip_close(zip);
 	}
 
@@ -46,9 +67,9 @@ namespace Vulture {
 		std::unordered_map<std::string, std::unordered_map<std::string, Ref<MeshData>>> files;
 
 		Ref<Model> model;
-		model.reset(new Model());
+		model.reset(new Model(getFileName(path)));
 
-		for (unsigned int i = 0; i < n; i++) {
+		for (int i = 0; i < n; i++) {
 			zip_entry_openbyindex(zip, i);
 			{
 				const char* name = zip_entry_name(zip);
@@ -68,25 +89,33 @@ namespace Vulture {
 		zip_close(zip);
 
 		for (std::pair<std::string, std::unordered_map<std::string, Ref<MeshData>>> file : files) {
-			Ref<VulMesh> mRef;
-			mRef.reset(new VulMesh());
-			for (std::pair<std::string, Ref<MeshData>> elem : file.second) {
-				if (elem.first == "vertices") {
-					mRef->m_Vertices = (Vertex*)elem.second->m_Data;
-					mRef->m_VerticesSize = elem.second->m_Size;
-					VUL_CORE_TRACE("loading vul_mesh data: {0}.{1}", file.first, elem.first);
+			if (file.first != "ConfigFile") {
+				Ref<VulMesh> mRef;
+				mRef.reset(new VulMesh());
+				for (std::pair<std::string, Ref<MeshData>> elem : file.second) {
+					if (elem.first == "vertices") {
+						mRef->m_Vertices = (Vertex*)elem.second->m_Data;
+						mRef->m_VerticesSize = elem.second->m_Size;
+						VUL_CORE_TRACE("loading vul_mesh data: {0}.{1}", file.first, elem.first);
+					}
+					else if (elem.first == "indices") {
+						VUL_CORE_TRACE("loading vul_mesh data: {0}.{1}", file.first, elem.first);
+						mRef->m_Indices = (unsigned int *)elem.second->m_Data;
+						mRef->m_IndicesSize = elem.second->m_Size;
+					}
+					else if (elem.first == "vulconf") {
+
+					}
+					else {
+						VUL_CORE_ASSERT(false, "Unknown file type in mesh loader");
+					}
 				}
-				else if (elem.first == "indices") {
-					VUL_CORE_TRACE("loading vul_mesh data: {0}.{1}", file.first, elem.first);
-					mRef->m_Indices = (unsigned int *)elem.second->m_Data;
-					mRef->m_IndicesSize = elem.second->m_Size;
-				}
-				else {
-					VUL_CORE_ASSERT(false, "Unknown file type in mesh loader");
-				}
+				mRef->SetupMesh();
+				model->AddMesh(file.first, mRef);
 			}
-			mRef->SetupMesh();
-			model->AddMesh(mRef);
+			else {
+				model->SetConfigurations((char *)file.second["vulconf"]->m_Data);
+			}
 		}
 
 		modelLibrary->AddModel(getFileName(path), model);
@@ -102,22 +131,24 @@ namespace Vulture {
 		return name;
 	}
 
-	void ModelLoader::processNode(aiNode * node, const aiScene * scene, zip_t* zip)
+	void ModelLoader::processNode(aiNode * node, const aiScene * scene, zip_t* zip, Configurations* conf)
 	{
 		for (unsigned int i = 0; i < node->mNumMeshes; i++) {
 			aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
-			processMesh(mesh, scene, zip);
+			processMesh(mesh, scene, zip, conf);
 		}
 
 		for (unsigned int i = 0; i < node->mNumChildren; i++) {
-			processNode(node->mChildren[i], scene, zip);
+			processNode(node->mChildren[i], scene, zip, conf);
 		}
 	}
 
-	void ModelLoader::processMesh(aiMesh * mesh, const aiScene * scene, zip_t* zip)
+	void ModelLoader::processMesh(aiMesh * mesh, const aiScene * scene, zip_t* zip, Configurations* conf)
 	{
 		std::string meshName = (std::string)mesh->mName.C_Str();
 		
+		conf->SetString(meshName, "material", "default");
+
 		std::string verticesFileName = meshName + ".vertices";
 		std::string indicesFileName = meshName + ".indices";
 

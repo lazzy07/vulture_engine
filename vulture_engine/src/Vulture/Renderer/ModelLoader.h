@@ -7,6 +7,8 @@
 
 #include <zip/zip.h>
 
+#include "Vulture/Core/Configurations.h"
+
 namespace Vulture {
 	class ModelLoader {
 	public:
@@ -14,14 +16,14 @@ namespace Vulture {
 		static void LoadVulModel(std::string path, ModelLibrary* modelLibrary);
 	private:
 		static std::string getFileName(std::string path);
-		static void processNode(aiNode* node, const aiScene* scene, zip_t* zip);
-		static void processMesh(aiMesh* mesh, const aiScene* scene, zip_t* zip);
+		static void processNode(aiNode* node, const aiScene* scene, zip_t* zip, Configurations* conf);
+		static void processMesh(aiMesh* mesh, const aiScene* scene, zip_t* zip, Configurations* conf);
 
 		struct MeshData {
 			uint32_t m_Size;
 			void* m_Data;
 
-			MeshData(size_t size, void* data) : m_Size(size), m_Data(data) {
+			MeshData(size_t size, void* data) : m_Size((uint32_t)size), m_Data(data) {
 
 			}
 		};

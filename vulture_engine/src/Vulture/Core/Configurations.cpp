@@ -10,64 +10,64 @@ namespace Vulture {
 	{
 	}
 
-	bool Configurations::isSectionExists(const std::string section)
+	bool Configurations::IsSectionExists(const std::string section)
 	{
 		return m_Config.find(section) != m_Config.end();
 	}
 
-	bool Configurations::isKeyExists(const std::string section, const std::string key)
+	bool Configurations::IsKeyExists(const std::string section, const std::string key)
 	{
-		if (isSectionExists(section)) {
+		if (IsSectionExists(section)) {
 			return m_Config[section].find(key) != m_Config[section].end();
 		}
 		return false;
 	}
 
-	int Configurations::getInt(const std::string section, const std::string key, const int defaultValue)
+	int Configurations::GetInt(const std::string section, const std::string key, const int defaultValue)
 	{
-		if (isKeyExists(section, key)) {
+		if (IsKeyExists(section, key)) {
 			std::string val = m_Config[section][key];
 			return std::stoi(val);
 		}
 		return defaultValue;
 	}
 
-	float Configurations::getFloat(const std::string section, const std::string key, const int defaultValue)
+	float Configurations::GetFloat(const std::string section, const std::string key, const int defaultValue)
 	{
-		if (isKeyExists(section, key)) {
+		if (IsKeyExists(section, key)) {
 			std::string val = m_Config[section][key];
 			return std::stof(val);
 		}
 		return defaultValue;
 	}
 
-	std::string Configurations::getString(const std::string section, const std::string key, const std::string defaultValue)
+	std::string Configurations::GetString(const std::string section, const std::string key, const std::string defaultValue)
 	{
-		if (isKeyExists(section, key)) {
+		if (IsKeyExists(section, key)) {
 			return m_Config[section][key];
 		}
 		return defaultValue;
 	}
 
-	bool Configurations::setInt(const std::string section, const std::string key, int val)
+	bool Configurations::SetInt(const std::string section, const std::string key, int val)
 	{
 		m_Config[section][key] = std::to_string(val);
 		return true;
 	}
 
-	bool Configurations::setFloat(const std::string section, const std::string key, float val)
+	bool Configurations::SetFloat(const std::string section, const std::string key, float val)
 	{
 		m_Config[section][key] = std::to_string(val);
 		return true;
 	}
 
-	bool Configurations::setString(const std::string section, const std::string key, std::string val)
+	bool Configurations::SetString(const std::string section, const std::string key, std::string val)
 	{
 		m_Config[section][key] = val;
 		return true;
 	}
 
-	std::string Configurations::getConfigBuffer()
+	std::string Configurations::GetConfigBuffer()
 	{
 		std::string result = "";
 		if (m_Config.size() != 0) {
@@ -81,7 +81,7 @@ namespace Vulture {
 		return result;
 	}
 
-	void Configurations::loadConfigBuffer(const char * buffer)
+	void Configurations::LoadConfigBuffer(const char * buffer)
 	{
 		std::string s = buffer;
 		std::vector<std::string> vec;
