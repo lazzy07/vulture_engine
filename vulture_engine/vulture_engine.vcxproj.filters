@@ -1309,6 +1309,10 @@
       <Filter>vendor\zip\zip</Filter>
     </ClInclude>
     <ClInclude Include="src\Vulture\Core\Configurations.h" />
+    <ClInclude Include="src\Vulture\Renderer\TextureLibrary.h" />
+    <ClInclude Include="src\Vulture\Renderer\MaterialLibrary.h" />
+    <ClInclude Include="src\Vulture\Renderer\Material.h" />
+    <ClInclude Include="src\Vulture\Renderer\MaterialInstance.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1414,5 +1418,9 @@
       <Filter>vendor\zip\zip</Filter>
     </ClCompile>
     <ClCompile Include="src\Vulture\Core\Configurations.cpp" />
+    <ClCompile Include="src\Vulture\Renderer\TextureLibrary.cpp" />
+    <ClCompile Include="src\Vulture\Renderer\MaterialLibrary.cpp" />
+    <ClCompile Include="src\Vulture\Renderer\Material.cpp" />
+    <ClCompile Include="src\Vulture\Renderer\MaterialInstance.cpp" />
   </ItemGroup>
 </Project>

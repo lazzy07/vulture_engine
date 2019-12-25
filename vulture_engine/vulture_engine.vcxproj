@@ -172,6 +172,9 @@
     <ClInclude Include="src\Vulture\Renderer\Buffer.h" />
     <ClInclude Include="src\Vulture\Renderer\Camera.h" />
     <ClInclude Include="src\Vulture\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Vulture\Renderer\Material.h" />
+    <ClInclude Include="src\Vulture\Renderer\MaterialInstance.h" />
+    <ClInclude Include="src\Vulture\Renderer\MaterialLibrary.h" />
     <ClInclude Include="src\Vulture\Renderer\Mesh.h" />
     <ClInclude Include="src\Vulture\Renderer\Model.h" />
     <ClInclude Include="src\Vulture\Renderer\ModelLibrary.h" />
@@ -184,6 +187,7 @@
     <ClInclude Include="src\Vulture\Renderer\Shader.h" />
     <ClInclude Include="src\Vulture\Renderer\ShaderLibrary.h" />
     <ClInclude Include="src\Vulture\Renderer\Texture.h" />
+    <ClInclude Include="src\Vulture\Renderer\TextureLibrary.h" />
     <ClInclude Include="src\Vulture\Renderer\VertexArray.h" />
     <ClInclude Include="src\Vulture\events\ApplicationEvent.h" />
     <ClInclude Include="src\Vulture\events\Event.h" />
@@ -582,6 +586,9 @@
     <ClCompile Include="src\Vulture\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Vulture\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Vulture\Renderer\Material.cpp" />
+    <ClCompile Include="src\Vulture\Renderer\MaterialInstance.cpp" />
+    <ClCompile Include="src\Vulture\Renderer\MaterialLibrary.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Mesh.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Model.cpp" />
     <ClCompile Include="src\Vulture\Renderer\ModelLibrary.cpp" />
@@ -594,6 +601,7 @@
     <ClCompile Include="src\Vulture\Renderer\Shader.cpp" />
     <ClCompile Include="src\Vulture\Renderer\ShaderLibrary.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Texture.cpp" />
+    <ClCompile Include="src\Vulture\Renderer\TextureLibrary.cpp" />
     <ClCompile Include="src\Vulture\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\vulpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
