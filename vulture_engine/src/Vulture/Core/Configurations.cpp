@@ -49,6 +49,38 @@ namespace Vulture {
 		return defaultValue;
 	}
 
+	glm::mat3 Configurations::GetMat3(const std::string section, const std::string key, const glm::mat3 defaultValue)
+	{
+		glm::mat3 mat = defaultValue;
+
+		if (GetString(section, key, "u") != "u") {
+			for (unsigned int i = 0; i < 3; i++) {
+				for (unsigned int j = 0; j < 3; j++) {
+					mat[i][j] = std::stof(m_Config[section][key + std::to_string(i + j)]);
+				}
+			}
+			return mat;
+		}
+
+		return defaultValue;
+	}
+
+	glm::mat4 Configurations::GetMat4(const std::string section, const std::string key, const glm::mat4 defaultValue)
+	{
+		glm::mat4 mat = defaultValue;
+
+		if (GetString(section, key, "u") != "u") {
+			for (unsigned int i = 0; i < 4; i++) {
+				for (unsigned int j = 0; j < 4; j++) {
+					mat[i][j] = std::stof(m_Config[section][key + std::to_string(i + j)]);
+				}
+			}
+			return mat;
+		}
+
+		return defaultValue;
+	}
+
 	bool Configurations::SetInt(const std::string section, const std::string key, int val)
 	{
 		m_Config[section][key] = std::to_string(val);
@@ -64,6 +96,26 @@ namespace Vulture {
 	bool Configurations::SetString(const std::string section, const std::string key, std::string val)
 	{
 		m_Config[section][key] = val;
+		return true;
+	}
+
+	bool Configurations::SetMat3(const std::string section, const std::string key, glm::mat3 val)
+	{
+		for (unsigned int i = 0; i < 3; i++) {
+			for (unsigned int j = 0; j < 3; j++) {
+				m_Config[section][key + std::to_string(i+j)] = val[i][j];
+			}
+		}
+		return true;
+	}
+
+	bool Configurations::SetMat4(const std::string section, const std::string key, glm::mat4 val)
+	{
+		for (unsigned int i = 0; i < 4; i++) {
+			for (unsigned int j = 0; j < 4; j++) {
+				m_Config[section][key + std::to_string(i + j)] = val[i][j];
+			}
+		}
 		return true;
 	}
 

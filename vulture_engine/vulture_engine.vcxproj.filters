@@ -1312,7 +1312,6 @@
     <ClInclude Include="src\Vulture\Renderer\TextureLibrary.h" />
     <ClInclude Include="src\Vulture\Renderer\MaterialLibrary.h" />
     <ClInclude Include="src\Vulture\Renderer\Material.h" />
-    <ClInclude Include="src\Vulture\Renderer\MaterialInstance.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1421,6 +1420,5 @@
     <ClCompile Include="src\Vulture\Renderer\TextureLibrary.cpp" />
     <ClCompile Include="src\Vulture\Renderer\MaterialLibrary.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Material.cpp" />
-    <ClCompile Include="src\Vulture\Renderer\MaterialInstance.cpp" />
   </ItemGroup>
 </Project>

@@ -56,14 +56,7 @@ public:
 		m_Model->Draw(m_ShaderLibrary.Get("white"));
 		m_Texture->Bind();
 		Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, glm::vec3(1.0f));
-		//Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 1.0f, 0.0f, 5.0f }, { 0.0f, 0.0f, 0.0f });
-		//Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 0.0f, 1.0f, 5.0f }, { 0.0f, 0.0f, 0.0f });
-		//Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 0.0f, 0.0f, 5.0f }, { 0.0f, 0.0f, 0.0f });
-		//Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 0.5f, 0.0f, 5.0f }, { 0.0f, 0.0f, 0.0f });
-		//Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 0.0f, 0.5f, 5.0f }, { 0.0f, 0.0f, 0.0f });
-		//Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 0.0f, 0.0f, 5.5f }, { 0.0f, 0.0f, 0.0f });
-		//Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 0.3f, 0.3f, 5.3f }, { 0.0f, 0.0f, 0.0f });
-		//Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 1.0f, 1.0f, 5.0f }, {0.0f, 0.0f, 0.0f });
+		
 		Vulture::Renderer::EndScene();
 	}
 

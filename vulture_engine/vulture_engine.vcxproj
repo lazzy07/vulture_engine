@@ -173,7 +173,6 @@
     <ClInclude Include="src\Vulture\Renderer\Camera.h" />
     <ClInclude Include="src\Vulture\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Vulture\Renderer\Material.h" />
-    <ClInclude Include="src\Vulture\Renderer\MaterialInstance.h" />
     <ClInclude Include="src\Vulture\Renderer\MaterialLibrary.h" />
     <ClInclude Include="src\Vulture\Renderer\Mesh.h" />
     <ClInclude Include="src\Vulture\Renderer\Model.h" />
@@ -587,7 +586,6 @@
     <ClCompile Include="src\Vulture\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Material.cpp" />
-    <ClCompile Include="src\Vulture\Renderer\MaterialInstance.cpp" />
     <ClCompile Include="src\Vulture\Renderer\MaterialLibrary.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Mesh.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Model.cpp" />
