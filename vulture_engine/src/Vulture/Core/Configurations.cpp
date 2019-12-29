@@ -164,4 +164,16 @@ namespace Vulture {
 			}
 		}
 	}
+	bool Configurations::RemoveEntry(const std::string section, const std::string key)
+	{
+		VUL_CORE_ASSERT(IsKeyExists(section, key), "Specified key does not exists");
+		if (m_Config[section].size() == 1) {
+			m_Config.erase(section);
+		}
+		else {
+			m_Config[section].erase(key);
+		}
+
+		return true;
+	}
 }

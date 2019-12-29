@@ -10,7 +10,7 @@ namespace Vulture {
 	{
 	}
 
-	void MaterialLibrary::AddMaterial(std::string name, Ref<Material> material)
+	void MaterialLibrary::Load(std::string name, Ref<Material> material)
 	{
 		VUL_CORE_ASSERT(!Exists(name), "Material with same name already exists");
 		m_Materials[name] = material;
@@ -30,11 +30,6 @@ namespace Vulture {
 	bool MaterialLibrary::Exists(const std::string name)
 	{
 		return m_Materials.find(name) != m_Materials.end();
-	}
-
-	void MaterialLibrary::LoadMaterialsFromConfig(std::string path)
-	{
-
 	}
 
 	std::string MaterialLibrary::MaterialToConfigBuffer()

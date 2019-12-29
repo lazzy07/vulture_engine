@@ -25,6 +25,8 @@ namespace Vulture {
 
 		std::string GetConfigBuffer();
 		void LoadConfigBuffer(const char* buffer);
+
+		bool RemoveEntry(const std::string section, const std::string key);
 	private:
 		std::unordered_map<std::string, std::unordered_map<std::string, std::string>> m_Config;
 	};
