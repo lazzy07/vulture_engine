@@ -10,7 +10,16 @@ namespace Vulture {
 		~Material();
 		Ref<Shader> GetShader();
 		void SetShader(std::string shader);
-		inline Configurations GetConfigurations() const { return m_Configurations; }
+		inline Configurations GetConfigurations() const { return m_Configurations; };
+
+		void SetFloat(std::string type, std::string name, float value);
+		void SetVec2(std::string type, std::string name, glm::vec2 value);
+		void SetVec3(std::string type, std::string name, glm::vec3 value);
+		void SetVec4(std::string type, std::string name, glm::vec4 value);
+		void SetMat3(std::string type, std::string name, glm::mat3 value);
+		void SetMat4(std::string type, std::string name, glm::mat4 value);
+
+
 	private:
 		std::string m_Name;
 		Configurations m_Configurations;

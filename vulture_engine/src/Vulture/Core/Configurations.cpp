@@ -172,7 +172,6 @@ namespace Vulture {
 		for (unsigned int i = 0; i < 3; i++) {
 			m_Config[section][key + std::to_string(i)] = std::to_string(val[i]);
 		}
-
 		return true;
 	}
 
@@ -181,7 +180,6 @@ namespace Vulture {
 		for (unsigned int i = 0; i < 4; i++) {
 			m_Config[section][key + std::to_string(i)] = std::to_string(val[i]);
 		}
-
 		return true;
 	}
 
