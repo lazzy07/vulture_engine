@@ -14,7 +14,7 @@ namespace Vulture {
 
 	Ref<Shader> Material::GetShader()
 	{
-		m_Shaders->Get(m_Configurations.GetString("shader", "name", "default"));
+		return m_Shaders->Get(m_Configurations.GetString("shader", "name", "default"));
 	}
 
 	void Material::SetShader(std::string shaderName)

@@ -163,6 +163,7 @@
     <ClInclude Include="src\Vulture\Core\KeyCodes.h" />
     <ClInclude Include="src\Vulture\Core\Layer.h" />
     <ClInclude Include="src\Vulture\Core\LayerStack.h" />
+    <ClInclude Include="src\Vulture\Core\Level.h" />
     <ClInclude Include="src\Vulture\Core\Log.h" />
     <ClInclude Include="src\Vulture\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Vulture\Core\TaskManager.h" />
@@ -580,6 +581,7 @@
     <ClCompile Include="src\Vulture\Core\DispatchQueue.cpp" />
     <ClCompile Include="src\Vulture\Core\Layer.cpp" />
     <ClCompile Include="src\Vulture\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Vulture\Core\Level.cpp" />
     <ClCompile Include="src\Vulture\Core\Log.cpp" />
     <ClCompile Include="src\Vulture\Core\TaskManager.cpp" />
     <ClCompile Include="src\Vulture\ImGui\ImGuiBuild.cpp" />

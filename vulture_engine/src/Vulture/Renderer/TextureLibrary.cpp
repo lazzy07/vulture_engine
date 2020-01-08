@@ -5,7 +5,7 @@ namespace Vulture{
 	void TextureLibrary::Load(std::string path)
 	{
 		std::string name = GetFileName(path);
-		m_Configurations.SetString("texture", name, path);
+		m_Configurations.SetString("textures", name, path);
 		VUL_CORE_ASSERT(!Exists(name), "Texture2D with same name already exists");
 		m_Textures[name] = Texture2D::Create(path);
 	}
@@ -18,7 +18,7 @@ namespace Vulture{
 
 	void TextureLibrary::RemoveTexture(std::string name)
 	{
-		m_Configurations.RemoveEntry("texture", name);
+		m_Configurations.RemoveEntry("textures", name);
 	}
 
 	bool TextureLibrary::Exists(std::string name)

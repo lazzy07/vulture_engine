@@ -7,13 +7,13 @@ namespace Vulture {
 		MaterialLibrary();
 		~MaterialLibrary();
 		
-		void Load(std::string name, Ref<Material> material);
+		void Load(std::string name, Ref<ShaderLibrary> shaderLibrary);
 		void RemoveMaterial(std::string name);
 
 		Ref<Material> GetMaterial(const std::string name);
 		bool Exists(const std::string name);
 
-		std::string MaterialToConfigBuffer();
+		std::string MaterialsToConfigBuffer();
 	private:
 		std::unordered_map<std::string, Ref<Material>> m_Materials;
 	};

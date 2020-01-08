@@ -2,29 +2,30 @@
 #include "ShaderLibrary.h"
 
 namespace Vulture {
-	void ShaderLibrary::Add(const Ref<Shader>& shader)
+	void ShaderLibrary::Add(const Ref<Shader>& shader, const std::string filePath)
 	{
 		auto& name = shader->GetName();
-		Add(name, shader);
+		Add(name, shader, filePath);
 	}
 
-	void ShaderLibrary::Add(const std::string & name, const Ref<Shader>& shader)
+	void ShaderLibrary::Add(const std::string & name, const Ref<Shader>& shader, const std::string filePath)
 	{
 		VUL_CORE_ASSERT(!Exists(name), "Shader Already exists");
+		m_Configurations.SetString("shaders", name, filePath);
 		m_Shaders[name] = shader;
 	}
 
 	Ref<Shader> ShaderLibrary::Load(const std::string & filePath)
 	{
 		auto shader = Shader::Create(filePath);
-		Add(shader);
+		Add(shader, filePath);
 		return shader;
 	}
 	
 	Ref<Shader> ShaderLibrary::Load(const std::string & name, const std::string & filePath)
 	{
 		auto shader = Shader::Create(filePath);
-		Add(name, shader);
+		Add(name, shader, filePath);
 		return shader;
 	}
 	
@@ -37,5 +38,10 @@ namespace Vulture {
 	bool ShaderLibrary::Exists(const std::string & name)
 	{
 		return m_Shaders.find(name) != m_Shaders.end();
+	}
+
+	const char * ShaderLibrary::GetConfigBuffer()
+	{
+		return m_Configurations.GetConfigBuffer().c_str();
 	}
 }

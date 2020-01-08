@@ -53,7 +53,7 @@ namespace Vulture {
 	{
 		glm::mat3 mat = defaultValue;
 
-		if (GetString(section, key, "u") != "u") {
+		if (GetString(section, key, "") != "") {
 			for (unsigned int i = 0; i < 3; i++) {
 				for (unsigned int j = 0; j < 3; j++) {
 					mat[i][j] = std::stof(m_Config[section][key + std::to_string(i + j)]);
@@ -69,13 +69,52 @@ namespace Vulture {
 	{
 		glm::mat4 mat = defaultValue;
 
-		if (GetString(section, key, "u") != "u") {
+		if (GetString(section, key, "") != "") {
 			for (unsigned int i = 0; i < 4; i++) {
 				for (unsigned int j = 0; j < 4; j++) {
 					mat[i][j] = std::stof(m_Config[section][key + std::to_string(i + j)]);
 				}
 			}
 			return mat;
+		}
+
+		return defaultValue;
+	}
+
+	glm::vec2 Configurations::GetVec2(const std::string section, const std::string key, const glm::vec2 defaultValue)
+	{
+		glm::vec2 vec = defaultValue;
+
+		if (GetString(section, key, "") != "") {
+			for (unsigned int i = 0; i < 2; i++) {
+				vec[i] = std::stof(m_Config[section][key + std::to_string(i)]);
+			}
+		}
+
+		return defaultValue;
+	}
+
+	glm::vec3 Configurations::GetVec3(const std::string section, const std::string key, const glm::vec3 defaultValue)
+	{
+		glm::vec2 vec = defaultValue;
+
+		if (GetString(section, key, "") != "") {
+			for (unsigned int i = 0; i < 3; i++) {
+				vec[i] = std::stof(m_Config[section][key + std::to_string(i)]);
+			}
+		}
+
+		return defaultValue;
+	}
+
+	glm::vec4 Configurations::GetVec4(const std::string section, const std::string key, const glm::vec4 defaultValue)
+	{
+		glm::vec2 vec = defaultValue;
+
+		if (GetString(section, key, "") != "") {
+			for (unsigned int i = 0; i < 4; i++) {
+				vec[i] = std::stof(m_Config[section][key + std::to_string(i)]);
+			}
 		}
 
 		return defaultValue;
@@ -103,7 +142,7 @@ namespace Vulture {
 	{
 		for (unsigned int i = 0; i < 3; i++) {
 			for (unsigned int j = 0; j < 3; j++) {
-				m_Config[section][key + std::to_string(i+j)] = val[i][j];
+				m_Config[section][key + std::to_string(i+j)] = std::to_string(val[i][j]);
 			}
 		}
 		return true;
@@ -113,9 +152,36 @@ namespace Vulture {
 	{
 		for (unsigned int i = 0; i < 4; i++) {
 			for (unsigned int j = 0; j < 4; j++) {
-				m_Config[section][key + std::to_string(i + j)] = val[i][j];
+				m_Config[section][key + std::to_string(i + j)] = std::to_string(val[i][j]);
 			}
 		}
+		return true;
+	}
+
+	bool Configurations::SetVec2(const std::string section, const std::string key, glm::vec2 val)
+	{
+		for (unsigned int i = 0; i < 2; i++) {
+			m_Config[section][key + std::to_string(i)] = std::to_string(val[i]);
+		}
+
+		return true;
+	}
+
+	bool Configurations::SetVec3(const std::string section, const std::string key, glm::vec3 val)
+	{
+		for (unsigned int i = 0; i < 3; i++) {
+			m_Config[section][key + std::to_string(i)] = std::to_string(val[i]);
+		}
+
+		return true;
+	}
+
+	bool Configurations::SetVec4(const std::string section, const std::string key, glm::vec4 val)
+	{
+		for (unsigned int i = 0; i < 4; i++) {
+			m_Config[section][key + std::to_string(i)] = std::to_string(val[i]);
+		}
+
 		return true;
 	}
 
@@ -175,5 +241,14 @@ namespace Vulture {
 		}
 
 		return true;
+	}
+
+	void Configurations::GetAll(const std::string section, std::unordered_map<std::string, std::string>* map)
+	{
+		VUL_CORE_ASSERT(!IsSectionExists(section), "Section specified does not exists");
+
+		for (std::pair<std::string, std::string> ele : m_Config[section]) {
+			map->insert(ele.first, ele.second);
+		}
 	}
 }
