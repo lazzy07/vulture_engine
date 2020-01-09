@@ -6,6 +6,8 @@ namespace Vulture {
 		: m_Name(name), m_Shaders(shaderLibrary) {
 		m_Configurations.SetString("material", "name", name);
 		m_Configurations.SetString("shader", "name", shaderName);
+
+		m_Shader = m_Shaders->Get(m_Configurations.GetString("shader", "name", "default"));
 	}
 
 	Material::~Material() {
@@ -14,12 +16,13 @@ namespace Vulture {
 
 	Ref<Shader> Material::GetShader()
 	{
-		return m_Shaders->Get(m_Configurations.GetString("shader", "name", "default"));
+		return m_Shader;
 	}
 
 	void Material::SetShader(std::string shaderName)
 	{
 		m_Configurations.SetString("shader", "name", shaderName);
+		m_Shader = m_Shaders->Get(m_Configurations.GetString("shader", "name", "default"));
 	}
 
 	void Material::SetFloat(std::string type, std::string name, float value)
@@ -88,5 +91,10 @@ namespace Vulture {
 				m_Mat4s[elem.first] = m_Configurations.GetMat4("variable", elem.first);
 			}
 		}
+	}
+
+	void Material::Bind()
+	{
+		
 	}
 }

@@ -20,10 +20,10 @@ namespace Vulture {
 		void LoadModels(const char* modelBuffer);
 
 	private:
-		ModelLibrary m_ModelLibrary;
-		MaterialLibrary m_MaterialLibrary;
-		ShaderLibrary m_ShaderLibrary;
-		TextureLibrary m_TextureLibrary;
+		Ref<ModelLibrary> m_ModelLibrary;
+		Ref<MaterialLibrary> m_MaterialLibrary;
+		Ref<ShaderLibrary> m_ShaderLibrary;
+		Ref<TextureLibrary> m_TextureLibrary;
 
 		std::string m_LevelName;
 	};

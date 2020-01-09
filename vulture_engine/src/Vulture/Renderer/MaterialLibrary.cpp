@@ -34,7 +34,7 @@ namespace Vulture {
 		cfg.LoadConfigBuffer(buf);
 
 		m.reset(new Material(name, cfg.GetString("shader", "name"), shaderLibrary));
-
+		m->LoadVariables();
 		free(buf);
 		m_Materials[name] = m;
 	}

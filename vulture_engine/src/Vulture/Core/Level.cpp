@@ -6,6 +6,7 @@
 namespace Vulture {
 	Level::Level(std::string name) : m_LevelName(name)
 	{
+		m_ShaderLibrary.reset(new ShaderLibrary());
 	}
 
 	Level::~Level()
@@ -77,7 +78,7 @@ namespace Vulture {
 		cfg.GetAll("textures", &textureMap);
 
 		for (std::pair<std::string, std::string>ele : textureMap) {
-			m_ShaderLibrary.Load(ele.second);
+			m_TextureLibrary->Load(ele.second);
 		}
 	}
 
@@ -91,7 +92,7 @@ namespace Vulture {
 		cfg.GetAll("shaders", &shaderMap);
 
 		for(std::pair<std::string, std::string>ele : shaderMap){
-			m_ShaderLibrary.Load(ele.second);
+			m_ShaderLibrary->Load(ele.second);
 		}
 	}
 
@@ -105,7 +106,7 @@ namespace Vulture {
 		cfg.GetAll("materials", &materialMap);
 
 		for (std::pair<std::string, std::string>ele : materialMap) {
-			
+			m_MaterialLibrary->Load(ele.second, m_ShaderLibrary);
 		}
 	}
 

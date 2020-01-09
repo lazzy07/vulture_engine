@@ -20,7 +20,7 @@ namespace Vulture {
 		void SetMat4(std::string type, std::string name, glm::mat4 value);
 
 		void LoadVariables();
-
+		void Bind();
 	private:
 		std::unordered_map<std::string, float> m_Floats;
 		std::unordered_map<std::string, glm::vec2> m_Vec2s;
@@ -33,5 +33,6 @@ namespace Vulture {
 		std::string m_Name;
 		Configurations m_Configurations;
 		Ref<ShaderLibrary> m_Shaders;
+		Ref<Shader> m_Shader;
 	};
 }
