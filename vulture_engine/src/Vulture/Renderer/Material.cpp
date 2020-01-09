@@ -57,4 +57,36 @@ namespace Vulture {
 		m_Configurations.SetMat4("variable", name, value);
 		m_Configurations.SetString("vartype", name, "mat4");
 	}
+
+	void Material::LoadVariables()
+	{
+		std::unordered_map<std::string, std::string> vars;
+		std::unordered_map<std::string, std::string> varTypes;
+
+		m_Configurations.GetAll("variable", &vars);
+		m_Configurations.GetAll("vartype", &varTypes);
+
+		VUL_CORE_ASSERT(vars.size() == varTypes.size(), "Count of variables and count of variable types are different");
+
+		for (std::pair<std::string, std::string> elem : varTypes) {
+			if (elem.second == "float") {
+				m_Floats[elem.first] = m_Configurations.GetFloat("variable", elem.first);
+			}
+			else if (elem.second == "vec2") {
+				m_Vec2s[elem.first] = m_Configurations.GetVec2("variable", elem.first);
+			}
+			else if (elem.second == "vec3") {
+				m_Vec3s[elem.first] = m_Configurations.GetVec3("variable", elem.first);
+			}
+			else if (elem.second == "vec4") {
+				m_Vec4s[elem.first] = m_Configurations.GetVec4("variable", elem.first);
+			}
+			else if (elem.second == "mat3") {
+				m_Mat3s[elem.first] = m_Configurations.GetMat3("variable", elem.first);
+			}
+			else if (elem.second == "mat4") {
+				m_Mat4s[elem.first] = m_Configurations.GetMat4("variable", elem.first);
+			}
+		}
+	}
 }

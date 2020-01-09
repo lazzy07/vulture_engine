@@ -19,8 +19,17 @@ namespace Vulture {
 		void SetMat3(std::string type, std::string name, glm::mat3 value);
 		void SetMat4(std::string type, std::string name, glm::mat4 value);
 
+		void LoadVariables();
 
 	private:
+		std::unordered_map<std::string, float> m_Floats;
+		std::unordered_map<std::string, glm::vec2> m_Vec2s;
+		std::unordered_map<std::string, glm::vec3> m_Vec3s;
+		std::unordered_map<std::string, glm::vec4> m_Vec4s;
+
+		std::unordered_map<std::string, glm::mat3> m_Mat3s;
+		std::unordered_map<std::string, glm::mat3> m_Mat4s;
+
 		std::string m_Name;
 		Configurations m_Configurations;
 		Ref<ShaderLibrary> m_Shaders;
