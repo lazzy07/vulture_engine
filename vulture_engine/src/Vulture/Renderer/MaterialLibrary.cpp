@@ -11,7 +11,7 @@ namespace Vulture {
 	{
 	}
 
-	void MaterialLibrary::Load(std::string name, Ref<ShaderLibrary> shaderLibrary)
+	void MaterialLibrary::Load(std::string name, Ref<ShaderLibrary> shaderLibrary, Ref<TextureLibrary> textureLibrary)
 	{
 		VUL_CORE_ASSERT(!Exists(name), "Material with same name already exists");
 		Ref<Material> m;
@@ -33,7 +33,7 @@ namespace Vulture {
 
 		cfg.LoadConfigBuffer(buf);
 
-		m.reset(new Material(name, cfg.GetString("shader", "name"), shaderLibrary));
+		m.reset(new Material(name, cfg.GetString("shader", "name"), shaderLibrary, textureLibrary));
 		m->LoadVariables();
 		free(buf);
 		m_Materials[name] = m;

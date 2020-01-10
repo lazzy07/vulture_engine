@@ -7,7 +7,7 @@ namespace Vulture {
 		MaterialLibrary();
 		~MaterialLibrary();
 		
-		void Load(std::string name, Ref<ShaderLibrary> shaderLibrary);
+		void Load(std::string name, Ref<ShaderLibrary> shaderLibrary, Ref<TextureLibrary> textureLibrary);
 		void RemoveMaterial(std::string name);
 
 		Ref<Material> GetMaterial(const std::string name);

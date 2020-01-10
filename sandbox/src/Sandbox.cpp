@@ -37,8 +37,6 @@ public:
 		vertexBuff->SetLayout(layout);
 		m_VertexArray->AddVertexBuffer(vertexBuff);
 
-		
-
 		uint32_t indecies[6] = { 0, 1, 2, 2, 3, 0 };
 		Vulture::Ref<Vulture::IndexBuffer> indexBuff;
 		indexBuff.reset(Vulture::IndexBuffer::Create(indecies, 6));
