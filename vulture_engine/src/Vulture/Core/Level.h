@@ -25,6 +25,11 @@ namespace Vulture {
 		Ref<ShaderLibrary> m_ShaderLibrary;
 		Ref<TextureLibrary> m_TextureLibrary;
 
+		glm::vec3 m_PlayerPosition;
+		glm::vec3 m_CameraPosition;
+
+
+
 		std::string m_LevelName;
 	};
 }

@@ -21,6 +21,8 @@ namespace Vulture {
 		void SetMat4(std::string name, glm::mat4 value);
 		void SetTexture(std::string name, float textureSlot);
 
+		void SaveMaterial();
+
 		void LoadVariables();
 		void Bind();
 	private:

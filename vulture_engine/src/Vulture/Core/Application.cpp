@@ -6,6 +6,7 @@
 
 #include <GLFW/glfw3.h>
 
+#include "Vulture/DevAssets/LevelSelector.h"
 #include "Vulture/Core/Configurations.h"
 
 namespace Vulture {
@@ -23,6 +24,9 @@ namespace Vulture {
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
+		
+		LevelSelector* ls = new LevelSelector();
+		PushOverlay(ls);
 	}
 
 	Application::~Application()
@@ -72,6 +76,7 @@ namespace Vulture {
 
 	bool Application::OnWindowClose(WindowCloseEvent& e) {
 		m_Running = false;
+		delete m_ImGuiLayer;
 		return false;
 	}
 }

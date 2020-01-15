@@ -6,10 +6,10 @@
 #include "examples/imgui_impl_opengl3.h"
 
 #include "Vulture/Core/Application.h"
-
 // TEMPORARY
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
+
 
 namespace Vulture {
 
@@ -32,8 +32,9 @@ namespace Vulture {
 		//io.ConfigFlags |= ImGuiConfigFlags_ViewportsNoMerge;
 
 		// Setup Dear ImGui style
-		ImGui::StyleColorsDark();
-		//ImGui::StyleColorsClassic();
+		
+		//ImGui::StyleColorsDark();
+		ImGui::StyleColorsClassic();
 
 		// When viewports are enabled we tweak WindowRounding/WindowBg so platform windows can look identical to regular ones.
 		ImGuiStyle& style = ImGui::GetStyle();
@@ -84,10 +85,9 @@ namespace Vulture {
 		}
 	}
 
+
 	void ImGuiLayer::OnImGuiRender()
 	{
-		static bool show = true;
-		ImGui::ShowDemoWindow(&show);
+		
 	}
-
 }

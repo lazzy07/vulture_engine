@@ -1,6 +1,7 @@
 #include "vulpch.h"
 #include "Material.h"
 #include "Platform/OpenGL/OpenGLShader.h"
+#include "zip/zip.h"
 
 namespace Vulture {
 	Material::Material(const std::string name, const std::string shaderName, Ref<ShaderLibrary> shaderLibrary, Ref<TextureLibrary> textureLibrary) 
@@ -67,6 +68,21 @@ namespace Vulture {
 	{
 		m_Configurations.SetFloat("variable", name, textureSlot);
 		m_Configurations.SetString("vartype", name, "texture");
+	}
+
+	void Material::SaveMaterial()
+	{
+		std::string fileName = "./assets/materials/" + m_Name + ".vulmat";
+		struct zip_t *zip = zip_open(fileName.c_str(), ZIP_DEFAULT_COMPRESSION_LEVEL, 'w');
+		{
+			zip_entry_open(zip, "material");
+			{
+				zip_entry_write(zip, m_Configurations.GetConfigBuffer().c_str(), strlen(m_Configurations.GetConfigBuffer().c_str()));
+			}
+			zip_entry_close(zip);
+		}
+
+		zip_close(zip);
 	}
 
 	void Material::LoadVariables()

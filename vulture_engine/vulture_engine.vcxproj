@@ -169,6 +169,7 @@
     <ClInclude Include="src\Vulture\Core\TaskManager.h" />
     <ClInclude Include="src\Vulture\Core\Timestep.h" />
     <ClInclude Include="src\Vulture\Core\Window.h" />
+    <ClInclude Include="src\Vulture\DevAssets\LevelSelector.h" />
     <ClInclude Include="src\Vulture\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Vulture\Renderer\Buffer.h" />
     <ClInclude Include="src\Vulture\Renderer\Camera.h" />
@@ -584,6 +585,7 @@
     <ClCompile Include="src\Vulture\Core\Level.cpp" />
     <ClCompile Include="src\Vulture\Core\Log.cpp" />
     <ClCompile Include="src\Vulture\Core\TaskManager.cpp" />
+    <ClCompile Include="src\Vulture\DevAssets\LevelSelector.cpp" />
     <ClCompile Include="src\Vulture\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Vulture\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Buffer.cpp" />

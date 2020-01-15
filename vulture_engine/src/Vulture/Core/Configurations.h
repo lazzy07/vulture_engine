@@ -12,7 +12,7 @@ namespace Vulture {
 		bool IsKeyExists(const std::string section, const std::string key);
 
 		int GetInt(const std::string section, const std::string key, const int defaultValue = -1);
-		float GetFloat(const std::string section, const std::string key, const int defaultValue = -1.0f);
+		float GetFloat(const std::string section, const std::string key, const float defaultValue = -1.0f);
 		std::string GetString(const std::string section, const std::string key, const std::string defaultValue = "unknown");
 		glm::mat3 GetMat3(const std::string section, const std::string key, const glm::mat3 defaultValue = glm::mat3(0.0f));
 		glm::mat4 GetMat4(const std::string section, const std::string key, const glm::mat4 defaultValue = glm::mat4(0.0f));

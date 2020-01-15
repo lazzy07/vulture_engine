@@ -1313,6 +1313,7 @@
     <ClInclude Include="src\Vulture\Renderer\MaterialLibrary.h" />
     <ClInclude Include="src\Vulture\Renderer\Material.h" />
     <ClInclude Include="src\Vulture\Core\Level.h" />
+    <ClInclude Include="src\Vulture\DevAssets\LevelSelector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1422,5 +1423,6 @@
     <ClCompile Include="src\Vulture\Renderer\MaterialLibrary.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Material.cpp" />
     <ClCompile Include="src\Vulture\Core\Level.cpp" />
+    <ClCompile Include="src\Vulture\DevAssets\LevelSelector.cpp" />
   </ItemGroup>
 </Project>

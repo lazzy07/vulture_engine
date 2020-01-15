@@ -32,7 +32,7 @@ namespace Vulture {
 		return defaultValue;
 	}
 
-	float Configurations::GetFloat(const std::string section, const std::string key, const int defaultValue)
+	float Configurations::GetFloat(const std::string section, const std::string key, const float defaultValue)
 	{
 		if (IsKeyExists(section, key)) {
 			std::string val = m_Config[section][key];
@@ -52,7 +52,7 @@ namespace Vulture {
 	glm::mat3 Configurations::GetMat3(const std::string section, const std::string key, const glm::mat3 defaultValue)
 	{
 		glm::mat3 mat = defaultValue;
-
+	
 		if (GetString(section, key, "") != "") {
 			for (unsigned int i = 0; i < 3; i++) {
 				for (unsigned int j = 0; j < 3; j++) {
@@ -61,14 +61,14 @@ namespace Vulture {
 			}
 			return mat;
 		}
-
+	
 		return defaultValue;
 	}
-
+	
 	glm::mat4 Configurations::GetMat4(const std::string section, const std::string key, const glm::mat4 defaultValue)
 	{
 		glm::mat4 mat = defaultValue;
-
+	
 		if (GetString(section, key, "") != "") {
 			for (unsigned int i = 0; i < 4; i++) {
 				for (unsigned int j = 0; j < 4; j++) {
@@ -77,7 +77,7 @@ namespace Vulture {
 			}
 			return mat;
 		}
-
+	
 		return defaultValue;
 	}
 
@@ -244,9 +244,9 @@ namespace Vulture {
 	void Configurations::GetAll(const std::string section, std::unordered_map<std::string, std::string>* map)
 	{
 		VUL_CORE_ASSERT(!IsSectionExists(section), "Section specified does not exists");
-
+	
 		for (std::pair<std::string, std::string> ele : m_Config[section]) {
-			map->insert(ele.first, ele.second);
+			map->insert(std::pair<std::string, std::string>(ele.first, ele.second));
 		}
 	}
 }
