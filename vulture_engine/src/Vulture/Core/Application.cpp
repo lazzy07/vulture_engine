@@ -13,6 +13,7 @@ namespace Vulture {
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
 	Application* Application::s_Instance = nullptr;
+
 	Application::Application()
 	{
 		VUL_ASSERT(!s_Instance, "Application aready has a instance");
@@ -21,6 +22,8 @@ namespace Vulture {
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 
 		Renderer::Init(m_Window);
+
+		LoadDefaultLevel();
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
@@ -41,6 +44,13 @@ namespace Vulture {
 	void Application::PushOverlay(Layer* layer) {
 		m_LayerStack.PushOverlay(layer);
 		layer->OnAttach();
+	}
+
+	void Application::LoadDefaultLevel()
+	{
+		m_CurrentLevel.reset(new Level("default"));
+		m_CurrentLevel->GetShaderLibrary()->Load("./assets/shaders/default.glsl");
+		m_CurrentLevel->GetMaterialLibrary()->AddNewMaterial("default");
 	}
 
 	void Application::OnEvent(Event &e) {
@@ -76,7 +86,6 @@ namespace Vulture {
 
 	bool Application::OnWindowClose(WindowCloseEvent& e) {
 		m_Running = false;
-		delete m_ImGuiLayer;
 		return false;
 	}
 }

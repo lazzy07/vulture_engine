@@ -1,8 +1,8 @@
 #include "vulpch.h"
 
 #include <filesystem>
-
 #include "LevelSelector.h"
+#include "Vulture/Core/Application.h"
 
 namespace Vulture {
 	LevelSelector::LevelSelector() : Layer("LevelSelector")
@@ -11,6 +11,7 @@ namespace Vulture {
 	void LevelSelector::OnAttach()
 	{
 		SetLevelFiles();
+		m_NewLevelName[0] = '\0';
 	}
 
 	void LevelSelector::OnDetach()
@@ -20,20 +21,46 @@ namespace Vulture {
 	void LevelSelector::OnImGuiRender()
 	{
 		ImGui::Begin("Level Selector");
-		std::vector<char*> vc;
-		std::transform(m_LevelNames.begin(), m_LevelNames.end(), std::back_inserter(vc), Convert);
-		ImGui::ListBox("Available Levels", m_CurrentLevel, vc.data(), vc.size(), 10);
+		
+		{
+			ImGui::ListBox("Available Levels", &m_CurrentLevel, vc.data(), vc.size(), 10);
+			if (ImGui::Button("Load Level")) {
+				std::string name = m_LevelNames[m_CurrentLevel];
+				Ref<Level> lev;
+				lev.reset(new Level(name));
+				lev->LoadLevel();
 
-		ImGui::Button("Load Level");
-		ImGui::Button("Add Level");
+				Application::Get().SetCurrentLevel(lev);
+			};
+			m_AddLevelButtonStatus = ImGui::Button("Add Level");
+			AddNewLevelDialog();
+		}
 
 		ImGui::End();
 	}
 
-	void LevelSelector::AddNewLevel(std::string levelName)
+	bool LevelSelector::AddNewLevel(std::string levelName)
 	{
-		m_LevelNames.push_back(levelName);
+		if (levelName != "") {
+			for (std::string ln : m_LevelNames) {
+				if (ln == levelName) {
+					return false;
+				}
+			}
+			m_LevelNames.push_back(levelName);
+			VUL_CORE_TRACE("New Level Added : {0}", levelName);
+
+			vc.clear();
+			for (unsigned int i = 0; i < m_LevelNames.size(); i++) {
+				vc.push_back(Convert(m_LevelNames[i]));
+			}
+
+			return true;
+		}
+		return false;
 	}
+
+	
 
 	std::string LevelSelector::getFileName(const std::string path)
 	{
@@ -43,6 +70,34 @@ namespace Vulture {
 		auto count = lastDot == std::string::npos ? path.size() - lastSlash : lastDot - lastSlash;
 		std::string name = path.substr(lastSlash, count);
 		return name;
+	}
+
+	void LevelSelector::AddNewLevelDialog()
+	{
+		if (m_AddLevelButtonStatus || m_OpenAddNewLevelDialog) {
+			if (m_AddLevelButtonStatus) {
+				VUL_CORE_TRACE("Level popup open");
+				m_OpenAddNewLevelDialog = true;
+			}
+
+			ImGui::OpenPopup("Add new layer");
+			ImGui::BeginPopup("Add new layer");
+			{
+				ImGui::InputText("Level Name", m_NewLevelName, 500);
+				if (ImGui::Button("Add Level")) {
+					if (AddNewLevel(m_NewLevelName)) {
+						m_OpenAddNewLevelDialog = false;
+						ImGui::CloseCurrentPopup();
+					}
+				}
+
+				if (ImGui::Button("Close")) {
+					m_OpenAddNewLevelDialog = false;
+					ImGui::CloseCurrentPopup();
+				}
+			}
+			ImGui::EndPopup();
+		}
 	}
 
 	void LevelSelector::SetLevelFiles()
@@ -57,6 +112,10 @@ namespace Vulture {
 				VUL_CORE_TRACE("Level File Found : {0}", p);
 				m_LevelNames.push_back(getFileName(p));
 			}
+		}
+
+		for (unsigned int i = 0; i < m_LevelNames.size(); i++) {
+			vc.push_back(Convert(m_LevelNames[i]));
 		}
 	}
 	char * LevelSelector::Convert(const std::string & s)

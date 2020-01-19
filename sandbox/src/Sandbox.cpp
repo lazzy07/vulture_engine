@@ -51,7 +51,7 @@ public:
 		Vulture::RenderCommand::Clear();
 
 		Vulture::Renderer::BeginScene(m_Controller->GetCamera());
-		m_Model->Draw(m_ShaderLibrary.Get("white"));
+		m_Model->Draw(glm::vec3(0.0), glm::vec3(0.0), glm::vec3(1.0));
 		m_Texture->Bind();
 		Vulture::Renderer::Submit(m_ShaderLibrary.Get("texture"), m_VertexArray, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, glm::vec3(1.0f));
 		

@@ -7,9 +7,9 @@ namespace Vulture {
 	Level::Level(std::string name) : m_LevelName(name)
 	{
 		m_ModelLibrary.reset(new ModelLibrary());
-		m_MaterialLibrary.reset(new MaterialLibrary());
-		m_ShaderLibrary.reset(new ShaderLibrary());
 		m_TextureLibrary.reset(new TextureLibrary());
+		m_ShaderLibrary.reset(new ShaderLibrary());
+		m_MaterialLibrary.reset(new MaterialLibrary(m_ShaderLibrary, m_TextureLibrary));
 	}
 
 	Level::~Level()
@@ -69,6 +69,28 @@ namespace Vulture {
 
 	void Level::SaveLevel()
 	{
+		std::string fileName = "./assets/levels/" + m_LevelName + ".vullevel";
+
+		const char* textureBuffer = m_TextureLibrary->TexturesToConfigBuffer().c_str();
+		const char* shaderBuffer = m_ShaderLibrary->GetConfigBuffer().c_str();
+		const char* materialBuffer = m_MaterialLibrary->MaterialsToConfigBuffer().c_str();
+		const char* modelBuffer = m_ModelLibrary->;
+	}
+
+	void Level::AddNewModel(std::string modelPath)
+	{
+	}
+
+	void Level::AddNewMaterial(std::string materialName)
+	{
+	}
+
+	void Level::AddNewTexture(std::string texturePath)
+	{
+	}
+
+	void Level::AddNewShader(std::string shaderName)
+	{
 	}
 
 	void Level::LoadTextures(const char * textureBuffer)
@@ -109,7 +131,7 @@ namespace Vulture {
 		cfg.GetAll("materials", &materialMap);
 
 		for (std::pair<std::string, std::string>ele : materialMap) {
-			m_MaterialLibrary->Load(ele.second, m_ShaderLibrary, m_TextureLibrary);
+			m_MaterialLibrary->Load(ele.second);
 		}
 	}
 

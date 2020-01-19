@@ -10,7 +10,7 @@ namespace Vulture {
 		m_Configurations.SetString("material", "name", name);
 		m_Configurations.SetString("shader", "name", shaderName);
 
-		m_Shader = m_ShaderLibrary->Get(m_Configurations.GetString("shader", "name", "default"));
+		m_Shader = m_ShaderLibrary->Get(m_Configurations.GetString("shader", "name", shaderName));
 	}
 
 	Material::~Material() {
@@ -25,7 +25,7 @@ namespace Vulture {
 	void Material::SetShader(std::string shaderName)
 	{
 		m_Configurations.SetString("shader", "name", shaderName);
-		m_Shader = m_ShaderLibrary->Get(m_Configurations.GetString("shader", "name", "default"));
+		m_Shader = m_ShaderLibrary->Get(m_Configurations.GetString("shader", "name", shaderName));
 	}
 
 	void Material::SetFloat(std::string name, float value)

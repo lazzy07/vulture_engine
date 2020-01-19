@@ -34,7 +34,8 @@ namespace Vulture {
 		// Setup Dear ImGui style
 		
 		//ImGui::StyleColorsDark();
-		ImGui::StyleColorsClassic();
+		//ImGui::StyleColorsClassic();
+		ImGui::StyleColorsLight();
 
 		// When viewports are enabled we tweak WindowRounding/WindowBg so platform windows can look identical to regular ones.
 		ImGuiStyle& style = ImGui::GetStyle();

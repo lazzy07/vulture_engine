@@ -10,6 +10,7 @@
 
 #include "Vulture/ImGui/ImGuiLayer.h"
 #include "Vulture/Renderer/ModelLibrary.h"
+#include "Vulture/Core/Level.h"
 
 namespace Vulture {
 	class VULTURE_API Application
@@ -24,12 +25,18 @@ namespace Vulture {
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 
-		static inline Application& Get() { return *s_Instance; }
+		static inline Application& Get() { return *s_Instance; };
+
+		void LoadDefaultLevel();
+
+		inline Ref<Level> GetCurrentLevel() const { return m_CurrentLevel; };
+		inline void SetCurrentLevel(Ref<Level> level) { m_CurrentLevel = level; };
 
 		inline Window& GetWindow() { return *m_Window; };
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
+		Ref<Level> m_CurrentLevel;
 		float m_LastFrameTime = 0.0f;
 		Ref<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;

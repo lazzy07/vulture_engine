@@ -32,18 +32,6 @@ namespace Vulture {
 
 		Configurations conf;
 
-		conf.SetFloat(name, "posX", 0.0f);
-		conf.SetFloat(name, "posY", 0.0f);
-		conf.SetFloat(name, "posZ", 0.0f);
-			
-		conf.SetFloat(name, "rotX", 0.0f);
-		conf.SetFloat(name, "rotY", 0.0f);
-		conf.SetFloat(name, "rotZ", 0.0f);
-			
-		conf.SetFloat(name, "scaleX", 1.0f);
-		conf.SetFloat(name, "scaleY", 1.0f);
-		conf.SetFloat(name, "scaleZ", 1.0f);
-
 		struct zip_t *zip = zip_open(filepath.c_str(), ZIP_DEFAULT_COMPRESSION_LEVEL, 'w');
 			if(zip) processNode(scene->mRootNode, scene, zip, &conf);
 
@@ -104,7 +92,8 @@ namespace Vulture {
 						mRef->m_IndicesSize = elem.second->m_Size;
 					}
 					else if (elem.first == "vulconf") {
-
+						model->SetConfigurations((char *)elem.second->m_Data);
+						
 					}
 					else {
 						VUL_CORE_ASSERT(false, "Unknown file type in mesh loader");

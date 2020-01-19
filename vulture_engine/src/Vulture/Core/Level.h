@@ -13,11 +13,21 @@ namespace Vulture {
 
 		void LoadLevel();
 		void SaveLevel();
+		
+		inline Ref<MaterialLibrary> GetMaterialLibrary() const { return m_MaterialLibrary; };
+		inline Ref<ShaderLibrary> GetShaderLibrary() const { return m_ShaderLibrary; };
+		inline Ref<TextureLibrary> GetTextureLibrary() const { return m_TextureLibrary; };
+
+		void AddNewModel(std::string modelPath);
+		void AddNewMaterial(std::string materialName);
+		void AddNewTexture(std::string texturePath);
+		void AddNewShader(std::string shaderName);
 	private:
 		void LoadTextures(const char* textureBuffer);
 		void LoadShaders(const char* shaderBuffer);
 		void LoadMaterials(const char* materialBuffer);
 		void LoadModels(const char* modelBuffer);
+		
 
 	private:
 		Ref<ModelLibrary> m_ModelLibrary;
@@ -28,6 +38,7 @@ namespace Vulture {
 		glm::vec3 m_PlayerPosition;
 		glm::vec3 m_CameraPosition;
 
+		int id;
 
 
 		std::string m_LevelName;

@@ -4,6 +4,7 @@
 
 #include <vector>
 #include "Vulture/Core/Configurations.h"
+#include "Vulture/Renderer/Material.h"
 
 namespace Vulture {
 	class Model {
@@ -12,16 +13,15 @@ namespace Vulture {
 		~Model();
 		void AddMesh(std::string name, Ref<VulMesh> mesh);
 		inline const Configurations GetConfigurations() const { return m_Config; };
-		void Draw(Ref<Shader> shader);
+		void Draw(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale);
 		void SetConfigurations(char* conf);
-		inline void SetName(std::string name) { m_Name = name; }
+		inline void SetName(std::string name) { m_Name = name; };
+		inline int GetMeshCount() { return m_Meshes.size(); };
+		void SetMaterial(std::string meshName);
 	private:
 		std::unordered_map<std::string, Ref<VulMesh>> m_Meshes;
+		std::unordered_map<std::string, Ref<Material>> m_Materials;
 		Configurations m_Config;
 		std::string m_Name;
-
-		glm::vec3 m_Position;
-		glm::vec3 m_Roation;
-		glm::vec3 m_Scale;
 	};
 }

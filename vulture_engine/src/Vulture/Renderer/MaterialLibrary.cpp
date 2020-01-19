@@ -3,7 +3,8 @@
 #include "zip/zip.h"
 
 namespace Vulture {
-	MaterialLibrary::MaterialLibrary()
+	MaterialLibrary::MaterialLibrary(Ref<ShaderLibrary> shaderLibrary, Ref<TextureLibrary> textureLibrary) : 
+		m_ShaderLibrary(shaderLibrary), m_TextureLibrary(textureLibrary)
 	{
 	}
 
@@ -11,7 +12,7 @@ namespace Vulture {
 	{
 	}
 
-	void MaterialLibrary::Load(std::string name, Ref<ShaderLibrary> shaderLibrary, Ref<TextureLibrary> textureLibrary)
+	void MaterialLibrary::Load(std::string name)
 	{
 		VUL_CORE_ASSERT(!Exists(name), "Material with same name already exists");
 		Ref<Material> m;
@@ -33,7 +34,7 @@ namespace Vulture {
 
 		cfg.LoadConfigBuffer(buf);
 
-		m.reset(new Material(name, cfg.GetString("shader", "name"), shaderLibrary, textureLibrary));
+		m.reset(new Material(name, cfg.GetString("shader", "name"), m_ShaderLibrary, m_TextureLibrary));
 		m->LoadVariables();
 		free(buf);
 		m_Materials[name] = m;
@@ -42,6 +43,15 @@ namespace Vulture {
 	void MaterialLibrary::RemoveMaterial(std::string name)
 	{
 		m_Materials.erase(name);
+	}
+
+	Ref<Material> MaterialLibrary::AddNewMaterial(std::string name, std::string shaderName)
+	{
+		VUL_CORE_ASSERT(!Exists(name), "Material with same name already exists");
+		Ref<Material> newMaterial;
+		newMaterial.reset(new Material(name, shaderName, m_ShaderLibrary, m_TextureLibrary));
+		m_Materials[name] = newMaterial;
+		return newMaterial;
 	}
 
 	Ref<Material> MaterialLibrary::GetMaterial(const std::string name)

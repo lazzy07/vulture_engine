@@ -40,8 +40,8 @@ namespace Vulture {
 		return m_Shaders.find(name) != m_Shaders.end();
 	}
 
-	const char * ShaderLibrary::GetConfigBuffer()
+	std::string ShaderLibrary::GetConfigBuffer()
 	{
-		return m_Configurations.GetConfigBuffer().c_str();
+		return m_Configurations.GetConfigBuffer();
 	}
 }

@@ -159,6 +159,7 @@
     <ClInclude Include="src\Vulture\Core\Core.h" />
     <ClInclude Include="src\Vulture\Core\DispatchQueue.h" />
     <ClInclude Include="src\Vulture\Core\EntryPoint.h" />
+    <ClInclude Include="src\Vulture\Core\IdGenerator.h" />
     <ClInclude Include="src\Vulture\Core\Input.h" />
     <ClInclude Include="src\Vulture\Core\KeyCodes.h" />
     <ClInclude Include="src\Vulture\Core\Layer.h" />
@@ -580,6 +581,7 @@
     <ClCompile Include="src\Vulture\Core\CameraController.cpp" />
     <ClCompile Include="src\Vulture\Core\Configurations.cpp" />
     <ClCompile Include="src\Vulture\Core\DispatchQueue.cpp" />
+    <ClCompile Include="src\Vulture\Core\IdGenerator.cpp" />
     <ClCompile Include="src\Vulture\Core\Layer.cpp" />
     <ClCompile Include="src\Vulture\Core\LayerStack.cpp" />
     <ClCompile Include="src\Vulture\Core\Level.cpp" />
