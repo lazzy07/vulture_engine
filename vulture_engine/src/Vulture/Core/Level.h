@@ -18,9 +18,13 @@ namespace Vulture {
 		inline Ref<ShaderLibrary> GetShaderLibrary() const { return m_ShaderLibrary; };
 		inline Ref<TextureLibrary> GetTextureLibrary() const { return m_TextureLibrary; };
 
+		//The model as FBX
 		void AddNewModel(std::string modelPath);
+		//A material with no variables and default shader will be created
 		void AddNewMaterial(std::string materialName);
+		//Texture will be loaded into the level's textureLibrary (make sure to copy textures to texture folder first)
 		void AddNewTexture(std::string texturePath);
+		//A new shader will be loaded into the level's shaderLibrary
 		void AddNewShader(std::string shaderName);
 	private:
 		void LoadTextures(const char* textureBuffer);
@@ -28,7 +32,7 @@ namespace Vulture {
 		void LoadMaterials(const char* materialBuffer);
 		void LoadModels(const char* modelBuffer);
 		
-
+		std::string GetFileName(std::string path);
 	private:
 		Ref<ModelLibrary> m_ModelLibrary;
 		Ref<MaterialLibrary> m_MaterialLibrary;
