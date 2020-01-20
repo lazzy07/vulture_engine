@@ -7,6 +7,17 @@
 #include "Vulture/Renderer/Camera.h"
 
 namespace Vulture {
+	struct LevelModelData {
+		std::string Id;
+		std::string Name;
+		glm::vec3 Position;
+		glm::vec3 Rotation;
+		glm::vec3 Scale;
+		bool IsStatic;
+		bool Hidden;
+		bool Selected = false;
+	};
+
 	class Level {
 	public:
 		Level(std::string name);
@@ -14,10 +25,13 @@ namespace Vulture {
 
 		void LoadLevel();
 		void SaveLevel();
-		
+
+
 		inline Ref<MaterialLibrary> GetMaterialLibrary() const { return m_MaterialLibrary; };
 		inline Ref<ShaderLibrary> GetShaderLibrary() const { return m_ShaderLibrary; };
 		inline Ref<TextureLibrary> GetTextureLibrary() const { return m_TextureLibrary; };
+		inline Ref<ModelLibrary> GetModelLibrary() const { return m_ModelLibrary; };
+		inline std::unordered_map<std::string, Ref<LevelModelData>>* GetInstanceData() { return &m_ModelData; };
 
 		void AddModelToLevel(std::string name, glm::vec3 position = glm::vec3(0.0f),
 			glm::vec3 rotation = glm::vec3(0.0f), glm::vec3 scale = glm::vec3(1.0f),
@@ -57,15 +71,6 @@ namespace Vulture {
 		glm::vec3 m_CameraPosition;
 
 		int id;
-
-		struct LevelModelData {
-			std::string Name;
-			glm::vec3 Position;
-			glm::vec3 Rotation;
-			glm::vec3 Scale;
-			bool IsStatic;
-			bool Hidden;
-		};
 
 		std::unordered_map<std::string, Ref<LevelModelData>> m_ModelData;
 	};

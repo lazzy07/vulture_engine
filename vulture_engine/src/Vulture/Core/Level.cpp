@@ -144,6 +144,7 @@ namespace Vulture {
 			levData.reset(new LevelModelData());
 			std::string id = IdGenerator::GenerateId();
 
+			levData->Id = id;
 			levData->Name = name;
 			levData->Position = position;
 			levData->Rotation = rotation;
@@ -260,6 +261,7 @@ namespace Vulture {
 			Ref<LevelModelData> data = ele.second;
 			std::string id = ele.first;
 
+			m_Config.SetString(id, "id", data->Id);
 			m_Config.SetString(id, "name", data->Name);
 			m_Config.SetVec3(id, "position", data->Position);
 			m_Config.SetVec3(id, "rotation", data->Rotation);

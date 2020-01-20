@@ -23,7 +23,10 @@ namespace Vulture {
 		ImGui::Begin("Level Selector");
 		
 		{
-			ImGui::ListBox("Available Levels", &m_CurrentLevel, vc.data(), vc.size(), 10);
+			ImGui::Text("Current Level :: ");
+			ImGui::SameLine();
+			ImGui::Text(m_LevelNames[m_CurrentLevel].c_str());
+			ImGui::ListBox("###AvailableLevels", &m_CurrentLevel, vc.data(), vc.size(), 10);
 			if (ImGui::Button("Load Level")) {
 				std::string name = m_LevelNames[m_CurrentLevel];
 				Ref<Level> lev;
@@ -32,7 +35,12 @@ namespace Vulture {
 
 				Application::Get().SetCurrentLevel(lev);
 			};
+			ImGui::SameLine();
 			m_AddLevelButtonStatus = ImGui::Button("Add Level");
+			ImGui::SameLine();
+			if (ImGui::Button("Save Level")) {
+
+			}
 			AddNewLevelDialog();
 		}
 
