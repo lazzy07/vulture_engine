@@ -7,6 +7,7 @@ namespace Vulture {
 	Material::Material(const std::string name, const std::string shaderName, Ref<ShaderLibrary> shaderLibrary, Ref<TextureLibrary> textureLibrary) 
 		: m_Name(name), m_ShaderLibrary(shaderLibrary), m_TextureLibrary(textureLibrary)
 	{
+		VUL_CORE_TRACE("Material : {0} with shader: {1} loaded", name, shaderName);
 		m_Configurations.SetString("material", "name", name);
 		m_Configurations.SetString("shader", "name", shaderName);
 

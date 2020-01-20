@@ -10,6 +10,7 @@ namespace Vulture {
 			VUL_CORE_ASSERT(false, "Renderer API Currently not supported");
 			return nullptr;
 		case RendererAPI::API::OpenGL:
+			VUL_CORE_TRACE("Shader with OpenGL loaded : {0}", filePath);
 			return std::make_shared<OpenGLShader>(filePath);
 		};
 		VUL_CORE_ASSERT(false, "unknown RendererAPI");

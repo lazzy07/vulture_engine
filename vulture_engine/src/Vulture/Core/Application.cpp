@@ -3,7 +3,7 @@
 #include "Vulture/Core/Input.h"
 #include "Vulture/Renderer/Renderer.h"
 #include "Vulture/Renderer/ModelLoader.h"
-
+#include <sys/stat.h>
 #include <GLFW/glfw3.h>
 
 #include "Vulture/DevAssets/LevelSelector.h"
@@ -49,8 +49,11 @@ namespace Vulture {
 	void Application::LoadDefaultLevel()
 	{
 		m_CurrentLevel.reset(new Level("default"));
-		m_CurrentLevel->GetShaderLibrary()->Load("./assets/shaders/default.glsl");
-		m_CurrentLevel->GetMaterialLibrary()->AddNewMaterial("default");
+		struct stat buffer;
+		if (stat("./assets/levels/default.vullevel", &buffer) != 0) {
+			VUL_CORE_INFO("default level not found: creating..");
+			m_CurrentLevel->SaveLevel();
+		}
 	}
 
 	void Application::OnEvent(Event &e) {

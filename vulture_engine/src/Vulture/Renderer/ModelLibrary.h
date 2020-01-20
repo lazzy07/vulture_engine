@@ -14,6 +14,8 @@ namespace Vulture {
 		Ref<Model> GetModel(const std::string & name);
 		bool Exists(const std::string & name);
 
+		const std::unordered_map<std::string, Ref<Model>> GetLibrary() { return m_ModelCollection; }
+
 		std::string ModelsToConfigBuffer();
 	private:
 		Configurations m_Config;

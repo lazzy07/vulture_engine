@@ -48,6 +48,8 @@ namespace Vulture {
 				}
 			}
 			m_LevelNames.push_back(levelName);
+			Level level(levelName);
+			level.SaveLevel();
 			VUL_CORE_TRACE("New Level Added : {0}", levelName);
 
 			vc.clear();
@@ -109,7 +111,7 @@ namespace Vulture {
 			std::string fileType = p.substr(lastDot+1);
 
 			if (fileType == "vullevel") {
-				VUL_CORE_TRACE("Level File Found : {0}", p);
+				VUL_CORE_TRACE("DEBUG::LevelLoader::Level File Found : {0}", p);
 				m_LevelNames.push_back(getFileName(p));
 			}
 		}

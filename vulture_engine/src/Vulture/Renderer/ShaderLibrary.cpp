@@ -10,7 +10,9 @@ namespace Vulture {
 
 	void ShaderLibrary::Add(const std::string & name, const Ref<Shader>& shader, const std::string filePath)
 	{
-		VUL_CORE_ASSERT(!Exists(name), "Shader Already exists");
+		if (name != "default") {
+			VUL_CORE_ASSERT(!Exists(name), "Shader Already exists");
+		}
 		m_Configurations.SetString("shaders", name, filePath);
 		m_Shaders[name] = shader;
 	}

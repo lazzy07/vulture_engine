@@ -53,7 +53,7 @@ namespace Vulture {
 	{
 		glm::mat3 mat = defaultValue;
 	
-		if (GetString(section, key, "") != "") {
+		if (IsSectionExists(section)) {
 			for (unsigned int i = 0; i < 3; i++) {
 				for (unsigned int j = 0; j < 3; j++) {
 					mat[i][j] = std::stof(m_Config[section][key + std::to_string(i + j)]);
@@ -69,7 +69,7 @@ namespace Vulture {
 	{
 		glm::mat4 mat = defaultValue;
 	
-		if (GetString(section, key, "") != "") {
+		if (IsSectionExists(section)) {
 			for (unsigned int i = 0; i < 4; i++) {
 				for (unsigned int j = 0; j < 4; j++) {
 					mat[i][j] = std::stof(m_Config[section][key + std::to_string(i + j)]);
@@ -85,39 +85,40 @@ namespace Vulture {
 	{
 		glm::vec2 vec = defaultValue;
 
-		if (GetString(section, key, "") != "") {
+		if (IsSectionExists(section)) {
 			for (unsigned int i = 0; i < 2; i++) {
 				vec[i] = std::stof(m_Config[section][key + std::to_string(i)]);
 			}
 		}
 
-		return defaultValue;
+		return vec;
 	}
 
 	glm::vec3 Configurations::GetVec3(const std::string section, const std::string key, const glm::vec3 defaultValue)
 	{
-		glm::vec2 vec = defaultValue;
+		glm::vec3 vec = defaultValue;
 
-		if (GetString(section, key, "") != "") {
+		if (IsSectionExists(section)) {
 			for (unsigned int i = 0; i < 3; i++) {
-				vec[i] = std::stof(m_Config[section][key + std::to_string(i)]);
+				std::string pt = key + std::to_string(i);
+				vec[i] = std::stof(m_Config[section][pt]);
 			}
 		}
 
-		return defaultValue;
+		return vec;
 	}
 
 	glm::vec4 Configurations::GetVec4(const std::string section, const std::string key, const glm::vec4 defaultValue)
 	{
-		glm::vec2 vec = defaultValue;
+		glm::vec4 vec = defaultValue;
 
-		if (GetString(section, key, "") != "") {
+		if (IsSectionExists(section)) {
 			for (unsigned int i = 0; i < 4; i++) {
 				vec[i] = std::stof(m_Config[section][key + std::to_string(i)]);
 			}
 		}
 
-		return defaultValue;
+		return vec;
 	}
 
 	bool Configurations::SetInt(const std::string section, const std::string key, int val)
@@ -243,10 +244,13 @@ namespace Vulture {
 
 	void Configurations::GetAll(const std::string section, std::unordered_map<std::string, std::string>* map)
 	{
-		VUL_CORE_ASSERT(!IsSectionExists(section), "Section specified does not exists");
-	
-		for (std::pair<std::string, std::string> ele : m_Config[section]) {
-			map->insert(std::pair<std::string, std::string>(ele.first, ele.second));
+		if (IsSectionExists(section)) {
+			for (std::pair<std::string, std::string> ele : m_Config[section]) {
+				map->insert(std::pair<std::string, std::string>(ele.first, ele.second));
+			}
+		}
+		else {
+			VUL_CORE_WARN("Section specified does not exists : {0}", section);
 		}
 	}
 }

@@ -24,7 +24,7 @@ namespace Vulture {
 		void OnChangeKeyboard(const VULTURE_KEY keyUp, const VULTURE_KEY keyDown, 
 			const VULTURE_KEY keyLeft, const VULTURE_KEY keyRight, const float cameraSpeed);
 	private:
-		float m_MouseSensitivity = 0.1f;
+		float m_MouseSensitivity = 0.2f;
 		Ref<PerspectiveCamera> m_Camera;
 
 		bool m_firstMouse = false;
