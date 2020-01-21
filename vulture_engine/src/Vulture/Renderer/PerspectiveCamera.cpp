@@ -3,15 +3,20 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 namespace Vulture {
-	PerspectiveCamera::PerspectiveCamera(glm::vec3 position, const float yaw , const float pitch) :
+	PerspectiveCamera::PerspectiveCamera(int screenHeight, int screenWidth, float angle, float nearPlane, float farPlane, glm::vec3 position, const float yaw , const float pitch) :
 		m_ViewMatrix(1.0f),
-		m_ProjectionMatrix(glm::perspective(glm::radians(54.0f), (float)1280 / (float)720, 0.1f, 100.0f)), 
+		m_ProjectionMatrix(glm::perspective(glm::radians(angle), (float)screenWidth / (float)screenHeight, nearPlane, farPlane)),
 		m_Position(position)
 	{
 		m_WorldUp = glm::vec3(0.0f, 1.0f, 0.0f);
 		m_Yaw = yaw;
 		m_Pitch = pitch;
 		RecalculateMatrices();
+	}
+
+	void PerspectiveCamera::UpdateViewMatrix(int screenHeight, int screenWidth, float angle, float nearPlane, float farPlane)
+	{
+		m_ProjectionMatrix = glm::perspective(glm::radians(angle), (float)screenWidth / (float)screenHeight, nearPlane, farPlane);
 	}
 
 	void PerspectiveCamera::RecalculateMatrices()

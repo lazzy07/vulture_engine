@@ -14,10 +14,14 @@ namespace Vulture {
 
 		void UpdateOutliner();
 
-		inline std::string GetSelectedInstance() const { return m_SelectedInstance; };
 
+		static inline std::string GetSelectedInstance() { return m_SelectedInstance; };
+		static inline std::string GetSelectedObject() { return m_SelectedObject; };
+
+		static inline void ResetSelected() { m_SelectedObject = m_SelectedInstance = ""; };
 	private:
 		std::unordered_map<std::string, std::vector<Ref<LevelModelData>>> m_Instances;
-		std::string m_SelectedInstance = "";
+		static std::string m_SelectedInstance;
+		static std::string m_SelectedObject;
 	};
 }

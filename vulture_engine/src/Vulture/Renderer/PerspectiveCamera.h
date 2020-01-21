@@ -6,13 +6,15 @@
 namespace Vulture {
 	class PerspectiveCamera : public Camera {
 	public:
-		PerspectiveCamera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), const float yaw = -90.0f, const float pitch = 0.0f);
+		PerspectiveCamera(int Screenheight = 720, int screenWidth = 1280, float angle=54.0f, float nearPlane = 0.1f, float farPlane = 100.0f, glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), const float yaw = -90.0f, const float pitch = 0.0f);
 		~PerspectiveCamera() = default;
 
 		inline void SetPosition(const glm::vec3& position) { m_Position = position; RecalculateMatrices(); };
 		
 		inline void SetYaw(float yaw) { m_Yaw = yaw; RecalculateMatrices(); };
 		inline void SetPitch(float pitch) { m_Pitch = pitch; RecalculateMatrices(); };
+
+		virtual void UpdateViewMatrix(int Screenheight = 720, int screenWidth = 1280, float angle = 54.0f, float nearPlane = 0.1f, float farPlane = 100.0f);
 
 		const glm::vec3& GetPosition() const { return m_Position; };
 

@@ -9,6 +9,7 @@ namespace Vulture {
 	class Renderer {
 	public:
 		static void Init(Ref<Window> window);
+		static void OnWindowResize(uint32_t width, uint32_t height);
 
 		static void BeginScene(Ref<Camera> camera);
 		static void EndScene();

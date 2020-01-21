@@ -3,6 +3,7 @@
 #include <filesystem>
 #include "LevelSelector.h"
 #include "Vulture/Core/Application.h"
+#include "Vulture/DevAssets/Outliner.h"
 
 namespace Vulture {
 	LevelSelector::LevelSelector() : Layer("LevelSelector")
@@ -32,7 +33,7 @@ namespace Vulture {
 				Ref<Level> lev;
 				lev.reset(new Level(name));
 				lev->LoadLevel();
-
+				Outliner::ResetSelected();
 				Application::Get().SetCurrentLevel(lev);
 			};
 			ImGui::SameLine();

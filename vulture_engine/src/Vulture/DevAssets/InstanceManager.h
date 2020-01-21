@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Vulture/Core/Layer.h"
+#include "Vulture/Core/Level.h"
 
 namespace Vulture {
 	class InstanceManager : public Layer {
@@ -11,8 +12,11 @@ namespace Vulture {
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
 		virtual void OnImGuiRender() override;
+
 	private:
-		std::string m_CurrentInstance;
+		void SetCurrentInstance();
+	private:
+		Ref<LevelModelData> m_CurrentInstance;
 	};
 }
 

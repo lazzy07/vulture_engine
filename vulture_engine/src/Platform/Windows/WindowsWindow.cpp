@@ -60,7 +60,7 @@ namespace Vulture {
 			WindowResizeEvent event(width, height);
 			data.Width = width;
 			data.Height = height;
-
+			VUL_CORE_INFO("Vulture::Window Resize:: w {0} h {1}", width, height);
 			data.EventCallback(event);
 		});
 

@@ -14,6 +14,9 @@ public:
 		m_Level->AddModelToLevel("door_01", glm::vec3(0.0f), glm::vec3(0.0f), glm::vec3(1.0f));
 		m_Level->AddModelToLevel("door_01", glm::vec3(5.0f), glm::vec3(0.0f), glm::vec3(1.0f));
 		m_Level->SaveLevel();
+		Vulture::Window& w = Vulture::Application::Get().GetWindow();
+		
+		m_Controller->GetCamera()->UpdateViewMatrix(w.GetHeight(), w.GetWidth());
 	}
 
 	void OnUpdate(Vulture::Timestep timestep) override {
@@ -28,7 +31,10 @@ public:
 	}
 
 	void OnEvent(Vulture::Event& event) override {
-		
+		if (event.GetEventType() == Vulture::EventType::WindowResize) {
+			Vulture::WindowResizeEvent& e = (Vulture::WindowResizeEvent&)event;
+			m_Controller->GetCamera()->UpdateViewMatrix(e.GetHeight(), e.GetWidth(), 54.0f, 0.1f, 100.0f);
+		}
 	}
 private:
 	Vulture::Ref<Vulture::Level> m_Level = Vulture::Application::Get().GetCurrentLevel();

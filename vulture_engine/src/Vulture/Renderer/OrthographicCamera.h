@@ -16,7 +16,7 @@ namespace Vulture {
 		virtual const glm::mat4& GetProjectionMatrix() const { return m_ProjectionMatrix; };
 		virtual const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; };
 		virtual const glm::mat4& GetViewProjectionMatrix() const { return m_ViewProjectionMatrix; } ;
-
+		virtual void UpdateViewMatrix(int Screenheight, int screenWidth, float angle, float nearPlane, float farPlane) {};
 	private:
 		void RecalculateViewMatrix();
 
