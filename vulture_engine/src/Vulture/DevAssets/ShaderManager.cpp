@@ -9,4 +9,13 @@ namespace Vulture{
 	ShaderManager::~ShaderManager()
 	{
 	}
+	void ShaderManager::OnAttach()
+	{
+	}
+	void ShaderManager::OnDetach()
+	{
+	}
+	void ShaderManager::OnImGuiRender()
+	{
+	}
 }

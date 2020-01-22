@@ -9,4 +9,13 @@ namespace Vulture {
 	MaterialManager::~MaterialManager()
 	{
 	}
+	void MaterialManager::OnAttach()
+	{
+	}
+	void MaterialManager::OnDetach()
+	{
+	}
+	void MaterialManager::OnImGuiRender()
+	{
+	}
 }

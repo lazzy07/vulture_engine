@@ -11,6 +11,11 @@
 #include "Vulture/DevAssets/Outliner.h"
 #include "Vulture/DevAssets/OptionsManager.h"
 
+#include "Vulture/DevAssets/ModelManager.h"
+#include "Vulture/DevAssets/MaterialManager.h"
+#include "Vulture/DevAssets/ShaderManager.h"
+#include "Vulture/DevAssets/TextureManager.h"
+
 namespace Vulture {
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
@@ -38,6 +43,18 @@ namespace Vulture {
 
 		OptionsManager* optionsManager = new OptionsManager();
 		PushOverlay(optionsManager);
+
+		ModelManager* modelManager = new ModelManager();
+		PushOverlay(modelManager);
+
+		MaterialManager* materialManager = new MaterialManager();
+		PushOverlay(materialManager);
+
+		ShaderManager* shaderManager = new ShaderManager();
+		PushOverlay(shaderManager);
+
+		TextureManager* textureManager = new TextureManager();
+		PushOverlay(textureManager);
 	}
 
 	Application::~Application()

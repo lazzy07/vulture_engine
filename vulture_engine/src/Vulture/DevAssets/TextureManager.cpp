@@ -8,4 +8,13 @@ namespace Vulture {
 	TextureManager::~TextureManager()
 	{
 	}
+	void TextureManager::OnAttach()
+	{
+	}
+	void TextureManager::OnDetach()
+	{
+	}
+	void TextureManager::OnImGuiRender()
+	{
+	}
 }

@@ -22,7 +22,10 @@ namespace Vulture {
 
 	Ref<Model> ModelLibrary::GetModel(const std::string & name)
 	{
-		VUL_CORE_ASSERT(Exists(name), "Model couln't be found");
+		if (!Exists(name)) {
+			VUL_CORE_WARN("Model couln't be found : {0}", name);
+			return nullptr;
+		}
 		return m_ModelCollection[name];
 	}
 

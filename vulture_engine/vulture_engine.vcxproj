@@ -144,6 +144,9 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Vulture\Core\FileManager.h" />
+    <ClInclude Include="src\Vulture\DevAssets\MaterialManager.h" />
+    <ClInclude Include="src\Vulture\DevAssets\ModelManager.h" />
     <ClInclude Include="src\Vulture\DevAssets\OptionsManager.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
@@ -173,6 +176,8 @@
     <ClInclude Include="src\Vulture\Core\Window.h" />
     <ClInclude Include="src\Vulture\DevAssets\LevelSelector.h" />
     <ClInclude Include="src\Vulture\DevAssets\Outliner.h" />
+    <ClInclude Include="src\Vulture\DevAssets\ShaderManager.h" />
+    <ClInclude Include="src\Vulture\DevAssets\TextureManager.h" />
     <ClInclude Include="src\Vulture\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Vulture\Renderer\Buffer.h" />
     <ClInclude Include="src\Vulture\Renderer\Camera.h" />
@@ -571,6 +576,9 @@
     <ClInclude Include="vendor\zip\zip\zip.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Vulture\Core\FileManager.cpp" />
+    <ClCompile Include="src\Vulture\DevAssets\MaterialManager.cpp" />
+    <ClCompile Include="src\Vulture\DevAssets\ModelManager.cpp" />
     <ClCompile Include="src\Vulture\DevAssets\OptionsManager.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
@@ -592,6 +600,8 @@
     <ClCompile Include="src\Vulture\Core\TaskManager.cpp" />
     <ClCompile Include="src\Vulture\DevAssets\LevelSelector.cpp" />
     <ClCompile Include="src\Vulture\DevAssets\Outliner.cpp" />
+    <ClCompile Include="src\Vulture\DevAssets\ShaderManager.cpp" />
+    <ClCompile Include="src\Vulture\DevAssets\TextureManager.cpp" />
     <ClCompile Include="src\Vulture\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Vulture\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Buffer.cpp" />

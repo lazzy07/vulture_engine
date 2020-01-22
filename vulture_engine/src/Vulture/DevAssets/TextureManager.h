@@ -7,5 +7,9 @@ namespace Vulture {
 	public:
 		TextureManager();
 		~TextureManager();
+
+		virtual void OnAttach() override;
+		virtual void OnDetach() override;
+		virtual void OnImGuiRender() override;
 	};
 }

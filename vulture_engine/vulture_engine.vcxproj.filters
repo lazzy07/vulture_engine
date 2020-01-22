@@ -1317,6 +1317,11 @@
     <ClInclude Include="src\Vulture\Core\IdGenerator.h" />
     <ClInclude Include="src\Vulture\DevAssets\Outliner.h" />
     <ClInclude Include="src\Vulture\DevAssets\OptionsManager.h" />
+    <ClInclude Include="src\Vulture\Core\FileManager.h" />
+    <ClInclude Include="src\Vulture\DevAssets\ModelManager.h" />
+    <ClInclude Include="src\Vulture\DevAssets\MaterialManager.h" />
+    <ClInclude Include="src\Vulture\DevAssets\ShaderManager.h" />
+    <ClInclude Include="src\Vulture\DevAssets\TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1430,5 +1435,10 @@
     <ClCompile Include="src\Vulture\Core\IdGenerator.cpp" />
     <ClCompile Include="src\Vulture\DevAssets\Outliner.cpp" />
     <ClCompile Include="src\Vulture\DevAssets\OptionsManager.cpp" />
+    <ClCompile Include="src\Vulture\Core\FileManager.cpp" />
+    <ClCompile Include="src\Vulture\DevAssets\ModelManager.cpp" />
+    <ClCompile Include="src\Vulture\DevAssets\MaterialManager.cpp" />
+    <ClCompile Include="src\Vulture\DevAssets\ShaderManager.cpp" />
+    <ClCompile Include="src\Vulture\DevAssets\TextureManager.cpp" />
   </ItemGroup>
 </Project>
