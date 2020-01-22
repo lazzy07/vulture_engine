@@ -15,6 +15,8 @@ namespace Vulture {
 
 		bool Exists(const std::string name);
 
+		inline std::unordered_map<std::string, Ref<Material>>* GetAll() { return &m_Materials; }
+
 		std::string MaterialsToConfigBuffer();
 	private:
 		std::unordered_map<std::string, Ref<Material>> m_Materials;

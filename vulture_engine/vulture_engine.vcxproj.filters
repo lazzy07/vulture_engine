@@ -1315,8 +1315,8 @@
     <ClInclude Include="src\Vulture\Core\Level.h" />
     <ClInclude Include="src\Vulture\DevAssets\LevelSelector.h" />
     <ClInclude Include="src\Vulture\Core\IdGenerator.h" />
-    <ClInclude Include="src\Vulture\DevAssets\InstanceManager.h" />
     <ClInclude Include="src\Vulture\DevAssets\Outliner.h" />
+    <ClInclude Include="src\Vulture\DevAssets\OptionsManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1428,7 +1428,7 @@
     <ClCompile Include="src\Vulture\Core\Level.cpp" />
     <ClCompile Include="src\Vulture\DevAssets\LevelSelector.cpp" />
     <ClCompile Include="src\Vulture\Core\IdGenerator.cpp" />
-    <ClCompile Include="src\Vulture\DevAssets\InstanceManager.cpp" />
     <ClCompile Include="src\Vulture\DevAssets\Outliner.cpp" />
+    <ClCompile Include="src\Vulture\DevAssets\OptionsManager.cpp" />
   </ItemGroup>
 </Project>

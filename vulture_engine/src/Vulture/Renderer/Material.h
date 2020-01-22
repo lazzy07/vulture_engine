@@ -9,7 +9,10 @@ namespace Vulture {
 	public:
 		Material(const std::string name, const std::string shaderName, Ref<ShaderLibrary> shaderLibrary, Ref<TextureLibrary> textureLibrary);
 		~Material();
+		
 		Ref<Shader> GetShader();
+		inline const std::string GetName() const { return m_Name; };
+
 		void SetShader(std::string shader);
 		inline Configurations GetConfigurations() const { return m_Configurations; };
 

@@ -9,6 +9,7 @@
 #include "Vulture/DevAssets/LevelSelector.h"
 #include "Vulture/Core/Configurations.h"
 #include "Vulture/DevAssets/Outliner.h"
+#include "Vulture/DevAssets/OptionsManager.h"
 
 namespace Vulture {
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
@@ -34,6 +35,9 @@ namespace Vulture {
 
 		Outliner* outliner = new Outliner();
 		PushOverlay(outliner);
+
+		OptionsManager* optionsManager = new OptionsManager();
+		PushOverlay(optionsManager);
 	}
 
 	Application::~Application()

@@ -4,17 +4,17 @@
 #include "Vulture/Core/Level.h"
 
 namespace Vulture {
-	class InstanceManager : public Layer {
+	class OptionsManager : public Layer {
 	public:
-		InstanceManager();
-		~InstanceManager();
+		OptionsManager();
+		~OptionsManager();
 
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
 		virtual void OnImGuiRender() override;
 
 	private:
-		void SetCurrentInstance();
+		void SetCurrent();
 	private:
 		Ref<LevelModelData> m_CurrentInstance;
 	};
