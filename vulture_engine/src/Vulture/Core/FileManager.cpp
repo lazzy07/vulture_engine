@@ -17,9 +17,9 @@ namespace Vulture {
 		for (const auto &entry : std::filesystem::directory_iterator(path)) {
 			std::string p = entry.path().string();
 			auto lastDot = p.rfind('.');
-			std::string fileType = p.substr(lastDot + 1);
+			std::string ft = p.substr(lastDot + 1);
 
-			if (fileType == fileType) {
+			if (ft == fileType) {
 				filePaths->push_back(p);
 			}
 		}

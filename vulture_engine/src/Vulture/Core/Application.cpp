@@ -47,14 +47,14 @@ namespace Vulture {
 		ModelManager* modelManager = new ModelManager();
 		PushOverlay(modelManager);
 
-		//MaterialManager* materialManager = new MaterialManager();
-		//PushOverlay(materialManager);
-		//
-		//ShaderManager* shaderManager = new ShaderManager();
-		//PushOverlay(shaderManager);
-		//
-		//TextureManager* textureManager = new TextureManager();
-		//PushOverlay(textureManager);
+		MaterialManager* materialManager = new MaterialManager();
+		PushOverlay(materialManager);
+		
+		ShaderManager* shaderManager = new ShaderManager();
+		PushOverlay(shaderManager);
+		
+		TextureManager* textureManager = new TextureManager();
+		PushOverlay(textureManager);
 	}
 
 	Application::~Application()

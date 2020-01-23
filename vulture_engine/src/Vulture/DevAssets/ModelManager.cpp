@@ -40,13 +40,12 @@ namespace Vulture {
 			}
 			ImGui::ListBoxFooter();
 		}
-		
 		{
 			if (ImGui::Button("Add to Level###ModelAddToLevel")) {
 				AddModelToLevel();
 			}
 			ImGui::SameLine();
-			if (ImGui::Button("Update List")) {
+			if (ImGui::Button("Update List###UpdateModelList")) {
 				UpdateModelList();
 			}
 			ImGui::SameLine();
