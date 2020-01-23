@@ -24,7 +24,7 @@ namespace Vulture {
 		const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
 
 		if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
-			VUL_CORE_ASSERT(false, "Model loader cannot load the file");
+			VUL_CORE_ERROR("Model loader cannot load the file: {0}", path);
 			return;
 		}
 		std::string name = getFileName(path);

@@ -66,6 +66,12 @@ namespace Vulture {
 					}
 				}
 				ImGui::Unindent();
+				ImGui::Text("Add a new instance to the scene");
+				ImGui::Indent();
+				if (ImGui::Button("Add an instance###addmodelinstance")) {
+					Application::Get().GetCurrentLevel()->AddModelToLevel(Outliner::GetSelectedObject());
+				}
+				ImGui::Unindent();
 			}
 			ImGui::EndChild();
 		}

@@ -18,5 +18,6 @@ namespace Vulture {
 		int m_Selected = -1;
 		FileManager m_FileManager;
 		std::vector<std::string> m_ModelList;
+		char m_NewPath[1000] = "";
 	};
 }

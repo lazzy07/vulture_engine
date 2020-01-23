@@ -18,6 +18,7 @@ namespace Vulture {
 	void ModelManager::OnAttach()
 	{
 		UpdateModelList();
+		m_NewPath[0] = '\0';
 	}
 
 	void ModelManager::OnDetach()
@@ -39,8 +40,9 @@ namespace Vulture {
 			}
 			ImGui::ListBoxFooter();
 		}
+		
 		{
-			if (ImGui::Button("Add to scene###ModelAddToScene")) {
+			if (ImGui::Button("Add to Level###ModelAddToLevel")) {
 				AddModelToLevel();
 			}
 			ImGui::SameLine();
@@ -50,6 +52,20 @@ namespace Vulture {
 			ImGui::SameLine();
 			if (ImGui::Button("Import Model")) {
 				ImGui::OpenPopup("Model Import Popup");
+			}
+			{
+				if (ImGui::BeginPopup("Model Import Popup")) {
+					ImGui::InputText("Path of 3D Model", m_NewPath, 1000);
+					if (ImGui::Button("Add to Level###Add3Dtolevel")) {
+						Application::Get().GetCurrentLevel()->AddNewModel(m_NewPath);
+						UpdateModelList();
+						ImGui::CloseCurrentPopup();
+					}
+					if (ImGui::Button("Cancel###canceladdtolevel")) {
+						ImGui::CloseCurrentPopup();
+					}
+					ImGui::EndPopup();
+				}
 			}
 		}
 		ImGui::End();
@@ -64,8 +80,9 @@ namespace Vulture {
 	void ModelManager::AddModelToLevel()
 	{
 		if (m_Selected < m_ModelList.size() && m_Selected >= 0) {
-			if (!Application::Get().GetCurrentLevel()->GetModelLibrary()->GetModel(FileManager::GetFileName(m_ModelList[m_Selected]))) {
-				Application::Get().GetCurrentLevel()->AddNewModel(FileManager::GetFileName(m_ModelList[m_Selected]));
+			if (!Application::Get().GetCurrentLevel()->GetModelLibrary()->Exists(FileManager::GetFileName(m_ModelList[m_Selected]))) {
+				std::string name = FileManager::GetFileName(m_ModelList[m_Selected]);
+				Application::Get().GetCurrentLevel()->AddNewModel(name);
 			} else {
 				VUL_CORE_WARN("The Model is already added to the scene: {0} ", FileManager::GetFileName(m_ModelList[m_Selected]));
 			}

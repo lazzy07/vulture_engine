@@ -138,8 +138,8 @@ namespace Vulture {
 	void Level::AddModelToLevel(std::string name, glm::vec3 position, glm::vec3 rotation, 
 		glm::vec3 scale, bool isStatic, bool hidden)
 	{
-		auto ml = m_ModelLibrary->GetLibrary();
-		for (auto ele : ml) {
+		//auto ml = m_ModelLibrary->GetLibrary();
+		//for (auto ele : ml) {
 			Ref<LevelModelData> levData;
 			levData.reset(new LevelModelData());
 			std::string id = IdGenerator::GenerateId();
@@ -153,7 +153,7 @@ namespace Vulture {
 			levData->IsStatic = isStatic;
 
 			m_ModelData[id] = levData;
-		}
+		//}
 	}
 
 	void Level::AddNewModel(std::string modelPath)
