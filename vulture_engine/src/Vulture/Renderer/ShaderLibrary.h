@@ -20,6 +20,8 @@ namespace Vulture {
 		Ref<Shader> Get(const std::string& name);
 		bool Exists(const std::string& name);
 
+		inline std::unordered_map<std::string, Ref<Shader>>* GetAll() { return &m_Shaders; };
+
 		std::string GetConfigBuffer();
 	private:
 		std::unordered_map<std::string, Ref<Shader>> m_Shaders;

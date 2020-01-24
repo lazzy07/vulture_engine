@@ -80,8 +80,8 @@ namespace Vulture {
 
 	void MaterialManager::AddMaterialToLevel()
 	{
-		if (m_Selected > 0 && m_Selected < m_MaterialList.size()) {
-			Application::Get().GetCurrentLevel()->AddNewMaterial(m_MaterialList[m_Selected]);
+		if (m_Selected >= 0 && m_Selected < m_MaterialList.size()) {
+			Application::Get().GetCurrentLevel()->AddNewMaterial(FileManager::GetFileName(m_MaterialList[m_Selected]));
 		}
 		else {
 			VUL_CORE_WARN("Material is not valid or a material wasn't selected");

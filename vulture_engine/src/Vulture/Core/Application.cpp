@@ -23,7 +23,7 @@ namespace Vulture {
 
 	Application::Application()
 	{
-		VUL_ASSERT(!s_Instance, "Application aready has a instance");
+		VUL_ASSERT(!s_Instance, "Application already has a instance");
 		s_Instance = this;
 		m_Window = Ref<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));

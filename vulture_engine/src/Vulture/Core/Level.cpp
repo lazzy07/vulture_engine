@@ -178,7 +178,7 @@ namespace Vulture {
 
 	void Level::AddNewShader(std::string shaderName)
 	{
-		m_ShaderLibrary->Load("./assest/shaders/" + shaderName + ".glsl");
+		m_ShaderLibrary->Load("./assets/shaders/" + shaderName + ".glsl");
 	}
 
 	void Level::Render(Ref<Camera> camera)

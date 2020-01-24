@@ -55,7 +55,7 @@ namespace Vulture{
 
 	void ShaderManager::AddShaderToLevel()
 	{
-		if (m_Selected > 0 && m_Selected < m_ShaderList.size()) {
+		if (m_Selected >= 0 && m_Selected < m_ShaderList.size()) {
 			Application::Get().GetCurrentLevel()->AddNewShader(FileManager::GetFileName(m_ShaderList[m_Selected]));
 		}
 		else {

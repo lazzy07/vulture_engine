@@ -54,7 +54,7 @@ namespace Vulture {
 	}
 	void TextureManager::AddShaderToLevel()
 	{
-		if (m_Selected > 0 && m_Selected < m_TextureList.size()) {
+		if (m_Selected >= 0 && m_Selected < m_TextureList.size()) {
 			Application::Get().GetCurrentLevel()->AddNewTexture(m_TextureList[m_Selected]);
 		}
 		else {

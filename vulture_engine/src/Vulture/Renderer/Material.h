@@ -26,6 +26,15 @@ namespace Vulture {
 
 		void SaveMaterial();
 
+		std::unordered_map<std::string, float>* GetFloats() { return &m_Floats; };
+
+		std::unordered_map<std::string, glm::vec2>* GetVec2s() { return &m_Vec2s; };
+		std::unordered_map<std::string, glm::vec3>* GetVec3s() { return &m_Vec3s; };
+		std::unordered_map<std::string, glm::vec4>* GetVec4s() { return &m_Vec4s; };
+
+		std::unordered_map<std::string, glm::mat3>* GetMat3s() { return &m_Mat3s; }
+		std::unordered_map<std::string, glm::mat4>* GetMat4s() { return &m_Mat4s; }
+
 		void LoadVariables();
 		void Bind();
 	private:
@@ -35,7 +44,7 @@ namespace Vulture {
 		std::unordered_map<std::string, glm::vec4> m_Vec4s;
 
 		std::unordered_map<std::string, glm::mat3> m_Mat3s;
-		std::unordered_map<std::string, glm::mat3> m_Mat4s;
+		std::unordered_map<std::string, glm::mat4> m_Mat4s;
 
 		std::unordered_map<std::string, float> m_Textures;
 

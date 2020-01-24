@@ -11,6 +11,8 @@ namespace Vulture{
 		bool Exists(std::string name);
 
 		std::string TexturesToConfigBuffer();
+
+		inline std::unordered_map<std::string, Ref<Texture2D>>* GetAll() { return &m_Textures; };
 	private:
 		std::string GetFileName(std::string path);
 	private:
