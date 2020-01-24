@@ -21,6 +21,7 @@ namespace Vulture {
 		for (std::pair<std::string, Ref<VulMesh>> ele : m_Meshes) {
 			//VUL_CORE_ASSERT(m_Materials[ele.first], "Cannot find assigned material for the mesh");
 			if (m_Materials[ele.first]) {
+				m_Materials[ele.first]->Bind();
 				ele.second->Draw(m_Materials[ele.first]->GetShader(), position, rotation, scale);
 			}
 		}

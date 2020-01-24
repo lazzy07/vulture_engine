@@ -88,6 +88,28 @@ namespace Vulture {
 					std::string id = Outliner::GetSelectedMaterial();
 					ImGui::Text(id.c_str());
 				}
+
+				{
+
+					ImGui::Text("Select Shader: ");
+					Ref<Material> mat = Application::Get().GetCurrentLevel()->GetMaterialLibrary()->GetMaterial(Outliner::GetSelectedMaterial());
+
+					static std::string selected = mat->GetShader()->GetName();
+
+					if (ImGui::BeginCombo("SetShader", selected.c_str())) {
+						{
+							for (auto elem : *Application::Get().GetCurrentLevel()->GetShaderLibrary()->GetAll()) {
+								std::string id = elem.first + "###" + elem.first + "selshadermat";
+								if (ImGui::Selectable(id.c_str(), elem.first == selected)) {
+									mat->SetShader(elem.first);
+									selected = elem.first;
+								}
+							}
+						}
+						ImGui::EndCombo();
+					}
+				}
+
 				// Adding variables / delete variables
 				{
 					if (ImGui::Button("Add new variable")) {
@@ -206,7 +228,61 @@ namespace Vulture {
 			{
 				ImGui::BeginGroup();
 				{
+					if (ImGui::Button("Add Texture")) {
+						ImGui::OpenPopup("Add Texture To Material");
+					}
 
+					if(ImGui::BeginPopup("Add Texture To Material")){
+						{
+							static int value = 0;
+							static std::string val = "none";
+							ImGui::InputInt("Texture Slot", &value);
+							
+							auto textures = Application::Get().GetCurrentLevel()->GetTextureLibrary()->GetAll();
+							if (ImGui::BeginCombo("Select Texture", val.c_str())){
+								for (auto ele : *textures) {
+									if (ImGui::Selectable(ele.first.c_str(), val == ele.first)) {
+										val = ele.first;
+									}
+								}
+								ImGui::EndCombo();
+							}
+
+							{
+								if (ImGui::Button("Add")) {
+									Ref<Material> mat = Application::Get().GetCurrentLevel()->GetMaterialLibrary()->GetMaterial(Outliner::GetSelectedMaterial());
+									if (val != "none") {
+										mat->SetTexture(val, value);
+										mat->LoadVariables();
+										value = 0;
+										val = "none";
+										ImGui::CloseCurrentPopup();
+									}
+									else {
+										VUL_CORE_WARN("Please select a valid texture");
+									}
+								}
+								if (ImGui::Button("Cancel")) {
+									val = "none";
+									value = 0;
+									ImGui::CloseCurrentPopup();
+								}
+							}
+						}
+						ImGui::EndPopup();
+					}
+					{
+						Ref<Material> mat = Application::Get().GetCurrentLevel()->GetMaterialLibrary()->GetMaterial(Outliner::GetSelectedMaterial());
+
+						for (auto ele : *mat->GetTextures()) {
+							std::string name = ele.first + " at " + std::to_string((int)ele.second);
+							ImGui::Text(name.c_str());
+							ImGui::SameLine();
+							if (ImGui::Button("Delete")) {
+
+							}
+						}
+					}
 				}
 				ImGui::EndGroup();
 			}
