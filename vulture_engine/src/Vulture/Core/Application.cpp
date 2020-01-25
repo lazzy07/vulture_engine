@@ -79,6 +79,11 @@ namespace Vulture {
 			VUL_CORE_INFO("default level not found: creating..");
 			m_CurrentLevel->SaveLevel();
 		}
+		if (!m_CurrentLevel->GetMaterialLibrary()->Exists("defaut")) {
+			m_CurrentLevel->AddNewMaterial("default");
+			VUL_CORE_INFO("default material not found, default material has been loaded");
+		}
+		m_CurrentLevel->LoadLevel();
 	}
 
 	void Application::OnEvent(Event &e) {
@@ -103,10 +108,10 @@ namespace Vulture {
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 
-			if (!m_Minimized) {
+			//if (!m_Minimized) {
 				for (Layer* layer : m_LayerStack)
 					layer->OnUpdate(timestep);
-			}
+			//}
 
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)

@@ -15,6 +15,7 @@ namespace Vulture {
 
 		void SetShader(std::string shader);
 		inline Configurations GetConfigurations() const { return m_Configurations; };
+		inline void SetConfigurations(std::string cfg) { m_Configurations.LoadConfigBuffer(cfg.c_str()); }
 
 		void SetFloat(std::string name, float value);
 		void SetVec2(std::string name, glm::vec2 value);

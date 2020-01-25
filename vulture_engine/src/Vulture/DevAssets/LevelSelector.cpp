@@ -40,7 +40,7 @@ namespace Vulture {
 			m_AddLevelButtonStatus = ImGui::Button("Add Level");
 			ImGui::SameLine();
 			if (ImGui::Button("Save Level")) {
-
+				Application::Get().GetCurrentLevel()->SaveLevel();
 			}
 			AddNewLevelDialog();
 		}

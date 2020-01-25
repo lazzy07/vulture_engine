@@ -10,10 +10,10 @@ public:
 		
 		//std::dynamic_pointer_cast<Vulture::OpenGLShader>(m_exampleShader)->UploadUniformInt("u_Texture", 0);
 
-		m_Level->AddNewModel("./assets/fbx/door_01.fbx");
-		m_Level->AddModelToLevel("door_01", glm::vec3(0.0f), glm::vec3(0.0f), glm::vec3(1.0f));
-		m_Level->AddModelToLevel("door_01", glm::vec3(5.0f), glm::vec3(0.0f), glm::vec3(1.0f));
-		m_Level->SaveLevel();
+		//m_Level->AddNewModel("./assets/fbx/door_01.fbx");
+		//m_Level->AddModelToLevel("door_01", glm::vec3(0.0f), glm::vec3(0.0f), glm::vec3(1.0f));
+		//m_Level->AddModelToLevel("door_01", glm::vec3(5.0f), glm::vec3(0.0f), glm::vec3(1.0f));
+		//m_Level->SaveLevel();
 		Vulture::Window& w = Vulture::Application::Get().GetWindow();
 		
 		m_Controller->GetCamera()->UpdateViewMatrix(w.GetHeight(), w.GetWidth());
@@ -27,7 +27,6 @@ public:
 		Vulture::RenderCommand::Clear();
 
 		m_Level->Render(m_Controller->GetCamera());
-
 	}
 
 	void OnEvent(Vulture::Event& event) override {

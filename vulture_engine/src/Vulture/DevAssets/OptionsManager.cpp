@@ -46,6 +46,11 @@ namespace Vulture {
 				ImGui::InputFloat3("Rotation", glm::value_ptr(md->Rotation));
 				ImGui::InputFloat3("Scale", glm::value_ptr(md->Scale));
 			}
+			{
+				if (ImGui::Button("Save Instances")) {
+					Application::Get().GetCurrentLevel()->SaveLevel();
+				}
+			}
 			ImGui::EndChild();
 		}
 		else if (Outliner::GetSelectedObject() != "") {
@@ -61,7 +66,8 @@ namespace Vulture {
 						for (auto e : *Application::Get().GetCurrentLevel()->GetMaterialLibrary()->GetAll()) {
 							std::string selectId = e.second->GetName() + "###" + e.second->GetName() + ele.first + "_selctablemat";
 							if (ImGui::Selectable(selectId.c_str(), ele.second->GetName() == e.first)) {
-								model->GetMaterials()->at(ele.first) = e.second;
+								//model->GetMaterials()->at(ele.first) = e.second;
+								model->ChangeMaterial(ele.first, e.second->GetName());
 							};
 						}
 						VUL_CORE_TRACE("{0} s material {1}", ele.first, ele.second->GetName());
@@ -73,6 +79,12 @@ namespace Vulture {
 				ImGui::Indent();
 				if (ImGui::Button("Add an instance###addmodelinstance")) {
 					Application::Get().GetCurrentLevel()->AddModelToLevel(Outliner::GetSelectedObject());
+				}
+				ImGui::SameLine();
+				if (ImGui::Button("Save Object")) {
+					Application::Get().GetCurrentLevel()->SaveLevel();
+					Application::Get().GetCurrentLevel()->GetModelLibrary()
+						->GetModel(Outliner::GetSelectedObject())->SaveConfig();
 				}
 				ImGui::Unindent();
 			}
@@ -87,6 +99,15 @@ namespace Vulture {
 					ImGui::SameLine();
 					std::string id = Outliner::GetSelectedMaterial();
 					ImGui::Text(id.c_str());
+				}
+
+				{
+					if (ImGui::Button("Save Materal")) {
+						auto material = Application::Get().GetCurrentLevel()->GetMaterialLibrary()->GetMaterial(Outliner::GetSelectedMaterial());
+						material->SaveMaterial();
+						Application::Get().GetCurrentLevel()->SaveLevel();
+						VUL_CORE_TRACE("Material save complete: {0}", Outliner::GetSelectedMaterial());
+					}
 				}
 
 				{

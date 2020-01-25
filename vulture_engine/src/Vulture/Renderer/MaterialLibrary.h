@@ -19,6 +19,7 @@ namespace Vulture {
 
 		std::string MaterialsToConfigBuffer();
 	private:
+		Configurations m_Config;
 		std::unordered_map<std::string, Ref<Material>> m_Materials;
 		Ref<ShaderLibrary> m_ShaderLibrary;
 		Ref<TextureLibrary> m_TextureLibrary;

@@ -19,6 +19,10 @@ namespace Vulture {
 		inline int GetMeshCount() { return m_Meshes.size(); };
 		void SetMaterial(std::string meshName);
 
+		void ChangeMaterial(std::string meshName, std::string materialName);
+
+		void SaveConfig();
+
 		inline std::string GetName() const { return m_Name; };
 		inline std::unordered_map<std::string, Ref<VulMesh>>* GetMeshes() { return &m_Meshes; };
 		inline std::unordered_map<std::string, Ref<Material>>* GetMaterials() { return &m_Materials; };
