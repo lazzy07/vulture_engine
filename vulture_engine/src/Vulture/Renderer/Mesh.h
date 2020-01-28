@@ -9,7 +9,7 @@
 namespace Vulture {
 	struct Vertex;
 
-	struct Texture;
+	//struct Texture;
 
 	class VulMesh {
 	public:

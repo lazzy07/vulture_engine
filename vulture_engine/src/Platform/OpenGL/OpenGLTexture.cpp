@@ -29,6 +29,13 @@ namespace Vulture {
 			VUL_CORE_ASSERT(false, "Unsupported number of channels of image");
 		}
 
+		int versionMajor;
+		int versionMinor;
+		glGetIntegerv(GL_MAJOR_VERSION, &versionMajor);
+		glGetIntegerv(GL_MINOR_VERSION, &versionMinor);
+
+		VUL_CORE_ASSERT(versionMajor > 4 || (versionMajor == 4 && versionMinor >= 5), "Vulture requires at least OpenGL version 4.5!");
+
 		glCreateTextures(GL_TEXTURE_2D, 1, &m_RendererID);
 		glTextureStorage2D(m_RendererID, 1, type, m_Width, m_Height);
 
