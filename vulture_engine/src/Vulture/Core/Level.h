@@ -5,6 +5,7 @@
 #include "Vulture/Renderer/ShaderLibrary.h"
 #include "Vulture/Renderer/TextureLibrary.h"
 #include "Vulture/Renderer/Camera.h"
+#include "Vulture/Renderer/LightsLibrary.h"
 
 namespace Vulture {
 	struct LevelModelData {
@@ -66,6 +67,7 @@ namespace Vulture {
 		Ref<MaterialLibrary> m_MaterialLibrary;
 		Ref<ShaderLibrary> m_ShaderLibrary;
 		Ref<TextureLibrary> m_TextureLibrary;
+		Ref<LightsLibrary> m_LightsLibrary;
 
 		glm::vec3 m_PlayerPosition;
 		glm::vec3 m_CameraPosition;

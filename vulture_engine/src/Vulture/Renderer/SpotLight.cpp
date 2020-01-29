@@ -1,10 +1,12 @@
+#include "vulpch.h"
 #include "SpotLight.h"
 
 namespace Vulture {
-	SpotLight::SpotLight(glm::vec3 position, glm::vec3 color, float strength, bool isStatic, float angle) 
-		: Light(position, color, strength, isStatic), m_Angle(angle)
+	SpotLight::SpotLight(std::string id, glm::vec3 position, glm::vec3 color, float strength, float affectiveDistance, bool isStatic, glm::vec3 direction, float angle) 
+		: Light(id, position, color, strength, affectiveDistance, isStatic), m_Angle(angle), m_Direction(direction)
 	{
 	}
+
 	SpotLight::~SpotLight()
 	{
 	}

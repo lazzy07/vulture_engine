@@ -4,7 +4,7 @@
 namespace Vulture {
 	class DirectionalLight : public Light {
 	public:
-		DirectionalLight(glm::vec3 position = glm::vec3(0.0), glm::vec3 color = glm::vec3(1.0), float strength = 0.5f, bool isStatic = true, glm::vec3 direction = glm::vec3(0.0f));
+		DirectionalLight(std::string id, glm::vec3 position = glm::vec3(0.0), glm::vec3 color = glm::vec3(1.0), float strength = 0.5f, float affectiveDistance = 10.0f, bool isStatic = true, glm::vec3 direction = glm::vec3(0.0f));
 		~DirectionalLight();
 
 		inline glm::vec3 GetDirection() const { return m_Direction; };
