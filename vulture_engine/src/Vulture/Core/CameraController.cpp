@@ -42,17 +42,17 @@ namespace Vulture {
 
 	void FirstPersonController::OnChangeMouse()
 	{
+		float xpos = Input::GetMouseX();
+		float ypos = Input::GetMouseY();
+
+		if (m_firstMouse)
+		{
+			m_lastX = xpos;
+			m_lastY = ypos;
+			m_firstMouse = false;
+		}
+
 		if (Input::IsMouseButtonPressed(VUL_MOUSE_BUTTON_2)) {
-			float xpos = Input::GetMouseX();
-			float ypos = Input::GetMouseY();
-
-			if (m_firstMouse)
-			{
-				m_lastX = xpos;
-				m_lastY = ypos;
-				m_firstMouse = false;
-			}
-
 			float xoffset = xpos - m_lastX;
 			float yoffset = m_lastY - ypos;
 

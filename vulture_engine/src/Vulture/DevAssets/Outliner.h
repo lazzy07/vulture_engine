@@ -22,6 +22,7 @@ namespace Vulture {
 		static inline std::string GetSelectedTexture() { return m_SelectedTexture; };
 		static inline std::string GetSelectedLight() { return m_SelectedLight; };
 		static inline std::string GetSelectedLightInstance() { return m_SelectedLightInstance; };
+		static inline LightTypes GetSelectedLightInstanceType() { return m_SelectedLightInstanceType; };
 
 		static inline void ResetSelected() { m_SelectedObject = m_SelectedInstance 
 			= m_SelectedMaterial = m_SelectedShader = m_SelectedTexture = m_SelectedLight = m_SelectedLightInstance = ""; };
@@ -35,5 +36,7 @@ namespace Vulture {
 		static std::string m_SelectedTexture;
 		static std::string m_SelectedLight;
 		static std::string m_SelectedLightInstance;
+		static LightTypes m_SelectedLightInstanceType;
+
 	};
 }

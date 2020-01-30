@@ -3,7 +3,7 @@
 
 namespace Vulture {
 	Light::Light(std::string id, glm::vec3 position, glm::vec3 color, float strength, float affectiveDistance, bool isStatic) 
-		: m_Position(position), m_Color(color), m_Strength(strength), m_AffectiveDistance(affectiveDistance) ,m_IsStatic(isStatic) {
+		: m_Id(id), m_Position(position), m_Color(color), m_Strength(strength), m_AffectiveDistance(affectiveDistance) ,m_IsStatic(isStatic) {
 
 	}
 

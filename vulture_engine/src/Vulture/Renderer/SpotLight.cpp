@@ -5,6 +5,7 @@ namespace Vulture {
 	SpotLight::SpotLight(std::string id, glm::vec3 position, glm::vec3 color, float strength, float affectiveDistance, bool isStatic, glm::vec3 direction, float angle) 
 		: Light(id, position, color, strength, affectiveDistance, isStatic), m_Angle(angle), m_Direction(direction)
 	{
+		SetType(LightTypes::SPOT_LIGHT);
 	}
 
 	SpotLight::~SpotLight()

@@ -13,6 +13,7 @@ namespace Vulture {
 	std::string Outliner::m_SelectedTexture = "";
 	std::string Outliner::m_SelectedLight = "";
 	std::string Outliner::m_SelectedLightInstance = "";
+	LightTypes Outliner::m_SelectedLightInstanceType = LightTypes::DIRECTIONAL_LIGHT;
 
 
 	Outliner::Outliner()
@@ -160,14 +161,54 @@ namespace Vulture {
 		if (ImGui::CollapsingHeader("Light Instances")) {
 			ImGui::Indent();
 			{
+				auto lib = Application::Get().GetCurrentLevel()->GetLightLibrary();
+
 				if (ImGui::CollapsingHeader("Directional Lights")) {
-
+					for (auto ele : *lib->GetDirectionalLights()) {
+						std::string id = "###" + ele->GetId() + "isActive";
+						bool isActive = ele->GetIsActive();
+						if (ImGui::Checkbox(id.c_str(), &isActive)) {
+							ele->SetActive(isActive);
+						};
+						ImGui::SameLine();
+						if (ImGui::Selectable(ele->GetId().c_str(), ele->GetId() == m_SelectedLightInstance)) {
+							ResetSelected();
+							m_SelectedLightInstanceType = LightTypes::DIRECTIONAL_LIGHT;
+							m_SelectedLightInstance = ele->GetId();
+						}
+					}
 				}
+
 				if (ImGui::CollapsingHeader("Point Lights")) {
-
+					for (auto ele : *lib->GetPointLights()) {
+						std::string id = "###" + ele->GetId() + "isActive";
+						bool isActive = ele->GetIsActive();
+						if (ImGui::Checkbox(id.c_str(), &isActive)) {
+							ele->SetActive(isActive);
+						};
+						ImGui::SameLine();
+						if (ImGui::Selectable(ele->GetId().c_str(), ele->GetId() == m_SelectedLightInstance)) {
+							ResetSelected();
+							m_SelectedLightInstanceType = LightTypes::POINT_LIGHT;
+							m_SelectedLightInstance = ele->GetId();
+						}
+					}
 				}
-				if (ImGui::CollapsingHeader("Spot Lights")) {
 
+				if (ImGui::CollapsingHeader("Spot Lights")) {
+					for (auto ele : *lib->GetSpotLights()) {
+						std::string id = "###" + ele->GetId() + "isActive";
+						bool isActive = ele->GetIsActive();
+						if (ImGui::Checkbox(id.c_str(), &isActive)) {
+							ele->SetActive(isActive);
+						};
+						ImGui::SameLine();
+						if (ImGui::Selectable(ele->GetId().c_str(), ele->GetId() == m_SelectedLightInstance)) {
+							ResetSelected();
+							m_SelectedLightInstanceType = LightTypes::SPOT_LIGHT;
+							m_SelectedLightInstance = ele->GetId();
+						}
+					}
 				}
 			}
 			ImGui::Unindent();

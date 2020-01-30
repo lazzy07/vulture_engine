@@ -21,14 +21,17 @@ namespace Vulture {
 		if (lightType == LightTypes::DIRECTIONAL_LIGHT) {
 			Ref<DirectionalLight> light;
 			light.reset(new DirectionalLight(id, glm::vec3(0.0f), glm::vec3(0.0f), 0.5f, 10.0f, true, glm::vec3(0.0f)));
+			m_DirectionalLights.push_back(light);
 		}
 		else if (lightType == LightTypes::POINT_LIGHT) {
 			Ref<PointLight> light;
 			light.reset(new PointLight(id, glm::vec3(0.0f), glm::vec3(0.0f), 0.5f, 10.0f, true));
+			m_PointLights.push_back(light);
 		}
 		else if (lightType == LightTypes::SPOT_LIGHT) {
 			Ref<SpotLight> light;
 			light.reset(new SpotLight(id, glm::vec3(0.0f), glm::vec3(0.0f), 0.5f, 10.0f, true, glm::vec3(0.0f), 45.0f));
+			m_SpotLights.push_back(light);
 		}
 		else {
 			VUL_CORE_ASSERT(false, "Unknown light type in addNewLight");

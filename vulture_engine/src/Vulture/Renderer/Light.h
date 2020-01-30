@@ -17,6 +17,7 @@ namespace Vulture {
 		bool IsLightAffected(glm::vec3 modelPosition);
 
 		virtual void SaveLightData(Configurations* cfg) = 0;
+		void SetType(LightTypes lt) { m_LightType = lt; };
 
 		inline const glm::vec3 GetPosition() const { return m_Position; };
 		inline const glm::vec3 GetColor() const { return m_Color; };

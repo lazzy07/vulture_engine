@@ -318,7 +318,8 @@ namespace Vulture {
 		else if (Outliner::GetSelectedLight() != "") {
 			ImGui::BeginChild("Light options");
 			{
-				ImGui::Text("Create a light options");
+				std::string name = "Create a light options : " + Outliner::GetSelectedLight() + " light";
+				ImGui::Text(name.c_str());
 				if (ImGui::Button("Create Light")) {
 					std::string type = Outliner::GetSelectedLight();
 					if (type == "directional")
@@ -332,7 +333,201 @@ namespace Vulture {
 			ImGui::EndChild();
 		}
 		else if (Outliner::GetSelectedLightInstance() != "") {
-			
+			auto lightMaterial = Application::Get().GetCurrentLevel()->GetLightLibrary();
+			if (Outliner::GetSelectedLightInstanceType() == LightTypes::DIRECTIONAL_LIGHT) {
+				Ref<DirectionalLight> light;
+				for (auto ele : *lightMaterial->GetDirectionalLights()) {
+					if (ele->GetId() == Outliner::GetSelectedLightInstance()) {
+						light = ele;
+					}
+				}
+
+				if (light) {
+					ImGui::BeginChild("Directional Lights");
+					{
+						std::string id = light->GetId() + "###" + light->GetId() + "id";
+						std::string id1 = ": Position###" + light->GetId() + "id1";
+						std::string id2 = ": Position###" + light->GetId() + "id2";
+						ImGui::Text(id.c_str());
+						{
+							glm::vec3 pos = light->GetPosition();
+							if (ImGui::SliderFloat3(id1.c_str(), glm::value_ptr(pos), -100, 100)) {
+								light->SetPosition(pos);
+							}
+							if (ImGui::InputFloat3(id2.c_str(), glm::value_ptr(pos))) {
+								light->SetPosition(pos);
+							}
+						}
+
+						{
+							glm::vec3 color = light->GetColor() * glm::vec3(255);
+							if (ImGui::ColorEdit3("Light Color", glm::value_ptr(color))) {
+								light->SetColor(color / glm::vec3(255.0f));
+							}
+						}
+
+						{
+							if (ImGui::RadioButton("Is Static", light->GetStatic())) {
+								light->SetStatic(!light->GetStatic());
+							}
+						}
+
+						{
+							float val = light->GetStrength();
+							if (ImGui::DragFloat("Strength", &val, 1.0f, 0.0f, 100.0f)) {
+								light->SetStrength(val);
+							}
+						}
+
+						{
+							float val = light->GetAffectiveDistance();
+
+							if (ImGui::DragFloat("Affective Distance", &val, 1.0f, 0.0f, 100.0f)) {
+								light->SetAffectiveDistance(val);
+							}
+						}
+
+						{
+							glm::vec3 direction = light->GetDirection();
+
+							if (ImGui::InputFloat3("Direction", glm::value_ptr(direction))) {
+								light->SetDirection(direction);
+							}
+						}
+					}
+					ImGui::EndChild();
+				}
+			}
+			else if (Outliner::GetSelectedLightInstanceType() == LightTypes::POINT_LIGHT) {
+				Ref<PointLight> light;
+				for (auto ele : *lightMaterial->GetPointLights()) {
+					if (ele->GetId() == Outliner::GetSelectedLightInstance()) {
+						light = ele;
+					}
+				}
+
+				if (light) {
+					ImGui::BeginChild("Point Lights");
+					{
+						std::string id = light->GetId() + "###" + light->GetId() + "id";
+						std::string id1 = ": Position###" + light->GetId() + "id1";
+						std::string id2 = ": Position###" + light->GetId() + "id2";
+						ImGui::Text(id.c_str());
+						{
+							glm::vec3 pos = light->GetPosition();
+							if (ImGui::SliderFloat3(id1.c_str(), glm::value_ptr(pos), -100, 100)) {
+								light->SetPosition(pos);
+							}
+							if (ImGui::InputFloat3(id2.c_str(), glm::value_ptr(pos))) {
+								light->SetPosition(pos);
+							}
+						}
+
+						{
+							glm::vec3 color = light->GetColor() * glm::vec3(255);
+							if (ImGui::ColorEdit3("Light Color", glm::value_ptr(color))) {
+								light->SetColor(color / glm::vec3(255.0f));
+							}
+						}
+
+						{
+							if (ImGui::RadioButton("Is Static", light->GetStatic())) {
+								light->SetStatic(!light->GetStatic());
+							}
+						}
+
+						{
+							float val = light->GetStrength();
+							if (ImGui::DragFloat("Strength", &val, 1.0f, 0.0f, 100.0f)) {
+								light->SetStrength(val);
+							}
+						}
+
+						{
+							float val = light->GetAffectiveDistance();
+
+							if (ImGui::DragFloat("Affective Distance", &val, 1.0f, 0.0f, 100.0f)) {
+								light->SetAffectiveDistance(val);
+							}
+						}
+					}
+					ImGui::EndChild();
+				}
+			}
+			else if (Outliner::GetSelectedLightInstanceType() == LightTypes::SPOT_LIGHT) {
+				Ref<SpotLight> light;
+				for (auto ele : *lightMaterial->GetSpotLights()) {
+					if (ele->GetId() == Outliner::GetSelectedLightInstance()) {
+						light = ele;
+					}
+				}
+
+				if (light) {
+					ImGui::BeginChild("Spot Lights");
+
+					{
+						std::string id = light->GetId() + "###" + light->GetId() + "id";
+						std::string id1 = ": Position###" + light->GetId() + "id1";
+						std::string id2 = ": Position###" + light->GetId() + "id2";
+						ImGui::Text(id.c_str());
+						{
+							glm::vec3 pos = light->GetPosition();
+							if (ImGui::SliderFloat3(id1.c_str(), glm::value_ptr(pos), -100, 100)) {
+								light->SetPosition(pos);
+							}
+							if (ImGui::InputFloat3(id2.c_str(), glm::value_ptr(pos))) {
+								light->SetPosition(pos);
+							}
+						}
+
+						{
+							glm::vec3 color = light->GetColor() * glm::vec3(255);
+							if (ImGui::ColorEdit3("Light Color", glm::value_ptr(color))) {
+								light->SetColor(color / glm::vec3(255.0f));
+							}
+						}
+
+						{
+							if (ImGui::RadioButton("Is Static", light->GetStatic())) {
+								light->SetStatic(!light->GetStatic());
+							}
+						}
+
+						{
+							float val = light->GetStrength();
+							if (ImGui::DragFloat("Strength", &val, 1.0f, 0.0f, 100.0f)) {
+								light->SetStrength(val);
+							}
+						}
+
+						{
+							float val = light->GetAffectiveDistance();
+
+							if (ImGui::DragFloat("Affective Distance", &val, 1.0f, 0.0f, 100.0f)) {
+								light->SetAffectiveDistance(val);
+							}
+						}
+
+						{
+							float val = light->GetAngle();
+
+							if (ImGui::DragFloat("Angle", &val, 1.0f, 0.0f, 100.0f)) {
+								light->SetAngle(val);
+							}
+						}
+
+						{
+							glm::vec3 direction = light->GetDirection();
+
+							if (ImGui::InputFloat3("Direction ", glm::value_ptr(direction))) {
+								light->SetPosition(direction);
+							}
+						}
+					}
+
+					ImGui::EndChild();
+				}
+			}
 		}
 		ImGui::End();
 	}
