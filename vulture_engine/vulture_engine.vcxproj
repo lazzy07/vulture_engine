@@ -184,6 +184,7 @@
     <ClInclude Include="src\Vulture\Renderer\DirectionalLight.h" />
     <ClInclude Include="src\Vulture\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Vulture\Renderer\Light.h" />
+    <ClInclude Include="src\Vulture\Renderer\LightsLibrary.h" />
     <ClInclude Include="src\Vulture\Renderer\Material.h" />
     <ClInclude Include="src\Vulture\Renderer\MaterialLibrary.h" />
     <ClInclude Include="src\Vulture\Renderer\Mesh.h" />
@@ -611,6 +612,7 @@
     <ClCompile Include="src\Vulture\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Vulture\Renderer\DirectionalLight.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Light.cpp" />
+    <ClCompile Include="src\Vulture\Renderer\LightsLibrary.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Material.cpp" />
     <ClCompile Include="src\Vulture\Renderer\MaterialLibrary.cpp" />
     <ClCompile Include="src\Vulture\Renderer\Mesh.cpp" />

@@ -1,5 +1,6 @@
 #pragma once
 #include <glm/glm.hpp>
+#include "Vulture/Core/Configurations.h"
 
 namespace Vulture {
 	enum class LightTypes {
@@ -14,6 +15,8 @@ namespace Vulture {
 		~Light();
 
 		bool IsLightAffected(glm::vec3 modelPosition);
+
+		virtual void SaveLightData(Configurations* cfg) = 0;
 
 		inline const glm::vec3 GetPosition() const { return m_Position; };
 		inline const glm::vec3 GetColor() const { return m_Color; };

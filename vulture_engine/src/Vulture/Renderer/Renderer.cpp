@@ -50,5 +50,6 @@ namespace Vulture {
 
 		vertexArray->Bind();
 		RenderCommand::DrawIndexed(vertexArray);
+		vertexArray->Unbind();
 	}
 }

@@ -20,7 +20,9 @@ namespace Vulture {
 			auto lastDot = p.rfind('.');
 			std::string ft = p.substr(lastDot + 1);
 
-			if (ft == fileType) {
+			if (fileType == "") {
+				filePaths->push_back(p);
+			} else if (ft == fileType) {
 				filePaths->push_back(p);
 			}
 		}

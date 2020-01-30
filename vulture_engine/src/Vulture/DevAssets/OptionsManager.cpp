@@ -315,6 +315,25 @@ namespace Vulture {
 		else if (Outliner::GetSelectedTexture() != "") {
 
 		}
+		else if (Outliner::GetSelectedLight() != "") {
+			ImGui::BeginChild("Light options");
+			{
+				ImGui::Text("Create a light options");
+				if (ImGui::Button("Create Light")) {
+					std::string type = Outliner::GetSelectedLight();
+					if (type == "directional")
+						Application::Get().GetCurrentLevel()->GetLightLibrary()->AddNewLight(LightTypes::DIRECTIONAL_LIGHT);
+					else if (type == "spot")
+						Application::Get().GetCurrentLevel()->GetLightLibrary()->AddNewLight(LightTypes::SPOT_LIGHT);
+					else if(type == "point")
+						Application::Get().GetCurrentLevel()->GetLightLibrary()->AddNewLight(LightTypes::POINT_LIGHT);
+				}
+			}
+			ImGui::EndChild();
+		}
+		else if (Outliner::GetSelectedLightInstance() != "") {
+			
+		}
 		ImGui::End();
 	}
 

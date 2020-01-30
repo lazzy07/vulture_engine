@@ -32,6 +32,8 @@ namespace Vulture {
 		inline Ref<ShaderLibrary> GetShaderLibrary() const { return m_ShaderLibrary; };
 		inline Ref<TextureLibrary> GetTextureLibrary() const { return m_TextureLibrary; };
 		inline Ref<ModelLibrary> GetModelLibrary() const { return m_ModelLibrary; };
+		inline Ref<LightsLibrary> GetLightLibrary() const { return m_LightsLibrary; };
+
 		inline std::unordered_map<std::string, Ref<LevelModelData>>* GetInstanceData() { return &m_ModelData; };
 
 		void AddModelToLevel(std::string name, glm::vec3 position = glm::vec3(0.0f),
@@ -53,6 +55,7 @@ namespace Vulture {
 		void LoadShaders(const char* shaderBuffer);
 		void LoadMaterials(const char* materialBuffer);
 		void LoadModels(const char* modelBuffer);
+		void LoadLights(const char* lightBuffer);
 		void ModelInstancesToConfig();
 		void ConfigToModelInstances();
 

@@ -32,13 +32,15 @@ public:
 	void OnEvent(Vulture::Event& event) override {
 		if (event.GetEventType() == Vulture::EventType::WindowResize) {
 			Vulture::WindowResizeEvent& e = (Vulture::WindowResizeEvent&)event;
-			m_Controller->GetCamera()->UpdateViewMatrix(e.GetHeight(), e.GetWidth(), 54.0f, 0.1f, 100.0f);
+			unsigned int height = e.GetHeight() > 0 ? e.GetHeight() : 1;
+			unsigned int width = e.GetWidth() > 0 ? e.GetWidth() : 1;
+
+			m_Controller->GetCamera()->UpdateViewMatrix(height, width, 54.0f, 0.1f, 100.0f);
 		}
 	}
 private:
 	Vulture::Ref<Vulture::Level> m_Level = Vulture::Application::Get().GetCurrentLevel();
 	Vulture::Ref<Vulture::FirstPersonController> m_Controller;
-
 };
 
 class Sandbox : public Vulture::Application {

@@ -94,7 +94,7 @@ namespace Vulture {
 		m_Configurations.GetAll("variable", &vars);
 		m_Configurations.GetAll("vartype", &varTypes);
 
-		VUL_CORE_ASSERT(vars.size() == varTypes.size(), "Count of variables and count of variable types are different");
+		//VUL_CORE_ASSERT(vars.size() == varTypes.size(), "Count of variables and count of variable types are different");
 
 		for (std::pair<std::string, std::string> elem : varTypes) {
 			if (elem.second == "float") {

@@ -1,5 +1,6 @@
 #include "vulpch.h"
 #include "TextureLibrary.h"
+#include "Vulture/Core/FileManager.h"
 
 namespace Vulture{
 	void TextureLibrary::Load(std::string path)
@@ -12,8 +13,19 @@ namespace Vulture{
 
 	Ref<Texture2D> TextureLibrary::GetTexture(std::string name)
 	{
-		VUL_CORE_ASSERT(Exists(name), "Cannot find a texture2d with specified name");
-		return m_Textures[name];
+		//VUL_CORE_ASSERT(Exists(name), "Cannot find a texture2d with specified name");
+		if (Exists(name)) {
+			return m_Textures[name];
+		}
+		else {
+			VUL_CORE_INFO("Shader {0} not found, loading...", name);
+			FileManager fm;
+			std::unordered_map<std::string, std::string> m;
+
+			fm.GetFileList("./assets/textures", "", &m);
+			Load(m[name]);
+			return m_Textures[name];
+		}
 	}
 
 	void TextureLibrary::RemoveTexture(std::string name)

@@ -93,7 +93,6 @@ namespace Vulture {
 					}
 					else if (elem.first == "vulconf") {
 						model->SetConfigurations((char *)elem.second->m_Data);
-						
 					}
 					else {
 						VUL_CORE_ASSERT(false, "Unknown file type in mesh loader");

@@ -33,8 +33,16 @@ namespace Vulture {
 	
 	Ref<Shader> ShaderLibrary::Get(const std::string & name)
 	{
-		VUL_CORE_ASSERT(Exists(name), "Shader couln't be found");
-		return m_Shaders[name];
+		//VUL_CORE_ASSERT(Exists(name), "Shader couln't be found");
+		if (Exists(name)) {
+			return m_Shaders[name];
+		}
+		else {
+			VUL_CORE_INFO("Shader {0} not found, loading...", name);
+			std::string path = "./assets/shaders/" + name + ".glsl";
+			Load(path);
+			return m_Shaders[name];
+		}
 	}
 
 	bool ShaderLibrary::Exists(const std::string & name)

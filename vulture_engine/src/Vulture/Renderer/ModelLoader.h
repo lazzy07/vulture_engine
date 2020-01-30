@@ -12,12 +12,12 @@
 namespace Vulture {
 	class ModelLoader {
 	public:
-		static void AddNewModel(std::string path, bool flipUVs = true, bool triangulate = true);
-		static void LoadVulModel(std::string path, ModelLibrary* modelLibrary);
+		void AddNewModel(std::string path, bool flipUVs = true, bool triangulate = true);
+		void LoadVulModel(std::string path, ModelLibrary* modelLibrary);
 	private:
-		static std::string getFileName(std::string path);
-		static void processNode(aiNode* node, const aiScene* scene, zip_t* zip, Configurations* conf);
-		static void processMesh(aiMesh* mesh, const aiScene* scene, zip_t* zip, Configurations* conf);
+		std::string getFileName(std::string path);
+		void processNode(aiNode* node, const aiScene* scene, zip_t* zip, Configurations* conf);
+		void processMesh(aiMesh* mesh, const aiScene* scene, zip_t* zip, Configurations* conf);
 
 		struct MeshData {
 			uint32_t m_Size;

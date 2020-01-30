@@ -10,4 +10,18 @@ namespace Vulture {
 	SpotLight::~SpotLight()
 	{
 	}
+	void SpotLight::SaveLightData(Configurations * cfg)
+	{
+		cfg->SetString("lights", GetId(), "spot");
+
+		cfg->SetVec3(GetId(), "position", GetPosition());
+		cfg->SetFloat(GetId(), "strength", GetStrength());
+		cfg->SetVec3(GetId(), "color", GetColor());
+		cfg->SetFloat(GetId(), "affectivedist", GetAffectiveDistance());
+		cfg->SetFloat(GetId(), "active", GetIsActive());
+		cfg->SetFloat(GetId(), "static", GetStatic());
+		
+		cfg->SetFloat(GetId(), "angle", m_Angle);
+		cfg->SetVec3(GetId(), "direction", m_Direction);
+	}
 }

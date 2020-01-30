@@ -1326,6 +1326,7 @@
     <ClInclude Include="src\Vulture\Renderer\PointLight.h" />
     <ClInclude Include="src\Vulture\Renderer\DirectionalLight.h" />
     <ClInclude Include="src\Vulture\Renderer\SpotLight.h" />
+    <ClInclude Include="src\Vulture\Renderer\LightsLibrary.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1448,5 +1449,6 @@
     <ClCompile Include="src\Vulture\Renderer\PointLight.cpp" />
     <ClCompile Include="src\Vulture\Renderer\DirectionalLight.cpp" />
     <ClCompile Include="src\Vulture\Renderer\SpotLight.cpp" />
+    <ClCompile Include="src\Vulture\Renderer\LightsLibrary.cpp" />
   </ItemGroup>
 </Project>

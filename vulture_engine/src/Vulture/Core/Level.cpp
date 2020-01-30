@@ -14,6 +14,7 @@ namespace Vulture {
 		m_TextureLibrary.reset(new TextureLibrary());
 		m_ShaderLibrary.reset(new ShaderLibrary());
 		m_MaterialLibrary.reset(new MaterialLibrary(m_ShaderLibrary, m_TextureLibrary));
+		m_LightsLibrary.reset(new LightsLibrary(m_ModelLibrary));
 
 		GetShaderLibrary()->Load("./assets/shaders/default.glsl");
 		GetMaterialLibrary()->AddNewMaterial("default", "default");
@@ -31,6 +32,7 @@ namespace Vulture {
 		char* shaderBuffer;
 		char* materialBuffer;
 		char* modelBuffer;
+		char* lightBuffer;
 		char* configBuffer;
 
 		struct zip_t* zip = zip_open(fileName.c_str(), 0, 'r');
@@ -70,6 +72,15 @@ namespace Vulture {
 				LoadModels(modelBuffer);
 			}
 			zip_entry_close(zip);
+			
+			zip_entry_open(zip, "lights");
+			{
+				size_t bufsize = zip_entry_size(zip);
+				lightBuffer = (char*)malloc(bufsize);
+				zip_entry_noallocread(zip, (void *)lightBuffer, bufsize);
+				LoadLights(lightBuffer);
+			}
+			zip_entry_close(zip);
 
 			zip_entry_open(zip, "config");
 			{
@@ -102,7 +113,9 @@ namespace Vulture {
 		std::string shaderBuffer = m_ShaderLibrary->GetConfigBuffer().c_str();
 		std::string materialBuffer = m_MaterialLibrary->MaterialsToConfigBuffer().c_str();
 		std::string modelBuffer = m_ModelLibrary->ModelsToConfigBuffer();
+		std::string lightBuffer = m_LightsLibrary->GetConfigBuffer();
 		std::string configBuffer = m_Config.GetConfigBuffer();
+
 
 		struct zip_t *zip = zip_open(fileName.c_str(), ZIP_DEFAULT_COMPRESSION_LEVEL, 'w');
 		{
@@ -124,6 +137,11 @@ namespace Vulture {
 			zip_entry_open(zip, "models");
 			{
 				zip_entry_write(zip, modelBuffer.c_str(), strlen(modelBuffer.c_str()));
+			}
+			zip_entry_close(zip);
+			zip_entry_open(zip, "lights");
+			{
+				zip_entry_write(zip, lightBuffer.c_str(), strlen(lightBuffer.c_str()));
 			}
 			zip_entry_close(zip);
 			zip_entry_open(zip, "config");
@@ -160,8 +178,9 @@ namespace Vulture {
 	{
 		std::string name = GetFileName(modelPath);
 		VUL_CORE_INFO("Level {1}:::Model {0} has been added to the library", name, m_LevelName);
-		Vulture::ModelLoader::AddNewModel(modelPath);
-		ModelLoader::LoadVulModel("./assets/models/" + name + ".vulmodel", m_ModelLibrary.get());
+		ModelLoader ml;
+		ml.AddNewModel(modelPath);
+		ml.LoadVulModel("./assets/models/" + name + ".vulmodel", m_ModelLibrary.get());
 	}
 
 	void Level::AddNewMaterial(std::string materialName)
@@ -251,8 +270,14 @@ namespace Vulture {
 
 		for (std::pair<std::string, std::string>ele : modelMap) {
 			VUL_CORE_TRACE("Model to Level's ModelLibrary loaded: {0} :: {1}", ele.first, ele.second);
-			ModelLoader::LoadVulModel("./assets/models/" + ele.second + ".vulmodel", m_ModelLibrary.get());
+			ModelLoader ml;
+			ml.LoadVulModel("./assets/models/" + ele.second + ".vulmodel", m_ModelLibrary.get());
 		}
+	}
+
+	void Level::LoadLights(const char * lightBuffer)
+	{
+		m_LightsLibrary->LoadLights(lightBuffer);
 	}
 
 	void Level::ModelInstancesToConfig()

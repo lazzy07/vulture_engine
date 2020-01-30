@@ -66,8 +66,15 @@ namespace Vulture {
 
 	Ref<Material> MaterialLibrary::GetMaterial(const std::string name)
 	{
-		VUL_CORE_ASSERT(Exists(name), "Material does not exists");
-		return m_Materials[name];
+		if (Exists(name)) {
+			return m_Materials[name];
+		}
+		else {
+			VUL_CORE_INFO("Material {0} not found, loading...", name);
+			Load(name);
+			return m_Materials[name];
+		}
+		//VUL_CORE_ASSERT(Exists(name), "Material does not exists");
 	}
 
 	bool MaterialLibrary::Exists(const std::string name)

@@ -11,6 +11,9 @@ namespace Vulture {
 	std::string Outliner::m_SelectedMaterial= "";
 	std::string Outliner::m_SelectedShader = "";
 	std::string Outliner::m_SelectedTexture = "";
+	std::string Outliner::m_SelectedLight = "";
+	std::string Outliner::m_SelectedLightInstance = "";
+
 
 	Outliner::Outliner()
 	{
@@ -45,6 +48,8 @@ namespace Vulture {
 					m_SelectedMaterial = "";
 					m_SelectedShader = "";
 					m_SelectedTexture = "";
+					m_SelectedLight = "";
+					m_SelectedLightInstance = "";
 				}
 			}
 			ImGui::Unindent();
@@ -67,6 +72,8 @@ namespace Vulture {
 							m_SelectedMaterial = "";
 							m_SelectedShader = "";
 							m_SelectedTexture = "";
+							m_SelectedLight = "";
+							m_SelectedLightInstance = "";
 							ins->Selected = true;
 						}
 						else {
@@ -89,6 +96,8 @@ namespace Vulture {
 					m_SelectedMaterial = elem.first;
 					m_SelectedShader = "";
 					m_SelectedTexture = "";
+					m_SelectedLight = "";
+					m_SelectedLightInstance = "";
 				}
 			}
 			ImGui::Unindent();
@@ -103,6 +112,8 @@ namespace Vulture {
 					m_SelectedMaterial = "";
 					m_SelectedShader = elem.first;
 					m_SelectedTexture = "";
+					m_SelectedLight = "";
+					m_SelectedLightInstance = "";
 				}
 
 			}
@@ -118,6 +129,45 @@ namespace Vulture {
 					m_SelectedMaterial = "";
 					m_SelectedShader = "";
 					m_SelectedTexture = elem.first;
+					m_SelectedLight = "";
+					m_SelectedLightInstance = "";
+				}
+			}
+			ImGui::Unindent();
+		}
+		if (ImGui::CollapsingHeader("Lights")) {
+			const char* const lightTypes[] = { "Directional Light", "Point Light", "Spot Light" };
+			ImGui::Indent();
+			{
+				static int selected = -1;
+				if (ImGui::ListBox("Light Types", &selected, lightTypes, 3)) {
+					if (selected == 0) {
+						ResetSelected();
+						m_SelectedLight = "directional";
+					}
+					else if (selected == 1) {
+						ResetSelected();
+						m_SelectedLight = "point";
+					}
+					else if (selected == 2) {
+						ResetSelected();
+						m_SelectedLight = "spot";
+					}
+				}
+			}
+			ImGui::Unindent();
+		}
+		if (ImGui::CollapsingHeader("Light Instances")) {
+			ImGui::Indent();
+			{
+				if (ImGui::CollapsingHeader("Directional Lights")) {
+
+				}
+				if (ImGui::CollapsingHeader("Point Lights")) {
+
+				}
+				if (ImGui::CollapsingHeader("Spot Lights")) {
+
 				}
 			}
 			ImGui::Unindent();
